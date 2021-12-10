@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>springCloud 初次搭建记录 on Naituyuw</title>
+    <link>https://kewu404.github.io/projects/setsail/</link>
+    <description>Recent content in springCloud 初次搭建记录 on Naituyuw</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 12 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/projects/setsail/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>微服务框架技术选择与思考</title>
+      <link>https://kewu404.github.io/projects/setsail/spring-cloud.version/</link>
+      <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/setsail/spring-cloud.version/</guid>
+      <description>springCloud,springCloudAlibaba,springBoot的版本选择</description>
+    </item>
+    
+  </channel>
+</rss>

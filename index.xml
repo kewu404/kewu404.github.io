@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Naituyuw</title>
+    <link>https://kewu404.github.io/</link>
+    <description>Recent content on Naituyuw</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 07 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工作</title>
+      <link>https://kewu404.github.io/lives/live-job/</link>
+      <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/lives/live-job/</guid>
+      <description>dasfasfdasf asdfasfsafsadfwfaefeawdve</description>
+    </item>
+    
+    <item>
+      <title>hugo-表情使用</title>
+      <link>https://kewu404.github.io/posts/emoji-support/</link>
+      <pubDate>Fri, 01 Jan 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/emoji-support/</guid>
+      <description>表情符号可以通过多种方式在Hugo项目中启用。
+这个emojify 函数可以在模板或内联代码中直接调用.
+要全局启用表情符号，请在 site configuration 中将enableMoji设置为true,然后你可以直接在内容文件中输入 表情符号速记代码。
+这些符号以冒号开头和结尾，包括表情符号的代码：
+That is so funny! 😂 渲染效果如下：
+That is so funny! 😂
+下面是表情对应代码表。
+Smileys &amp;amp; Emotion Face Smiling    icon code icon code     😀 grinning 😃 smiley   😄 smile 😁 grin   😆 laughing satisfied 😅 sweat_smile   🤣 rofl 😂 joy   🙂 slightly_smiling_face 🙃 upside_down_face   😉 wink 😊 blush   😇 innocent      Face Affection    icon code icon code     😍 heart_eyes 😘 kissing_heart   😗 kissing ☺️ relaxed   😚 kissing_closed_eyes 😙 kissing_smiling_eyes    Face Tongue    icon code icon code     😋 yum 😛 stuck_out_tongue   😜 stuck_out_tongue_winking_eye 😝 stuck_out_tongue_closed_eyes   🤑 money_mouth_face      Face Hand    icon code icon code     🤗 hugs 🤔 thinking    Face Neutral Skeptical    icon code icon code     🤐 zipper_mouth_face 😐 neutral_face   😑 expressionless 😶 no_mouth   😏 smirk 😒 unamused   🙄 roll_eyes 😬 grimacing   🤥 lying_face      Face Sleepy    icon code icon code     😌 relieved 😔 pensive   😪 sleepy 🤤 drooling_face   😴 sleeping      Face Unwell    icon code icon code     😷 mask 🤒 face_with_thermometer   🤕 face_with_head_bandage 🤢 nauseated_face   🤧 sneezing_face 😵 dizzy_face    Face Hat    icon code icon code     🤠 cowboy_hat_face      Face Glasses    icon code icon code     😎 sunglasses 🤓 nerd_face    Face Concerned    icon code icon code     😕 confused 😟 worried   🙁 slightly_frowning_face ☹ frowning_face   😮 open_mouth 😯 hushed   😲 astonished 😳 flushed   😦 frowning 😧 anguished   😨 fearful 😰 cold_sweat   😥 disappointed_relieved 😢 cry   😭 sob 😱 scream   😖 confounded 😣 persevere   😞 disappointed 😓 sweat   😩 weary 😫 tired_face    Face Negative    icon code icon code     😤 triumph 😡 pout rage   😠 angry 😈 smiling_imp   👿 imp 💀 skull   ☠️ skull_and_crossbones      Face Costume    icon code icon code     💩 hankey poop shit 🤡 clown_face   👹 japanese_ogre 👺 japanese_goblin   👻 ghost 👽 alien   👾 space_invader 🤖 robot    Cat Face    icon code icon code     😺 smiley_cat 😸 smile_cat   😹 joy_cat 😻 heart_eyes_cat   😼 smirk_cat 😽 kissing_cat   🙀 scream_cat 😿 crying_cat_face   😾 pouting_cat      Monkey Face    icon code icon code     🙈 see_no_evil 🙉 hear_no_evil   🙊 speak_no_evil      Emotion    icon code icon code     💋 kiss 💌 love_letter   💘 cupid 💝 gift_heart   💖 sparkling_heart 💗 heartpulse   💓 heartbeat 💞 revolving_hearts   💕 two_hearts 💟 heart_decoration   ❣️ heavy_heart_exclamation 💔 broken_heart   ❤️ heart 💛 yellow_heart   💚 green_heart 💙 blue_heart   💜 purple_heart 🖤 black_heart   💯 100 💢 anger   💥 boom collision 💫 dizzy   💦 sweat_drops 💨 dash   🕳️ hole 💣 bomb   💬 speech_balloon 👁️‍🗨️ eye_speech_bubble   🗯️ right_anger_bubble 💭 thought_balloon   💤 zzz      People &amp;amp; Body Hand Fingers Open    icon code icon code     👋 wave 🤚 raised_back_of_hand   🖐️ raised_hand_with_fingers_splayed ✋ hand raised_hand   🖖 vulcan_salute      Hand Fingers Partial    icon code icon code     👌 ok_hand ✌️ v   🤞 crossed_fingers 🤘 metal   🤙 call_me_hand      Hand Single Finger    icon code icon code     👈 point_left 👉 point_right   👆 point_up_2 🖕 fu middle_finger   👇 point_down ☝️ point_up    Hand Fingers Closed    icon code icon code     👍 +1 thumbsup 👎 -1 thumbsdown   ✊ fist fist_raised 👊 facepunch fist_oncoming punch   🤛 fist_left 🤜 fist_right    Hands    icon code icon code     👏 clap 🙌 raised_hands   👐 open_hands 🤝 handshake   🙏 pray      Hand Prop    icon code icon code     ✍️ writing_hand 💅 nail_care   🤳 selfie      Body Parts    icon code icon code     💪 muscle 👂 ear   👃 nose 👀 eyes   👁️ eye 👅 tongue   👄 lips      Person    icon code icon code     👶 baby 👦 boy   👧 girl :blonde_man: blonde_man person_with_blond_hair   👨 man 👩 woman   👱‍♀️ blonde_woman 👴 older_man   👵 older_woman      Person Gesture    icon code icon code     🙍‍♀️ frowning_woman person_frowning 🙍‍♂️ frowning_man   🙎‍♀️ person_with_pouting_face pouting_woman 🙎‍♂️ pouting_man   🙅‍♀️ ng_woman no_good no_good_woman 🙅‍♂️ ng_man no_good_man   🙆‍♀️ ok_woman 🙆‍♂️ ok_man   💁‍♀️ information_desk_person sassy_woman tipping_hand_woman 💁‍♂️ sassy_man tipping_hand_man   🙋‍♀️ raising_hand raising_hand_woman 🙋‍♂️ raising_hand_man   🙇‍♂️ bow bowing_man 🙇‍♀️ bowing_woman   🤦‍♂️ man_facepalming 🤦‍♀️ woman_facepalming   🤷‍♂️ man_shrugging 🤷‍♀️ woman_shrugging    Person Role    icon code icon code     👨‍⚕️ man_health_worker 👩‍⚕️ woman_health_worker   👨‍🎓 man_student 👩‍🎓 woman_student   👨‍🏫 man_teacher 👩‍🏫 woman_teacher   👨‍⚖️ man_judge 👩‍⚖️ woman_judge   👨‍🌾 man_farmer 👩‍🌾 woman_farmer   👨‍🍳 man_cook 👩‍🍳 woman_cook   👨‍🔧 man_mechanic 👩‍🔧 woman_mechanic   👨‍🏭 man_factory_worker 👩‍🏭 woman_factory_worker   👨‍💼 man_office_worker 👩‍💼 woman_office_worker   👨‍🔬 man_scientist 👩‍🔬 woman_scientist   👨‍💻 man_technologist 👩‍💻 woman_technologist   👨‍🎤 man_singer 👩‍🎤 woman_singer   👨‍🎨 man_artist 👩‍🎨 woman_artist   👨‍✈️ man_pilot 👩‍✈️ woman_pilot   👨‍🚀 man_astronaut 👩‍🚀 woman_astronaut   👨‍🚒 man_firefighter 👩‍🚒 woman_firefighter   👮‍♂️ cop policeman 👮‍♀️ policewoman   🕵 detective male_detective 🕵️‍♀️ female_detective   💂‍♂️ guardsman 💂‍♀️ guardswoman   👷‍♂️ construction_worker construction_worker_man 👷‍♀️ construction_worker_woman   🤴 prince 👸 princess   👳‍♂️ man_with_turban 👳‍♀️ woman_with_turban   👲 man_with_gua_pi_mao 🤵‍♂️ man_in_tuxedo   👰 bride_with_veil 🤰 pregnant_woman    Person Fantasy    icon code icon code     👼 angel 🎅 santa   🤶 mrs_claus      Person Activity    icon code icon code     💆‍♀️ massage massage_woman 💆‍♂️ massage_man   💇‍♀️ haircut haircut_woman 💇‍♂️ haircut_man   🚶‍♂️ walking walking_man 🚶‍♀️ walking_woman   🏃‍♂️ runner running running_man 🏃‍♀️ running_woman   💃 dancer 🕺 man_dancing   🕴️ business_suit_levitating 👯‍♀️ dancers dancing_women   👯‍♂️ dancing_men      Person Sport    icon code icon code     🤺 person_fencing 🏇 horse_racing   ⛷️ skier 🏂 snowboarder   🏌️‍♂️ golfing_man 🏌️‍♀️ golfing_woman   🏄‍♂️ surfer surfing_man 🏄‍♀️ surfing_woman   🚣‍♂️ rowboat rowing_man 🚣‍♀️ rowing_woman   🏊‍♂️ swimmer swimming_man 🏊‍♀️ swimming_woman   ⛹️‍♂️ basketball_man ⛹️‍♀️ basketball_woman   🏋️‍♂️ weight_lifting_man 🏋️‍♀️ weight_lifting_woman   🚴‍♂️ bicyclist biking_man 🚴‍♀️ biking_woman   🚵‍♂️ mountain_bicyclist mountain_biking_man 🚵‍♀️ mountain_biking_woman   🤸‍♂️ man_cartwheeling 🤸‍♀️ woman_cartwheeling   🤼‍♂️ men_wrestling 🤼‍♀️ women_wrestling   🤽‍♂️ man_playing_water_polo 🤽‍♀️ woman_playing_water_polo   🤾‍♂️ man_playing_handball 🤾‍♀️ woman_playing_handball   🤹‍♂️ man_juggling 🤹‍♀️ woman_juggling    Person Resting    icon code icon code     🛀 bath 🛌 sleeping_bed    Family    icon code icon code     👭 two_women_holding_hands 👫 couple   👬 two_men_holding_hands 👩‍❤️‍💋‍👨 couplekiss_man_woman   👨‍❤️‍💋‍👨 couplekiss_man_man 👩‍❤️‍💋‍👩 couplekiss_woman_woman   👩‍❤️‍👨 couple_with_heart couple_with_heart_woman_man 👨‍❤️‍👨 couple_with_heart_man_man   👩‍❤️‍👩 couple_with_heart_woman_woman 👨‍👩‍👦 family family_man_woman_boy   👨‍👩‍👧 family_man_woman_girl 👨‍👩‍👧‍👦 family_man_woman_girl_boy   👨‍👩‍👦‍👦 family_man_woman_boy_boy 👨‍👩‍👧‍👧 family_man_woman_girl_girl   👨‍👨‍👦 family_man_man_boy 👨‍👨‍👧 family_man_man_girl   👨‍👨‍👧‍👦 family_man_man_girl_boy 👨‍👨‍👦‍👦 family_man_man_boy_boy   👨‍👨‍👧‍👧 family_man_man_girl_girl 👩‍👩‍👦 family_woman_woman_boy   👩‍👩‍👧 family_woman_woman_girl 👩‍👩‍👧‍👦 family_woman_woman_girl_boy   👩‍👩‍👦‍👦 family_woman_woman_boy_boy 👩‍👩‍👧‍👧 family_woman_woman_girl_girl   👨‍👦 family_man_boy 👨‍👦‍👦 family_man_boy_boy   👨‍👧 family_man_girl 👨‍👧‍👦 family_man_girl_boy   👨‍👧‍👧 family_man_girl_girl 👩‍👦 family_woman_boy   👩‍👦‍👦 family_woman_boy_boy 👩‍👧 family_woman_girl   👩‍👧‍👦 family_woman_girl_boy 👩‍👧‍👧 family_woman_girl_girl    Person Symbol    icon code icon code     🗣 speaking_head 👤 bust_in_silhouette   👥 busts_in_silhouette 👣 footprints    Animals &amp;amp; Nature Animal Mammal    icon code icon code     🐵 monkey_face 🐒 monkey   🦍 gorilla 🐶 dog   🐕 dog2 🐩 poodle   🐺 wolf 🦊 fox_face   🐱 cat 🐈 cat2   🦁 lion 🐯 tiger   🐅 tiger2 🐆 leopard   🐴 horse 🐎 racehorse   🦄 unicorn 🦌 deer   🐮 cow 🐂 ox   🐃 water_buffalo 🐄 cow2   🐷 pig 🐖 pig2   🐗 boar 🐽 pig_nose   🐏 ram 🐑 sheep   🐐 goat 🐪 dromedary_camel   🐫 camel 🐘 elephant   🦏 rhinoceros 🐭 mouse   🐁 mouse2 🐀 rat   🐹 hamster 🐰 rabbit   🐇 rabbit2 🐿️ chipmunk   🦇 bat 🐻 bear   🐨 koala 🐼 panda_face   🐾 feet paw_prints      Animal Bird    icon code icon code     🦃 turkey 🐔 chicken   🐓 rooster 🐣 hatching_chick   🐤 baby_chick 🐥 hatched_chick   🐦 bird 🐧 penguin   🕊 dove 🦅 eagle   🦆 duck 🦉 owl    Animal Amphibian    icon code icon code     🐸 frog      Animal Reptile    icon code icon code     🐊 crocodile 🐢 turtle   🦎 lizard 🐍 snake   🐲 dragon_face 🐉 dragon    Animal Marine    icon code icon code     🐳 whale 🐋 whale2   🐬 dolphin flipper 🐟 fish   🐠 tropical_fish 🐡 blowfish   🦈 shark 🐙 octopus   🐚 shell      Animal Bug    icon code icon code     🐌 snail 🦋 butterfly   🐛 bug 🐜 ant   🐝 bee honeybee 🪲 beetle   🕷️ spider 🕸️ spider_web   🦂 scorpion      Plant Flower    icon code icon code     💐 bouquet 🌸 cherry_blossom   💮 white_flower 🏵️ rosette   🌹 rose 🥀 wilted_flower   🌺 hibiscus 🌻 sunflower   🌼 blossom 🌷 tulip    Plant Other    icon code icon code     🌱 seedling 🌲 evergreen_tree   🌳 deciduous_tree 🌴 palm_tree   🌵 cactus 🌾 ear_of_rice   🌿 herb ☘️ shamrock   🍀 four_leaf_clover 🍁 maple_leaf   🍂 fallen_leaf 🍃 leaves    Food &amp;amp; Drink Food Fruit    icon code icon code     🍇 grapes 🍈 melon   🍉 watermelon 🍊 mandarin orange tangerine   🍋 lemon 🍌 banana   🍍 pineapple 🍎 apple   🍏 green_apple 🍐 pear   🍑 peach 🍒 cherries   🍓 strawberry 🥝 kiwi_fruit   🍅 tomato      Food Vegetable    icon code icon code     🥑 avocado 🍆 eggplant   🥔 potato 🥕 carrot   🌽 corn 🌶️ hot_pepper   🥒 cucumber 🍄 mushroom   🥜 peanuts 🌰 chestnut    Food Prepared    icon code icon code     🍞 bread 🥐 croissant   🥖 baguette_bread 🥞 pancakes   🧀 cheese 🍖 meat_on_bone   🍗 poultry_leg 🥓 bacon   🍔 hamburger 🍟 fries   🍕 pizza 🌭 hotdog   🌮 taco 🌯 burrito   🥙 stuffed_flatbread 🥚 egg   🍳 fried_egg 🥘 shallow_pan_of_food   🍲 stew 🥗 green_salad   🍿 popcorn      Food Asian    icon code icon code     🍱 bento 🍘 rice_cracker   🍙 rice_ball 🍚 rice   🍛 curry 🍜 ramen   🍝 spaghetti 🍠 sweet_potato   🍢 oden 🍣 sushi   🍤 fried_shrimp 🍥 fish_cake   🍡 dango      Food Marine    icon code icon code     🦀 crab 🦐 shrimp   🦑 squid      Food Sweet    icon code icon code     🍦 icecream 🍧 shaved_ice   🍨 ice_cream 🍩 doughnut   🍪 cookie 🎂 birthday   🍰 cake 🍫 chocolate_bar   🍬 candy 🍭 lollipop   🍮 custard 🍯 honey_pot    Drink    icon code icon code     🍼 baby_bottle 🥛 milk_glass   ☕ coffee 🍵 tea   🍶 sake 🍾 champagne   🍷 wine_glass 🍸 cocktail   🍹 tropical_drink 🍺 beer   🍻 beers 🥂 clinking_glasses   🥃 tumbler_glass      Dishware    icon code icon code     🍽️ plate_with_cutlery 🍴 fork_and_knife   🥄 spoon 🔪 hocho knife   🏺 amphora      Travel &amp;amp; Places Place Map    icon code icon code     🌍 earth_africa 🌎 earth_americas   🌏 earth_asia 🌐 globe_with_meridians   🗺️ world_map 🗾 japan    Place Geographic    icon code icon code     🏔 mountain_snow ⛰️ mountain   🌋 volcano 🗻 mount_fuji   🏕️ camping ⛱ beach_umbrella   🏜️ desert 🏝️ desert_island   🏞️ national_park      Place Building    icon code icon code     🏟️ stadium 🏛️ classical_building   🏗️ building_construction 🏘 houses   🏚 derelict_house 🏠 house   🏡 house_with_garden 🏢 office   🏣 post_office 🏤 european_post_office   🏥 hospital 🏦 bank   🏨 hotel 🏩 love_hotel   🏪 convenience_store 🏫 school   🏬 department_store 🏭 factory   🏯 japanese_castle 🏰 european_castle   💒 wedding 🗼 tokyo_tower   🗽 statue_of_liberty      Place Religious    icon code icon code     ⛪ church 🕌 mosque   🕍 synagogue ⛩️ shinto_shrine   🕋 kaaba      Place Other    icon code icon code     ⛲ fountain ⛺ tent   🌁 foggy 🌃 night_with_stars   🏙️ cityscape 🌄 sunrise_over_mountains   🌅 sunrise 🌆 city_sunset   🌇 city_sunrise 🌉 bridge_at_night   ♨️ hotsprings 🎠 carousel_horse   🎡 ferris_wheel 🎢 roller_coaster   💈 barber 🎪 circus_tent    Transport Ground    icon code icon code     🚂 steam_locomotive 🚃 railway_car   🚄 bullettrain_side 🚅 bullettrain_front   🚆 train2 🚇 metro   🚈 light_rail 🚉 station   🚊 tram 🚝 monorail   🚞 mountain_railway 🚋 train   🚌 bus 🚍 oncoming_bus   🚎 trolleybus 🚐 minibus   🚑 ambulance 🚒 fire_engine   🚓 police_car 🚔 oncoming_police_car   🚕 taxi 🚖 oncoming_taxi   🚗 car red_car 🚘 oncoming_automobile   🚙 blue_car 🚚 truck   🚛 articulated_lorry 🚜 tractor   🏎️ racing_car 🏍 motorcycle   🛵 motor_scooter 🚲 bike   🛴 kick_scooter 🚏 busstop   🛣️ motorway 🛤️ railway_track   🛢️ oil_drum ⛽ fuelpump   🚨 rotating_light 🚥 traffic_light   🚦 vertical_traffic_light 🛑 stop_sign   🚧 construction      Transport Water    icon code icon code     ⚓ anchor ⛵ boat sailboat   🛶 canoe 🚤 speedboat   🛳️ passenger_ship ⛴️ ferry   🛥️ motor_boat 🚢 ship    Transport Air    icon code icon code     ✈️ airplane 🛩️ small_airplane   🛫 flight_departure 🛬 flight_arrival   💺 seat 🚁 helicopter   🚟 suspension_railway 🚠 mountain_cableway   🚡 aerial_tramway 🛰️ artificial_satellite   🚀 rocket      Hotel    icon code icon code     🛎️ bellhop_bell      Time    icon code icon code     ⌛ hourglass ⏳ hourglass_flowing_sand   ⌚ watch ⏰ alarm_clock   ⏱️ stopwatch ⏲️ timer_clock   🕰️ mantelpiece_clock 🕛 clock12   🕧 clock1230 🕐 clock1   🕜 clock130 🕑 clock2   🕝 clock230 🕒 clock3   🕞 clock330 🕓 clock4   🕟 clock430 🕔 clock5   🕠 clock530 🕕 clock6   🕡 clock630 🕖 clock7   🕢 clock730 🕗 clock8   🕣 clock830 🕘 clock9   🕤 clock930 🕙 clock10   🕥 clock1030 🕚 clock11   🕦 clock1130      Sky &amp;amp; Weather    icon code icon code     🌑 new_moon 🌒 waxing_crescent_moon   🌓 first_quarter_moon 🌔 moon waxing_gibbous_moon   🌕 full_moon 🌖 waning_gibbous_moon   🌗 last_quarter_moon 🌘 waning_crescent_moon   🌙 crescent_moon 🌚 new_moon_with_face   🌛 first_quarter_moon_with_face 🌜 last_quarter_moon_with_face   🌡️ thermometer ☀️ sunny   🌝 full_moon_with_face 🌞 sun_with_face   ⭐ star 🌟 star2   🌠 stars 🌌 milky_way   ☁️ cloud ⛅ partly_sunny   ⛈ cloud_with_lightning_and_rain 🌤 sun_behind_small_cloud   🌥 sun_behind_large_cloud 🌦 sun_behind_rain_cloud   🌧 cloud_with_rain 🌨 cloud_with_snow   🌩 cloud_with_lightning 🌪️ tornado   🌫️ fog 🌬 wind_face   🌀 cyclone 🌈 rainbow   🌂 closed_umbrella ☂️ open_umbrella   ☂️ umbrella ⛱️ parasol_on_ground   ⚡ zap ❄️ snowflake   ☃️ snowman_with_snow ☃️ snowman   ☄️ comet 🔥 fire   💧 droplet 🌊 ocean    Activities Event    icon code icon code     🎃 jack_o_lantern 🎄 christmas_tree   🎆 fireworks 🎇 sparkler   ✨ sparkles 🎈 balloon   🎉 tada 🎊 confetti_ball   🎋 tanabata_tree 🎍 bamboo   🎎 dolls 🎏 flags   🎐 wind_chime 🎑 rice_scene   🎀 ribbon 🎁 gift   🎗️ reminder_ribbon 🎟 tickets   🎫 ticket      Award Medal    icon code icon code     🎖️ medal_military 🏆 trophy   🏅 medal_sports 🥇 1st_place_medal   🥈 2nd_place_medal 🥉 3rd_place_medal    Sport    icon code icon code     ⚽ soccer ⚾ baseball   🏀 basketball 🏐 volleyball   🏈 football 🏉 rugby_football   🎾 tennis 🎳 bowling   🦗 cricket 🏑 field_hockey   🏒 ice_hockey 🏓 ping_pong   🏸 badminton 🥊 boxing_glove   🥋 martial_arts_uniform 🥅 goal_net   ⛳ golf ⛸️ ice_skate   🎣 fishing_pole_and_fish 🎽 running_shirt_with_sash   🎿 ski      Game    icon code icon code     🎯 dart 🎱 8ball   🔮 crystal_ball 🎮 video_game   🕹️ joystick 🎰 slot_machine   🎲 game_die ♠️ spades   ♥️ hearts ♦️ diamonds   ♣️ clubs 🃏 black_joker   🀄 mahjong 🎴 flower_playing_cards    Arts &amp;amp; Crafts    icon code icon code     🎭 performing_arts 🖼 framed_picture   🎨 art      Objects Clothing    icon code icon code     👓 eyeglasses 🕶️ dark_sunglasses   👔 necktie 👕 shirt tshirt   👖 jeans 👗 dress   👘 kimono 👙 bikini   👚 womans_clothes 👛 purse   👜 handbag 👝 pouch   🛍️ shopping 🎒 school_satchel   👞 mans_shoe shoe 👟 athletic_shoe   👠 high_heel 👡 sandal   👢 boot 👑 crown   👒 womans_hat 🎩 tophat   🎓 mortar_board ⛑️ rescue_worker_helmet   📿 prayer_beads 💄 lipstick   💍 ring 💎 gem    Sound    icon code icon code     🔇 mute 🔈 speaker   🔉 sound 🔊 loud_sound   📢 loudspeaker 📣 mega   📯 postal_horn 🔔 bell   🔕 no_bell      Music    icon code icon code     🎼 musical_score 🎵 musical_note   🎶 notes 🎙️ studio_microphone   🎚️ level_slider 🎛️ control_knobs   🎤 microphone 🎧 headphones   📻 radio      Musical Instrument    icon code icon code     🎷 saxophone 🎸 guitar   🎹 musical_keyboard 🎺 trumpet   🎻 violin 🥁 drum    Phone    icon code icon code     📱 iphone 📲 calling   ☎️ phone telephone 📞 telephone_receiver   📟 pager 📠 fax    Computer    icon code icon code     🔋 battery 🔌 electric_plug   💻 computer 🖥️ desktop_computer   🖨️ printer ⌨️ keyboard   🖱 computer_mouse 🖲️ trackball   💽 minidisc 💾 floppy_disk   💿 cd 📀 dvd    Light &amp;amp; Video    icon code icon code     🎥 movie_camera 🎞️ film_strip   📽️ film_projector 🎬 clapper   📺 tv 📷 camera   📸 camera_flash 📹 video_camera   📼 vhs 🔍 mag   🔎 mag_right 🕯️ candle   💡 bulb 🔦 flashlight   🏮 izakaya_lantern lantern      Book Paper    icon code icon code     📔 notebook_with_decorative_cover 📕 closed_book   📖 book open_book 📗 green_book   📘 blue_book 📙 orange_book   📚 books 📓 notebook   📒 ledger 📃 page_with_curl   📜 scroll 📄 page_facing_up   📰 newspaper 🗞️ newspaper_roll   📑 bookmark_tabs 🔖 bookmark   🏷️ label      Money    icon code icon code     💰 moneybag 💴 yen   💵 dollar 💶 euro   💷 pound 💸 money_with_wings   💳 credit_card 💹 chart    Mail    icon code icon code     ✉️ email envelope 📧 📧   📨 incoming_envelope 📩 envelope_with_arrow   📤 outbox_tray 📥 inbox_tray   📦 package 📫 mailbox   📪 mailbox_closed 📬 mailbox_with_mail   📭 mailbox_with_no_mail 📮 postbox   🗳 ballot_box      Writing    icon code icon code     ✏️ pencil2 ✒️ black_nib   🖋 fountain_pen 🖊 pen   🖌 paintbrush 🖍 crayon   📝 memo pencil      Office    icon code icon code     💼 briefcase 📁 file_folder   📂 open_file_folder 🗂️ card_index_dividers   📅 date 📆 calendar   🗒 spiral_notepad 🗓 spiral_calendar   📇 card_index 📈 chart_with_upwards_trend   📉 chart_with_downwards_trend 📊 bar_chart   📋 clipboard 📌 pushpin   📍 round_pushpin 📎 paperclip   🖇 paperclips 📏 straight_ruler   📐 triangular_ruler ✂️ scissors   🗃️ card_file_box 🗄️ file_cabinet   🗑️ wastebasket      Lock    icon code icon code     🔒 lock 🔓 unlock   🔏 lock_with_ink_pen 🔐 closed_lock_with_key   🔑 key 🗝️ old_key    Tool    icon code icon code     🔨 hammer ⛏️ pick   ⚒️ hammer_and_pick 🛠️ hammer_and_wrench   🗡 dagger ⚔️ crossed_swords   🔫 gun 🏹 bow_and_arrow   🛡️ shield 🔧 wrench   🔩 nut_and_bolt ⚙️ gear   🗜 clamp ⚖ balance_scale   🔗 link ⛓️ chains    Science    icon code icon code     ⚗️ alembic 🔬 microscope   🔭 telescope 🛰️ satellite    Medical    icon code icon code     💉 syringe 💊 pill    Household    icon code icon code     🚪 door 🛏️ bed   🛋️ couch_and_lamp 🚽 toilet   🚿 shower 🛁 bathtub   🛒 shopping_cart      Other Object    icon code icon code     🚬 smoking ⚰️ coffin   ⚱️ funeral_urn 🗿 moyai    Symbols Transport Sign    icon code icon code     🏧 atm 🚮 put_litter_in_its_place   🚰 potable_water ♿ wheelchair   🚹 mens 🚺 womens   🚻 restroom 🚼 baby_symbol   🚾 wc 🛂 passport_control   🛃 customs 🛄 baggage_claim   🛅 left_luggage      Warning    icon code icon code     ⚠️ warning 🚸 children_crossing   ⛔ no_entry 🚫 no_entry_sign   🚳 no_bicycles 🚭 no_smoking   🚯 do_not_litter 🚱 🚱   🚷 no_pedestrians 📵 no_mobile_phones   🔞 underage ☢ radioactive   ☣ biohazard      Arrow    icon code icon code     ⬆️ arrow_up ↗️ arrow_upper_right   ➡️ arrow_right ↘️ arrow_lower_right   ⬇️ arrow_down ↙️ arrow_lower_left   ⬅️ arrow_left ↖️ arrow_upper_left   ↕️ arrow_up_down ↔️ left_right_arrow   ↩️ leftwards_arrow_with_hook ↪️ arrow_right_hook   ⤴️ arrow_heading_up ⤵️ arrow_heading_down   🔃 arrows_clockwise 🔄 arrows_counterclockwise   🔙 back 🔚 end   🔛 on 🔜 soon   🔝 top      Religion    icon code icon code     🛐 place_of_worship ⚛️ atom_symbol   🕉 om ✡️ star_of_david   ☸️ wheel_of_dharma ☯️ yin_yang   ✝️ latin_cross ☦️ orthodox_cross   ☪️ star_and_crescent ☮️ peace_symbol   🕎 menorah 🔯 six_pointed_star    Zodiac    icon code icon code     ♈ aries ♉ taurus   ♊ gemini ♋ cancer   ♌ leo ♍ virgo   ♎ libra ♏ scorpius   ♐ sagittarius ♑ capricorn   ♒ aquarius ♓ pisces   ⛎ ophiuchus      Av Symbol    icon code icon code     🔀 twisted_rightwards_arrows 🔁 repeat   🔂 repeat_one ▶️ arrow_forward   ⏩ fast_forward ⏭ next_track_button   ⏯ play_or_pause_button ◀️ arrow_backward   ⏪ rewind ⏮️ previous_track_button   🔼 arrow_up_small ⏫ arrow_double_up   🔽 arrow_down_small ⏬ arrow_double_down   ⏸ pause_button ⏹ stop_button   ⏺ record_button 🎦 cinema   🔅 low_brightness 🔆 high_brightness   📶 signal_strength 📳 vibration_mode   📴 mobile_phone_off      Math    icon code icon code     ✖️ heavy_multiplication_x ➕ heavy_plus_sign   ➖ heavy_minus_sign ➗ heavy_division_sign    Punctuation    icon code icon code     ‼️ bangbang ⁉️ interrobang   ❓ question ❔ grey_question   ❕ grey_exclamation ❗ exclamation heavy_exclamation_mark   〰️ wavy_dash      Currency    icon code icon code     💱 currency_exchange 💲 heavy_dollar_sign    Keycap    icon code icon code     #️⃣ hash *️⃣ asterisk   0️⃣ zero 1️⃣ one   2️⃣ two 3️⃣ three   4️⃣ four 5️⃣ five   6️⃣ six 7️⃣ seven   8️⃣ eight 9️⃣ nine   🔟 keycap_ten      Alphabet    icon code icon code     🔠 capital_abcd 🔡 abcd   🔢 1234 🔣 symbols   🔤 abc 🅰️ a   🆎 ab 🅱️ b   🆑 cl 🆒 cool   🆓 free ℹ️ information_source   🆔 id ⓜ️ m   🆕 new 🆖 ng   🅾️ o2 🆗 ok   🅿️ parking 🆘 sos   🆙 up 🆚 vs   🈁 koko 🈂️ sa   🈷️ u6708 🈶 u6709   🈯 u6307 🉐 ideograph_advantage   🈹 u5272 🈚 u7121   🈲 u7981 🉑 accept   🈸 u7533 🈴 u5408   🈳 u7a7a ㊗️ congratulations   ㊙️ secret 🈺 u55b6   🈵 u6e80      Geometric    icon code icon code     🔴 red_circle 🔵 large_blue_circle   ⚫ black_circle ⚪ white_circle   ⬛ black_large_square ⬜ white_large_square   ◼️ black_medium_square ◻️ white_medium_square   ◾ black_medium_small_square ◽ white_medium_small_square   ▪️ black_small_square ▫️ white_small_square   🔶 large_orange_diamond 🔷 large_blue_diamond   🔸 small_orange_diamond 🔹 small_blue_diamond   🔺 small_red_triangle 🔻 small_red_triangle_down   💠 diamond_shape_with_a_dot_inside 🔘 radio_button   🔳 white_square_button 🔲 black_square_button    Other Symbol    icon code icon code     ♻️ recycle ⚜️ fleur_de_lis   🔱 trident 📛 name_badge   🔰 beginner ⭕ o   ✅ white_check_mark ☑️ ballot_box_with_check   ✔️ heavy_check_mark ❌ x   ❎ negative_squared_cross_mark ➰ curly_loop   ➿ loop 〽️ part_alternation_mark   ✳️ eight_spoked_asterisk ✴️ eight_pointed_black_star   ❇️ sparkle ©️ copyright   ®️ registered ™️ tm    Flags Common Flags    icon code icon code     🏁 checkered_flag 🚩 triangular_flag_on_post   🎌 crossed_flags 🏴 black_flag   🏳 white_flag 🏳️‍🌈 rainbow_flag    Country and Region Flags    icon code icon code     🇦🇩 andorra 🇦🇪 united_arab_emirates   🇦🇫 afghanistan 🇦🇬 antigua_barbuda   🇦🇮 anguilla 🇦🇱 albania   🇦🇲 armenia 🇦🇴 angola   🇦🇶 antarctica 🇦🇷 argentina   🇦🇸 american_samoa 🇦🇹 austria   🇦🇺 australia 🇦🇼 aruba   🇦🇽 aland_islands 🇦🇿 azerbaijan   🇧🇦 bosnia_herzegovina 🇧🇧 barbados   🇧🇩 bangladesh 🇧🇪 belgium   🇧🇫 burkina_faso 🇧🇬 bulgaria   🇧🇭 bahrain 🇧🇮 burundi   🇧🇯 benin 🇧🇱 st_barthelemy   🇧🇲 bermuda 🇧🇳 brunei   🇧🇴 bolivia 🇧🇶 caribbean_netherlands   🇧🇷 brazil 🇧🇸 bahamas   🇧🇹 bhutan 🇧🇼 botswana   🇧🇾 belarus 🇧🇿 belize   🇨🇦 canada 🇨🇨 cocos_islands   🇨🇩 congo_kinshasa 🇨🇫 central_african_republic   🇨🇬 congo_brazzaville 🇨🇭 switzerland   🇨🇮 cote_divoire 🇨🇰 cook_islands   🇨🇱 chile 🇨🇲 cameroon   🇨🇳 cn 🇨🇴 colombia   🇨🇷 costa_rica 🇨🇺 cuba   🇨🇻 cape_verde 🇨🇼 curacao   🇨🇽 christmas_island 🇨🇾 cyprus   🇨🇿 czech_republic 🇩🇪 de   🇩🇯 djibouti 🇩🇰 denmark   🇩🇲 dominica 🇩🇴 dominican_republic   🇩🇿 algeria 🇪🇨 ecuador   🇪🇪 estonia 🇪🇬 egypt   🇪🇭 western_sahara 🇪🇷 eritrea   🇪🇸 es 🇪🇹 ethiopia   🇪🇺 eu european_union 🇫🇮 finland   🇫🇯 fiji 🇫🇰 falkland_islands   🇫🇲 micronesia 🇫🇴 faroe_islands   🇫🇷 fr 🇬🇦 gabon   🇬🇧 gb uk 🇬🇩 grenada   🇬🇪 georgia 🇬🇫 french_guiana   🇬🇬 guernsey 🇬🇭 ghana   🇬🇮 gibraltar 🇬🇱 greenland   🇬🇲 gambia 🇬🇳 guinea   🇬🇵 guadeloupe 🇬🇶 equatorial_guinea   🇬🇷 greece 🇬🇸 south_georgia_south_sandwich_islands   🇬🇹 guatemala 🇬🇺 guam   🇬🇼 guinea_bissau 🇬🇾 guyana   🇭🇰 hong_kong 🇭🇳 honduras   🇭🇷 croatia 🇭🇹 haiti   🇭🇺 hungary 🇮🇨 canary_islands   🇮🇩 indonesia 🇮🇪 ireland   🇮🇱 israel 🇮🇲 isle_of_man   🇮🇳 india 🇮🇴 british_indian_ocean_territory   🇮🇶 iraq 🇮🇷 iran   🇮🇸 iceland 🇮🇹 it   🇯🇪 jersey 🇯🇲 jamaica   🇯🇴 jordan 🇯🇵 jp   🇰🇪 kenya 🇰🇬 kyrgyzstan   🇰🇭 cambodia 🇰🇮 kiribati   🇰🇲 comoros 🇰🇳 st_kitts_nevis   🇰🇵 north_korea 🇰🇷 kr   🇰🇼 kuwait 🇰🇾 cayman_islands   🇰🇿 kazakhstan 🇱🇦 laos   🇱🇧 lebanon 🇱🇨 st_lucia   🇱🇮 liechtenstein 🇱🇰 sri_lanka   🇱🇷 liberia 🇱🇸 lesotho   🇱🇹 lithuania 🇱🇺 luxembourg   🇱🇻 latvia 🇱🇾 libya   🇲🇦 morocco 🇲🇨 monaco   🇲🇩 moldova 🇲🇪 montenegro   🇲🇬 madagascar 🇲🇭 marshall_islands   🇲🇰 macedonia 🇲🇱 mali   🇲🇲 myanmar 🇲🇳 mongolia   🇲🇴 macau 🇲🇵 northern_mariana_islands   🇲🇶 martinique 🇲🇷 mauritania   🇲🇸 montserrat 🇲🇹 malta   🇲🇺 mauritius 🇲🇻 maldives   🇲🇼 malawi 🇲🇽 mexico   🇲🇾 malaysia 🇲🇿 mozambique   🇳🇦 namibia 🇳🇨 new_caledonia   🇳🇪 niger 🇳🇫 norfolk_island   🇳🇬 nigeria 🇳🇮 nicaragua   🇳🇱 netherlands 🇳🇴 norway   🇳🇵 nepal 🇳🇷 nauru   🇳🇺 niue 🇳🇿 new_zealand   🇴🇲 oman 🇵🇦 panama   🇵🇪 peru 🇵🇫 french_polynesia   🇵🇬 papua_new_guinea 🇵🇭 philippines   🇵🇰 pakistan 🇵🇱 poland   🇵🇲 st_pierre_miquelon 🇵🇳 pitcairn_islands   🇵🇷 puerto_rico 🇵🇸 palestinian_territories   🇵🇹 portugal 🇵🇼 palau   🇵🇾 paraguay 🇶🇦 qatar   🇷🇪 reunion 🇷🇴 romania   🇷🇸 serbia 🇷🇺 ru   🇷🇼 rwanda 🇸🇦 saudi_arabia   🇸🇧 solomon_islands 🇸🇨 seychelles   🇸🇩 sudan 🇸🇪 sweden   🇸🇬 singapore 🇸🇭 st_helena   🇸🇮 slovenia 🇸🇰 slovakia   🇸🇱 sierra_leone 🇸🇲 san_marino   🇸🇳 senegal 🇸🇴 somalia   🇸🇷 suriname 🇸🇸 south_sudan   🇸🇹 sao_tome_principe 🇸🇻 el_salvador   🇸🇽 sint_maarten 🇸🇾 syria   🇸🇿 swaziland 🇹🇨 turks_caicos_islands   🇹🇩 chad 🇹🇫 french_southern_territories   🇹🇬 togo 🇹🇭 thailand   🇹🇯 tajikistan 🇹🇰 tokelau   🇹🇱 timor_leste 🇹🇲 turkmenistan   🇹🇳 tunisia 🇹🇴 tonga   🇹🇷 tr 🇹🇹 trinidad_tobago   🇹🇻 tuvalu 🇹🇼 taiwan   🇹🇿 tanzania 🇺🇦 ukraine   🇺🇬 uganda 🇺🇸 us   🇺🇾 uruguay 🇺🇿 uzbekistan   🇻🇦 vatican_city 🇻🇨 st_vincent_grenadines   🇻🇪 venezuela 🇻🇬 british_virgin_islands   🇻🇮 us_virgin_islands 🇻🇳 vietnam   🇻🇺 vanuatu 🇼🇫 wallis_futuna   🇼🇸 samoa 🇽🇰 kosovo   🇾🇪 yemen 🇾🇹 mayotte   🇿🇦 south_africa 🇿🇲 zambia   🇿🇼 zimbabwe      </description>
+    </item>
+    
+    <item>
+      <title>Markdown 语法指南</title>
+      <link>https://kewu404.github.io/posts/markdown-syntax/</link>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/markdown-syntax/</guid>
+      <description>&lt;p&gt;主要是markdown的基本语法，同时也标注了某些语法&lt;code&gt;hugo&lt;/code&gt;是不能解析的&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>测试文章</title>
+      <link>https://kewu404.github.io/posts/blog/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/blog/</guid>
+      <description>鹧鸪天·西都作 【作者】朱敦儒  【朝代】宋
+我是清都山水郎。天教分付与疏狂。
+曾批给雨支风券，累上留云借月章。
+诗万首，酒千觞。几曾著眼看侯王。
+玉楼金阙慵归去，且插梅花醉洛阳。</description>
+    </item>
+    
+    <item>
+      <title>clickhouse</title>
+      <link>https://kewu404.github.io/projects/db/clickhouse/clickhouse-start/</link>
+      <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/db/clickhouse/clickhouse-start/</guid>
+      <description>什么是clickhouse clickhouse数据库引擎 数据 </description>
+    </item>
+    
+    <item>
+      <title>多线程的使用记录</title>
+      <link>https://kewu404.github.io/posts/post_thread_used/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_thread_used/</guid>
+      <description>楔子 要把一批数据从oracle同步到clickhouse里面，大概有近3亿数据(头大)，单线程想都不要想，还是老老实实使用多线程进行并发操作，减少同步时间(反正都需要很长时间).
+方案 </description>
+    </item>
+    
+    <item>
+      <title>vue-初识vue</title>
+      <link>https://kewu404.github.io/projects/expand/vue/vue-start/</link>
+      <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/expand/vue/vue-start/</guid>
+      <description>渐进式 JavaScript 框架
+  v-bind   文档 官方文档vue3.x</description>
+    </item>
+    
+    <item>
+      <title>java诊断工具Arthas</title>
+      <link>https://kewu404.github.io/posts/post_arthas/</link>
+      <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_arthas/</guid>
+      <description>楔子 在工作中难免会遇到这种情况：因为某些限制，写好的代码没办法在本地测试，只能到服务器上，这个时候调试代码是一个非常抓狂的事情，因为，代码在服务器上运行，执行到哪里有问题了？报错的详细信息是什么？传参是什么样的？等等。。。咱都不清楚。不嫌麻烦的话在每行都打上log日志，这样，更让我抓狂了。。。
+在这样的诉求下，我发现了Arthas这个东西，用着针不戳。看看官方的介绍：
+当你遇到以下类似问题而束手无策时，Arthas可以帮助你解决：
+ 这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？ 我改的代码为什么没有执行到？难道是我没 commit？分支搞错了？ 遇到问题无法在线上 debug，难道只能通过加日志再重新发布吗？ 线上遇到某个用户的数据处理有问题，但线上同样无法 debug，线下无法重现！ 是否有一个全局视角来查看系统的运行状况？ 有什么办法可以监控到JVM的实时运行状态？ 怎么快速定位应用的热点，生成火焰图？ 怎样直接从JVM内查找某个类的实例？  准备 下载jar(ps:默认服务器有联网能力)
+curl -O https://arthas.aliyun.com/arthas-boot.jar java -jar arthas-boot.jar idea插件搜索arthas安装。
+上面是针对服务器有网情况下，如果服务器没有网络，需要进行离线安装：
+ 联网时，启动arthas的jar包，看到会去maven.aliyun.com私服获取依赖jar包，因此，离线情况下，无法下载相关依赖jar，导致项目启动报错。继续看日志，会发现会把jar放到/root/.arthas/lib/3.5.4/arthas里面.
+ 因此，可以在本地下载好arthas-boot.jar，启动好后，找到.arthas文件 一起打包上传到服务器，然后文件放置正确位置（ps:这个位置可以指定），启动arthas就好了。
+使用 启动arthas
+$ java -jar arthas-boot.jar * [1]: 35542 [2]: 71560 java-demo.jar 选择java应用，回车
+在idea中找到要查看的方法，右键找到Arthas Command，选择需要的命令点击。
+回到命令界面右键粘贴命令，回车即可。
+常用命令  jad 反编译  // jad path [method] [arthas@12284]$ jad com.tool.service.impl.TranslateServiceImpl baiDuTranslate ClassLoader: +-org.springframework.boot.loader.LaunchedURLClassLoader@5197848c +-sun.misc.Launcher$AppClassLoader@55f96302 +-sun.misc.Launcher$ExtClassLoader@799f7e29 Location: file:/C:/Users/Desktop/naituy-0.0.1.jar!/BOOT-INF/classes!/ public BaiDuTranslateRespVO baiDuTranslate(BaiDuTranslateVO vo) { /*24*/ if (StringUtil.</description>
+    </item>
+    
+    <item>
+      <title>docker安装使用</title>
+      <link>https://kewu404.github.io/posts/post_docker_install/</link>
+      <pubDate>Fri, 12 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_docker_install/</guid>
+      <description>安装 菜鸟教程（linux） | 官方安装教程
+安装完成后：
+//验证：docker verison//启动：systemctl start docker//开机启动：systemctl enable docker安装 docker-compose docker-compose是用来管理容器的，类似用户容器管家，我们有N多台容器或者应用需要启动的时候，如果手动去操作，是非常耗费时间的，如果有了 Docker-Compose 只需要一个配置文件就可以帮我们搞定，但是 Docker-Compose 只能管理当前主机上的 Docker，不能去管理其他服务器上的服务。意思就是单机环境。
+docker-compose是基于docker的编排工具，使容器的操作能够批量的，可视的执行，是一个管理多个容器的工具，比如可以解决容器之间的依赖关系，当在宿主机启动较多的容器时候，如果都是手动操作会觉得比较麻烦而且容器出错，这个时候推荐使用 dockerd的单机编排工具 docker-compose。
+安装命令
+curl -L &amp;quot;https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)&amp;quot; -o /usr/local/bin/docker-compose//给docker-compose执行权限chmod +x /usr/local/bin/docker-compose//检查docker-compose --version使用 常用命令 使用docker可以查看docker所有命令
+$ dockerUsage: docker [OPTIONS] COMMANDA self-sufficient runtime for containersOptions:--config string Location of client config files (default &amp;quot;/root/.docker&amp;quot;)-c, --context string Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with &amp;quot;dockercontext use&amp;quot;)-D, --debug Enable debug mode-H, --host list Daemon socket(s) to connect to-l, --log-level string Set the logging level (&amp;quot;debug&amp;quot;|&amp;quot;info&amp;quot;|&amp;quot;warn&amp;quot;|&amp;quot;error&amp;quot;|&amp;quot;fatal&amp;quot;) (default &amp;quot;info&amp;quot;)--tls Use TLS; implied by --tlsverify--tlscacert string Trust certs signed only by this CA (default &amp;quot;/root/.</description>
+    </item>
+    
+    <item>
+      <title>Spring Security补充</title>
+      <link>https://kewu404.github.io/projects/java/springsecurity/spring-security-3/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/java/springsecurity/spring-security-3/</guid>
+      <description>上一篇：Spring Security鉴权分析</description>
+    </item>
+    
+    <item>
+      <title>Spring Security鉴权分析</title>
+      <link>https://kewu404.github.io/projects/java/springsecurity/spring-security-2/</link>
+      <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/java/springsecurity/spring-security-2/</guid>
+      <description>上一篇：Spring Security登录认证
+1. 楔子 SpringSecurity的认证在上一篇已经讲过了，这篇讲一下鉴权。 回忆上一章中开头那张图，用户请求先经过认证，然后才是鉴权，而FilterSecurityInterceptor则是鉴权的开始
+2. 代码分析 发起一个请求，跟着这个请求，看一下SpringSecurity在鉴权过程中都做了哪些。
+FilterSecurityInterceptor 首先是FilterSecurityInterceptor,继承AbstractSecurityInterceptor
+public class FilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter { ... public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException { FilterInvocation fi = new FilterInvocation(request, response, chain); invoke(fi); } public void invoke(FilterInvocation fi) throws IOException, ServletException { // 过滤器已应用于此请求，用户希望我们观察每个请求处理一次，因此不要重新进行安全检查 	if ((fi.getRequest() != null) &amp;amp;&amp;amp; (fi.getRequest().getAttribute(FILTER_APPLIED) != null) &amp;amp;&amp;amp; observeOncePerRequest) { fi.getChain().doFilter(fi.getRequest(), fi.getResponse()); } else { // 第一次调用此请求时，请执行安全检查 	if (fi.</description>
+    </item>
+    
+    <item>
+      <title>Spring Security自定义登录实现</title>
+      <link>https://kewu404.github.io/projects/java/springsecurity/spring-security-login/</link>
+      <pubDate>Fri, 22 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/java/springsecurity/spring-security-login/</guid>
+      <description>趁着腾讯云100条免费短信还没有耗完，写一下SpringSecurity短信登录。在实践前需要看下springsecurity认证这一篇。
+ 需要创建的类：
+ SmsCodeAuthenticationFilter: 拦截请求，并调用Manager进行认证 SmsCodeAuthenticationToken: 在上面filter中构造实体类，用于下面provider认证 SmsCodeAuthenticationProvider: Manager会根据上面的token，选择该类进行认证  上面的三个类都是对着SpringSecurity默认认证进行仿写的。
+首先仿写Filter，模仿UsernamePasswordAuthenticationFilter来搞
+public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessingFilter { private static final String MOBILE = &amp;#34;mobile&amp;#34;; private static final String CODE = &amp;#34;code&amp;#34;; private boolean postOnly = true; @Resource private RedisUtil redisUtil; @Resource private JwtTokenUtil jwtTokenUtil; public SmsCodeAuthenticationFilter() { super(new AntPathRequestMatcher(Constant.SMS_LOGIN, Constant.HTTP_POST)); } @Override public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException { if (postOnly &amp;amp;&amp;amp; !request.getMethod().equals(&amp;#34;POST&amp;#34;)) { throw new AuthenticationServiceException( &amp;#34;Authentication method not supported: &amp;#34; + request.</description>
+    </item>
+    
+    <item>
+      <title>Spring Security登录认证</title>
+      <link>https://kewu404.github.io/projects/java/springsecurity/spring-security-1/</link>
+      <pubDate>Tue, 19 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/java/springsecurity/spring-security-1/</guid>
+      <description>Spring Security 在做后台管理系统时，首先要做的就是搭建一个认证鉴权的架子，关于认证鉴权，有的公司是自己定制的，有的则是使用框架，例如shiro,springSecurity&amp;hellip;
+之前有使用过shiro，这次再来学习一下SpringSecurity,特此记录。
+Spring Security的实现是通过一层层的过滤器实现的。其中的过程见上图
+其中绿色部分是主要负责认证的过滤器，蓝色部分负责异常处理，橙色部分负责授权。这章主要梳理一下认证流程。
+重要概念 了解到Spring Security的原理后，还需要知道一些重要的概念：
+ *Filter拦截请求，调用*Manager进行认证 *Manager管理多个*Provider，并根据*Token选择合适的*Provider进行认证 *Provider负责认证，检查登录信息是否正确 *Token是认证信息，包含账号密码，具体可以自己定义需要的登录参数   Authentication  /** * &amp;lt;p&amp;gt; * Principal：此接口表示主体的抽象概念，可用于表示任何实体，如个人、公司和登录id。一般情况下会存入登录名 * &amp;lt;/p&amp;gt; * * 认证接口,定义认证信息所需内容 **/ public interface Authentication extends Principal, Serializable { /** * 获取用户的权限信息 * 一般情况下是将用户的角色信息存入 * 由`AuthenticationManager`存入 */ Collection&amp;lt;? extends GrantedAuthority&amp;gt; getAuthorities(); /** * 获取用户凭证信息，一般情况下里面的数据是密码 */ Object getCredentials(); /** * 获取额外的其他信息，比如user表中的信息 */ Object getDetails(); /** * 获取用户的认证信息 * &amp;lt;li&amp;gt;在未认证的情况下，里面是用户名&amp;lt;/li&amp;gt; * &amp;lt;li&amp;gt;在已认证的情况下，里面存放的是UserDetails信息&amp;lt;/li&amp;gt; */ Object getPrincipal(); /** * 是否认证 */ boolean isAuthenticated(); /** * 设置是否认证（true or false） */ void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException; Authentication是认证信息，包含账号密码，实际业务中根据登录所需参数进行自定义</description>
+    </item>
+    
+    <item>
+      <title>鉴权认证在微服务中的思考</title>
+      <link>https://kewu404.github.io/posts/post_auth_silu/</link>
+      <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_auth_silu/</guid>
+      <description>1. 起因  在搭建微服务项目的时候，原有的单体应用是基于session的安全权限方式，不能满足现有的微服务架构的认证与鉴权需求。微服务架构下，一个应用会被拆分成若干个微应用，每个微应用都需要对访问进行鉴权，每个微应用都需要明确当前访问用户以及其权限。尤其当访问来源不只是浏览器，还包括其他服务的调用时，单体应用架构下的鉴权方式就不是特别合适了。在微服务架构下，要考虑外部应用接入的场景、用户–服务的鉴权、服务–服务的鉴权等多种鉴权场景。 比如用户A访问User Service，A如果未登录，则首先需要登录，请求获取授权token。获取token之后，A将携带着token去请求访问某个文件，这样就需要对A的身份进行校验，并且A可以访问该文件。 为了适应架构的变化、需求的变化，auth权限模块被单独出来作为一个基础的微服务系统，为其他业务service提供服务。
+2. 方案 2.1 认证与鉴权  读了许多博客，也看了好多方案
+ 分布式Session方案  分布式会话方案原理主要是将关于用户认证的信息存储在共享存储中，且通常由用户会话作为 key 来实现的简单分布式哈希映射。当用户访问微服务时，用户数据可以从共享存储中获取。在某些场景下，这种方案很不错，用户登录状态是不透明的。同时也是一个高可用且可扩展的解决方案。这种方案的缺点在于共享存储需要一定保护机制，因此需要通过安全链接来访问，这时解决方案的实现就通常具有相当高的复杂性了。
+基于OAuth2 Token方案  随着 Restful API、微服务的兴起，基于Token的认证现在已经越来越普遍。Token和Session ID 不同，并非只是一个 key。Token 一般会包含用户的相关信息，通过验证 Token 就可以完成身份校验。用户输入登录信息，发送到身份认证服务进行认证。AuthorizationServer验证登录信息是否正确，返回用户基础信息、权限范围、有效时间等信息，客户端存储接口。用户将 Token 放在 HTTP 请求头中，发起相关 API 调用。被调用的微服务，验证Token。ResourceServer返回相关资源和数据。
+这边选用了第二种方案，基于OAuth2 Token认证的好处如下：
+服务端无状态：Token 机制在服务端不需要存储 session 信息，因为 Token 自身包含了所有用户的相关信息。 性能较好，因为在验证 Token 时不用再去访问数据库或者远程服务进行权限校验，自然可以提升不少性能。 现在很多应用都是同时面向移动端和web端，OAuth2 Token机制可以支持移动设备。 OAuth2与Spring Security结合使用，有提供很多开箱即用的功能，大多特性都可以通过配置灵活的变更。 最后一点，也很重要，Spring Security OAuth2的文档写得较为详细。 oauth2根据使用场景不同，分成了4种模式：
+授权码模式（authorization code） 简化模式（implicit） 密码模式（resource owner password credentials） 客户端模式（client credentials）
+对于上述oauth2四种模式不熟的同学，可以自行百度oauth2，阮一峰的文章有解释。常使用的是password模式和client模式。
+2.2 操作权限控制 对于第二个需求，笔者主要看了Spring Security和Shiro。</description>
+    </item>
+    
+    <item>
+      <title>九月份规划</title>
+      <link>https://kewu404.github.io/lives/live-dumpling/</link>
+      <pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/lives/live-dumpling/</guid>
+      <description>规划  多喝水 多读书 减少玩游戏时间  </description>
+    </item>
+    
+    <item>
+      <title>Maven：dependencyManagement和dependencies</title>
+      <link>https://kewu404.github.io/posts/maven_dependicies/</link>
+      <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/maven_dependicies/</guid>
+      <description>dependencyManagement 和 dependencies的区别 dependencyManagement： 只是声明依赖，并不实现引入，因此子项目需要显示的声明需要用的依赖。如果不在子项目中声明依赖，是不会从父项目中继承下来的；只有在子项目中写了该依赖项，并且没有指定具体版本，才会从父项目中继承该项，并且version和scope都读取自父pom;另外如果子项目中指定了版本号，那么会使用子项目中指定的jar版本
+dependencies： 相对于dependencyManagement，所有生命在dependencies里的依赖都会自动引入，并默认被所有的子项目继承。
+dependencyManagement应用环境 当我们的项目模块很多的时候，我们使用Maven管理项目非常方便，帮助我们管理构建、文档、报告、依赖、scms、发布、分发的方法。可以方便的编译代码、进行依赖管理、管理二进制库等等。
+由于我们的模块很多，所以我们又抽象了一层，抽出一个itoo-base-parent来管理子项目的公共的依赖。为了项目的正确运行，必须让所有的子项目使用依赖项的统一版本，必须确保应用的各个项目的依赖项和版本一致，才能保证测试的和发布的是相同的结果。
+在我们项目顶层的POM文件中，我们会看到dependencyManagement元素。通过它元素来管理jar包的版本，让子项目中引用一个依赖而不用显示的列出版本号。Maven会沿着父子层次向上走，直到找到一个拥有dependencyManagement元素的项目，然后它就会使用在这个dependencyManagement元素中指定的版本号。</description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://kewu404.github.io/posts/post_git/</link>
+      <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_git/</guid>
+      <description>1. 楔子 git是目前世界上最先进的分布式版本控制系统。
+名词解释
+2. 概念   本地仓库： 是在开发人员自己电脑上的Git仓库
+  远程仓库： 是在远程服务器上的Git仓库
+  clone： 克隆，就是将远程仓库复制到本地
+  push： 推送，就是将本地仓库代码上传到远程仓库
+  pull： 拉取，就是将远程仓库最新代码拉取到本地仓库并直接合并
+  fetch： 拉取，将远程仓库最新代码拉取到本地，经过用户确认后在合并到本地分支
+  checkout： 切换分支，可以和branch集成
+  add： 添加到本地仓库
+  commit： 提交代码
+  merga： 合并分支
+  branch： 创建分支
+  status： 查看当前分支状态信息
+  3. git命令 git clone
+//克隆项目$ git clone url//克隆指定分支项目$ git clone -b &amp;lt;branchname&amp;gt; urlgit pull</description>
+    </item>
+    
+    <item>
+      <title>微服务框架技术选择与思考</title>
+      <link>https://kewu404.github.io/projects/setsail/spring-cloud.version/</link>
+      <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/setsail/spring-cloud.version/</guid>
+      <description>springCloud,springCloudAlibaba,springBoot的版本选择</description>
+    </item>
+    
+    <item>
+      <title>instanceof、isinstance、isAssignableFrom区别</title>
+      <link>https://kewu404.github.io/posts/post_class_belong/</link>
+      <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_class_belong/</guid>
+      <description>instanceof 关键字，检查左边的被测试对象 是不是 右边类或接口的 实例化。 判断的是运行时候的实例。
+String str = new String(&amp;#34;test&amp;#34;); System.out.println(str instanceof String); --- true 注意：这里被比较的是实例对象
+isinstance(Object obj) 方法，obj是被测试的对象，如果obj是调用这个方法的class或接口 的实例，则返回true。这个方法是instanceof运算符的动态等价
+List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(); System.out.println(String.class.isInstance(list)); System.out.println(List.class.isInstance(list)); System.out.println(ArrayList.class.isInstance(list)); System.out.println(Object.class.isInstance(list)); --- false true true true isAssignableFrom(Class clazz) 方法，判断当前Class 对象所表示的类或接口与指定的 Class 参数所表示的类或接口是否相同
+// 自身类.class.isAssignableFrom(自身类或子类.class) System.out.println(ArrayList.class.isAssignableFrom(List.class)); System.out.println(ArrayList.class.isAssignableFrom(ArrayList.class)); System.out.println(List.class.isAssignableFrom(ArrayList.class)); --- false true true </description>
+    </item>
+    
+    <item>
+      <title>springboot：spring.factories</title>
+      <link>https://kewu404.github.io/posts/spring_factories/</link>
+      <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/spring_factories/</guid>
+      <description>SPI 要了解spring.factories，首先需要知道什么是SPI.
+SPI全称Service Provider Interface，是Java提供的一套用来被第三方实现或者扩展的接口，它可以用来启用框架扩展和替换组件，SPI的作用就是为这些被扩展的接口寻找服务实现。
+使用场景： API 大多数情况下，调用方仅仅依赖接口调用，且无权选择不同实现。 从使用人员上来说，API 直接被应用开发人员使用。 SPI调用方来制定接口规范，提供给外部来实现，调用方在调用时则选择自己需要的外部实现。 从使用人员上来说，SPI 被框架扩展人员使用。 比较常见的例子：
+ 数据库驱动加载接口实现类的加载 JDBC加载不同类型数据库的驱动 日志门面接口实现类加载 SLF4J加载不同提供商的日志实现类 Dubbo中也大量使用SPI的方式实现框架的扩展, 不过它对Java提供的原生SPI做了封装，允许用户扩展实现Filter接口  Springboot中的SPI机制 在Spring中也有一种类似与Java SPI的加载机制。它在META-INF/spring.factories文件中配置接口的实现类名称，然后在程序中读取这些配置文件并实例化。 这种自定义的SPI机制是Spring Boot Starter实现的基础。
+Spring Factories实现原理 spring-core包里定义了SpringFactoriesLoader类，这个类实现了检索META-INF/spring.factories文件，并获取指定接口的配置的功能。在这个类中定义了两个对外的方法：
+loadFactories 根据接口类获取其实现类的实例，这个方法返回的是对象列表。 loadFactoryNames 根据接口获取其接口类的名称，这个方法返回的是类名的列表。 上面的两个方法的关键都是从指定的ClassLoader中获取spring.factories文件，并解析得到类名列表，具体代码如下
+private static Map&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt; loadSpringFactories(@Nullable ClassLoader classLoader) { MultiValueMap&amp;lt;String, String&amp;gt; result = cache.get(classLoader); if (result != null) { return result; } try { Enumeration&amp;lt;URL&amp;gt; urls = (classLoader != null ? classLoader.getResources(FACTORIES_RESOURCE_LOCATION) : ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION)); result = new LinkedMultiValueMap&amp;lt;&amp;gt;(); while (urls.</description>
+    </item>
+    
+    <item>
+      <title>springioc</title>
+      <link>https://kewu404.github.io/posts/post_spring_ioc/</link>
+      <pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_spring_ioc/</guid>
+      <description>springioc实现原理 ​	spring ioc指的是控制反转，IOC容器负责实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。交由Spring容器统一进行管理，从而实现松耦合
+ Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。
+ ​	理解好Ioc的关键是要明确 “谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”
+  谁控制谁，控制什么：传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。
+  为何是反转，哪些方面反转了：有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。
+  IOC实现原理 使用反射机制 + xml技术
+graph TD;tomcat容器--&amp;gt;容器启动;容器启动--&amp;gt;初始化spring容器;初始化spring容器--&amp;gt;获取扫描包下所有类;获取扫描包下所有类--&amp;gt;解析类中的注解信息;解析类中的注解信息--&amp;gt;封装类反射后实例化对象;封装类反射后实例化对象--&amp;gt;以beanId,bean实例化类对象形式保存集合;以beanId,bean实例化类对象形式保存集合--&amp;gt;getbean;getbean--&amp;gt;Bean的实例化对象;Bean的实例化对象--&amp;gt;Bean的具体方法及执行结果;本地调用某个bean中的方法--&amp;gt;以beanId,bean实例化类对象形式保存集合;​	当web容器启动的时候,spring的全局bean的管理器回去xml配置文件中扫描的包下面获取到所有的类,并根据使用的注解,进行对应的封装,封装到全局的bean容器中进行管理,
+​	一旦容器初始化完毕，beanID以及bean实例化的类对象信息就全部存在了，现在我们需要在某个service里面调用另一个bean的某个方法的时候，我们只需要依赖注入进来另一个bean的Id即可，调用的时候，spring会去初始化完成的bean容器中获取即可，如果存在就把依赖的bean的类的实例化对象返回给你，你就可以调用依赖的bean的相关方法或属性等；
+代码模拟ioc流程 测试项目结构:
+pom.xml依赖
+&amp;lt;properties&amp;gt; &amp;lt;spring.version&amp;gt;5.1.2.RELEASE&amp;lt;/spring.version&amp;gt; &amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt; &amp;lt;project.reporting.outputEncoding&amp;gt;UTF-8&amp;lt;/project.reporting.outputEncoding&amp;gt; &amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt; &amp;lt;/properties&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-aop&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-orm&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.</description>
+    </item>
+    
+    <item>
+      <title>hugo部署到云服务器上</title>
+      <link>https://kewu404.github.io/posts/post_hugo_bushu/</link>
+      <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_hugo_bushu/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;过程 :&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	hugo构建好的文件都是静态文件,我想要将&lt;code&gt;hugo&lt;/code&gt;部署到服务器上,并使用nginx作为web服务器.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>soul网关</title>
+      <link>https://kewu404.github.io/posts/post_gateway_soul_01/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_gateway_soul_01/</guid>
+      <description>&lt;h4 id=&#34;资料&#34;&gt;资料&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;文档 :&lt;/strong&gt;  &lt;a href=&#34;https://dromara.org/projects/soul/overview/&#34;&gt;https://dromara.org/projects/soul/overview/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码 :&lt;/strong&gt; &lt;a href=&#34;https://gitee.com/shuaiqiyu/soul&#34;&gt;https://gitee.com/shuaiqiyu/soul&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;社区 :&lt;/strong&gt; &lt;a href=&#34;https://dromara.org/zh/community/&#34;&gt;https://dromara.org/zh/community/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>springboot jap数据库篇</title>
+      <link>https://kewu404.github.io/posts/post_jap_db/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_jap_db/</guid>
+      <description>复杂查询 例如:select * from demo where ex_1 = ?1 and ex_2 = ?2 group by group_1 order by create_time desc这种样式的查询分页结果
+public Page&amp;lt;Demo&amp;gt; getList(ConditionVo vo){ return DemoRepository.findAll(new Specification&amp;lt;Demo&amp;gt;(){ @Override public Predicate toPredicate(Root&amp;lt;Demo&amp;gt; root,CriteriaQuery&amp;lt;?&amp;gt; query,CriteriaBuilder builder){ List&amp;lt;Predicate&amp;gt; predicates = new ArrayList&amp;lt;&amp;gt;(); //动态查询条件  if(StringUtil.isNotEmpty(vp.getMobile())){ predicates.add(builder.equal(root.get(&amp;#34;mobile&amp;#34;),vo.getMobile)); } predicates.add(builder.equal(root.get(&amp;#34;falg&amp;#34;),0)) //分组  query.groupBy(root.get(&amp;#34;group_1&amp;#34;)); //组合sql  return builder.and(predicates.toArrays(new predicate[predicates.size()])) } },PageRequest.of(vo.currPage(),vo.getPageSize(),Sort.Direction.DESC,&amp;#34;createTime&amp;#34;)); } 例二:
+@PersistenceContext EntityManager em; public Page&amp;lt;Demo&amp;gt; getList(ConditionVo vo){ CriteriaBuilder cb = em.getCriteriaBuilder(); CriteriaQuery&amp;lt;Demo&amp;gt; cq = cb.</description>
+    </item>
+    
+    <item>
+      <title>hugo使用</title>
+      <link>https://kewu404.github.io/posts/post_hugo_start/</link>
+      <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_hugo_start/</guid>
+      <description>&lt;h4 id=&#34;使用&#34;&gt;使用&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;创建站点,主题,文章&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>hugo站内搜索</title>
+      <link>https://kewu404.github.io/posts/post_hugo_search/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_hugo_search/</guid>
+      <description>http://lmbj.net/blog/static-site-search/
+对生成的index搜索
+评论系统Valine
+评论系统Disqus
+https://www.hojun.cn/2019/07/12/ck6rd5qlu002rh8tu0oqzp4i7/</description>
+    </item>
+    
+    <item>
+      <title>hugo中模板语法记录</title>
+      <link>https://kewu404.github.io/posts/post_hugo_used/</link>
+      <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_hugo_used/</guid>
+      <description>&lt;p&gt;hugo使用的是go语言自带的模板引擎, 模板的标签为&lt;code&gt;{{}}&lt;/code&gt;, &lt;code&gt;{{}}&lt;/code&gt;中包含的内容叫’动作’(action).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>hugo页面</title>
+      <link>https://kewu404.github.io/posts/post_hugo_page/</link>
+      <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_hugo_page/</guid>
+      <description>&lt;h4 id=&#34;结构&#34;&gt;结构&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;config.toml&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	所有的hugo站点都有一个全局配置文件，用来配置整个站点的信息，hugo默认提供了跟多配置指令。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>leetcode</title>
+      <link>https://kewu404.github.io/posts/post_leetcode_1/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_leetcode_1/</guid>
+      <description>https://www.cnblogs.com/xiaoshahai/tag/leetcode/</description>
+    </item>
+    
+    <item>
+      <title>hugo嵌入内容</title>
+      <link>https://kewu404.github.io/posts/other_test_plug/</link>
+      <pubDate>Thu, 09 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/other_test_plug/</guid>
+      <description>bilibili视频嵌入测试  网易云音乐  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://kewu404.github.io/posts/post_jap_es/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_jap_es/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://kewu404.github.io/projects/db/neo4j/start_neo4j/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/db/neo4j/start_neo4j/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blüdhaven</title>
+      <link>https://kewu404.github.io/projects/default/bludhaven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/default/bludhaven/</guid>
+      <description>History Blüdhaven was a former whaling town, which was officially incorporated as a &amp;ldquo;Commonwealth&amp;rdquo; in 1912. The town had a generally poor socio-economic populace, owing in part to failed efforts to transform itself into a manufacturing and shipping center.</description>
+    </item>
+    
+    <item>
+      <title>Hydra</title>
+      <link>https://kewu404.github.io/projects/default/hydra/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/default/hydra/</guid>
+      <description>Motto Cut off one head and two will take their place</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://kewu404.github.io/projects/default/demo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/default/demo/</guid>
+      <description>Projects  Tatooine Hydra Bludhaven  </description>
+    </item>
+    
+    <item>
+      <title>Tatooine</title>
+      <link>https://kewu404.github.io/projects/default/tatooine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/default/tatooine/</guid>
+      <description>a long long beautiful day</description>
+    </item>
+    
+  </channel>
+</rss>

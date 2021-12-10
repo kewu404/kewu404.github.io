@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>springboot on Naituyuw</title>
+    <link>https://kewu404.github.io/tags/springboot/</link>
+    <description>Recent content in springboot on Naituyuw</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 21 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/tags/springboot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>springboot：spring.factories</title>
+      <link>https://kewu404.github.io/posts/spring_factories/</link>
+      <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/spring_factories/</guid>
+      <description>SPI 要了解spring.factories，首先需要知道什么是SPI.
+SPI全称Service Provider Interface，是Java提供的一套用来被第三方实现或者扩展的接口，它可以用来启用框架扩展和替换组件，SPI的作用就是为这些被扩展的接口寻找服务实现。
+使用场景： API 大多数情况下，调用方仅仅依赖接口调用，且无权选择不同实现。 从使用人员上来说，API 直接被应用开发人员使用。 SPI调用方来制定接口规范，提供给外部来实现，调用方在调用时则选择自己需要的外部实现。 从使用人员上来说，SPI 被框架扩展人员使用。 比较常见的例子：
+ 数据库驱动加载接口实现类的加载 JDBC加载不同类型数据库的驱动 日志门面接口实现类加载 SLF4J加载不同提供商的日志实现类 Dubbo中也大量使用SPI的方式实现框架的扩展, 不过它对Java提供的原生SPI做了封装，允许用户扩展实现Filter接口  Springboot中的SPI机制 在Spring中也有一种类似与Java SPI的加载机制。它在META-INF/spring.factories文件中配置接口的实现类名称，然后在程序中读取这些配置文件并实例化。 这种自定义的SPI机制是Spring Boot Starter实现的基础。
+Spring Factories实现原理 spring-core包里定义了SpringFactoriesLoader类，这个类实现了检索META-INF/spring.factories文件，并获取指定接口的配置的功能。在这个类中定义了两个对外的方法：
+loadFactories 根据接口类获取其实现类的实例，这个方法返回的是对象列表。 loadFactoryNames 根据接口获取其接口类的名称，这个方法返回的是类名的列表。 上面的两个方法的关键都是从指定的ClassLoader中获取spring.factories文件，并解析得到类名列表，具体代码如下
+private static Map&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt; loadSpringFactories(@Nullable ClassLoader classLoader) { MultiValueMap&amp;lt;String, String&amp;gt; result = cache.get(classLoader); if (result != null) { return result; } try { Enumeration&amp;lt;URL&amp;gt; urls = (classLoader != null ? classLoader.getResources(FACTORIES_RESOURCE_LOCATION) : ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION)); result = new LinkedMultiValueMap&amp;lt;&amp;gt;(); while (urls.</description>
+    </item>
+    
+  </channel>
+</rss>

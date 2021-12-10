@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>git</title>
+    <meta name="description" content="git">
+    <meta name="keywords" content='blog, gokarna, hugo, git'>
+
+    <meta property="og:url" content="https://kewu404.github.io/posts/post_git/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="git">
+    <meta property="og:description" content="git">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="git">
+    <meta name="twitter:description" content="git">
+    <meta property="twitter:domain" content="https://kewu404.github.io/posts/post_git/">
+    <meta property="twitter:url" content="https://kewu404.github.io/posts/post_git/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/posts/post_git/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    
+    
+        <img class="banner-img" src='http://guojiuguo.gitee.io/image/everything/my_program/git/git_stream.jpg'>
+    
+    <div class="post-header-section">
+        <h1>git</h1>
+        
+        <p class="post-date">
+            August 12, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="/tags/git">git</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h4 id="1-楔子">1. 楔子</h4>
+<p>git是目前世界上最先进的分布式版本控制系统。</p>
+<p><a href="#mingc">名词解释</a></p>
+<h4 id="2-概念">2. 概念</h4>
+<ul>
+<li>
+<p><strong>本地仓库：</strong> 是在开发人员自己电脑上的Git仓库<br/></p>
+</li>
+<li>
+<p><strong>远程仓库：</strong> 是在远程服务器上的Git仓库</p>
+</li>
+<li>
+<p><strong>clone：</strong> 克隆，就是将远程仓库复制到本地<br/></p>
+</li>
+<li>
+<p><strong>push：</strong> 推送，就是将本地仓库代码上传到远程仓库<br/></p>
+</li>
+<li>
+<p><strong>pull：</strong> 拉取，就是将远程仓库最新代码拉取到本地仓库并直接合并<br/></p>
+</li>
+<li>
+<p><strong>fetch：</strong> 拉取，将远程仓库最新代码拉取到本地，经过用户确认后在合并到本地分支<br/></p>
+</li>
+<li>
+<p><strong>checkout：</strong> 切换分支，可以和<code>branch</code>集成<br/></p>
+</li>
+<li>
+<p><strong>add：</strong> 添加到本地仓库<br/></p>
+</li>
+<li>
+<p><strong>commit：</strong> 提交代码<br/></p>
+</li>
+<li>
+<p><strong>merga：</strong> 合并分支<br/></p>
+</li>
+<li>
+<p><strong>branch：</strong> 创建分支<br/></p>
+</li>
+<li>
+<p><strong>status：</strong> 查看当前分支状态信息</p>
+</li>
+</ul>
+<h4 id="3-git命令">3. git命令</h4>
+<p>git clone</p>
+<pre tabindex="0"><code>//克隆项目
+$ git clone url
+
+//克隆指定分支项目
+$ git clone -b &lt;branchname&gt; url
+</code></pre><p>git pull</p>
+<pre tabindex="0"><code>//从远程仓库拉取代码并合并到本地，
+$ git pull == git fetch + git merga
+//克隆过一次后，git pull会自动去克隆地址上拉取代码，详情见 .git/config
+$ git pull &lt;远程仓库地址&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;
+
+//拉取远程分支
+$ git fetch origin
+//将远程分支next合并到当前分支
+$ git merge origin/next
+</code></pre><p>git push</p>
+<pre tabindex="0"><code>//将本地代码提交到远程仓库
+git push &lt;远程仓库名&gt; &lt;本地分支名&gt; ：&lt;远程分支名&gt;
+//强制提交,谨慎使用
+git push -f origin master
+//省略本地分支名，就相当于删除远程分支
+git push origin : master  
+</code></pre><p>git add</p>
+<pre tabindex="0"><code>//这个主要是用于将工作区的代码提交到暂存区
+//提交全部
+git add .
+//提交指定文件
+git add /com/demo/...
+</code></pre><p>git commit</p>
+<pre tabindex="0"><code>//这个主要是将暂存区的代码提交到本地仓库,每次提交都会生成一个40位的哈希
+git commit -m &quot;commit&quot;
+</code></pre><p>git status</p>
+<pre tabindex="0"><code>//查看当前分支状态信息
+$ git status
+//在分支main上
+On branch main
+//提示该分支有一个提交没有推到远程仓库guthub中，下面是建议使用命令将本地提交推送到远程仓库
+Your branch is ahead of 'github/main' by 1 commit.
+  (use &quot;git push&quot; to publish your local commits)
+
+//这里提示是未提交已修改的文件
+//建议使用命令git add/rm提交/删除
+//建议使用命令git restore 恢复文件 
+Changes not staged for commit:
+  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        modified:   content/posts/blog.md
+        deleted:    content/posts/post_git_01.md
+
+//未跟踪的文件
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+        content/posts/post_git.md
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre><p>git checkout</p>
+<pre tabindex="0"><code>$ git checkout -h
+usage: git checkout [&lt;options&gt;] &lt;branch&gt;
+   or: git checkout [&lt;options&gt;] [&lt;branch&gt;] -- &lt;file&gt;...
+
+    -b &lt;branch&gt;           create and checkout a new branch
+    -B &lt;branch&gt;           create/reset and checkout a branch
+    -l                    create reflog for new branch
+    --guess               second guess 'git checkout &lt;no-such-branch&gt;' (default)
+    --overlay             use overlay mode (default)
+    -q, --quiet           suppress progress reporting
+    --recurse-submodules[=&lt;checkout&gt;]
+                          control recursive updating of submodules
+    --progress            force progress reporting
+    -m, --merge           perform a 3-way merge with the new branch
+    --conflict &lt;style&gt;    conflict style (merge or diff3)
+    -d, --detach          detach HEAD at named commit
+    -t, --track           set upstream info for new branch
+    -f, --force           force checkout (throw away local modifications)
+    --orphan &lt;new-branch&gt;
+                          new unparented branch
+    --overwrite-ignore    update ignored files (default)
+    --ignore-other-worktrees
+                          do not check if another worktree is holding the given ref
+    -2, --ours            checkout our version for unmerged files
+    -3, --theirs          checkout their version for unmerged files
+    -p, --patch           select hunks interactively
+    --ignore-skip-worktree-bits
+                          do not limit pathspecs to sparse entries only
+    --pathspec-from-file &lt;file&gt;
+                          read pathspec from file
+    --pathspec-file-nul   with --pathspec-from-file, pathspec elements are separated with NUL character
+
+
+//git 切换分支
+git checkout &lt;branchname&gt;
+//git 创建新分支并切换到该分支, 
+git checkout -b &lt;branchname&gt;
+//查看当前分支相对于版本库修改的文件(工作区间和本地仓库的对比)
+git checkout
+//当没有提交版本号时将工作区的指定文件的内容恢复到暂存区的状态
+git checkout &lt;filename&gt;
+//将工作区的所有文件的内容恢复到暂存区的状态
+git checkout .
+//强制切换，放弃index和工作区的修改
+git checkout -f
+</code></pre><p>git branch</p>
+<pre tabindex="0"><code>//不带参数：列出本地已经存在的分支，并且在当前分支的前面用&quot;*&quot;标记
+$ git branch
+//查看远程版本库分支列表
+$ git branch -r
+//查看所有分支列表，包括本地和远程
+$ git branch -a
+//创建名为dev的分支
+$ git branch dev
+//删除dev分支,如果删除分支为合并，会删除失败
+$ git branch -d dev
+//强制删除
+$ git branch -D dev：
+//可以查看本地分支对应的远程分支
+$ git branch -vv
+//重命名
+$ git branch -m oldname newname
+</code></pre><p>git reset</p>
+<pre tabindex="0"><code>//查看commit_id
+git log 
+//回退到上个版本
+git reset --hard HEAD^ 
+//回退到前3次提交之前，以此类推，回退到n次提交之前
+git reset --hard HEAD~3 
+//退到/进到，指定commit的哈希码（这次提交之前或之后的提交都会回滚）
+git reset --hard commit_id 
+</code></pre><h4 id="4-git使用">4. git使用</h4>
+<h5 id="41-建议分区">4.1 建议分区</h5>
+<ul>
+<li>master:主分支。</li>
+</ul>
+<p>代码合到这个分支，就表示这个功能没有问题，可以发布了，所以这个分支上的代码不是随随便便就能合代码的，必须要在本地和develop上都测试后没有问题，才能合并到master.</p>
+<ul>
+<li>develop:开发分支</li>
+</ul>
+<p>这个分支是平行于master分支的，在本地测试没有问题后，将代码提交到这个分支上在进行测试，产品确认没有问题后，才能将代码合并到master上</p>
+<ul>
+<li>public:发布</li>
+</ul>
+<p>这个分支就是正式运行的分支，每天晚上或者一个统一的时间，将master代码合并到public上进行发布</p>
+<h5 id="42-工作中使用git">4.2 工作中使用git</h5>
+<p>工作流程如下：</p>
+<ol>
+<li>从远程仓库中克隆代码到本地仓库</li>
+<li>从本地仓库中checkout代码然后进行代码修改</li>
+<li>在提交前先将代码提交到暂存区</li>
+<li>提交到本地仓库。本地仓库中保存修改的各个历史版本</li>
+<li>修改完成后，需要和团队成员共享代码时，将代码push到远程仓库</li>
+</ol>
+<ul>
+<li><strong>本地仓库：</strong> 项目中<code>.git</code>文件就是版本库，里面存储了很多配置信息，日志信息以及文件版本信息等。</li>
+<li><strong>工作区：</strong> 有<code>.git</code>文件的项目就是工作区，里面就是咱们写的代码</li>
+<li><strong>暂存区：</strong> <code>.git</code>中的index文件就是暂存区。临时保存文件修改的地方。</li>
+</ul>
+<p><a name="mingc"></a></p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR;
+远程仓库 --clone--&gt; 本地仓库;
+本地仓库 --push--&gt; 远程仓库;
+本地仓库 --checkout--&gt; 工作区;
+远程仓库 --pull=fetch+merge--&gt; 工作区;
+
+工作区 --add--&gt; 暂存区;
+暂存区 --commit--&gt; 本地仓库;
+</code></pre><p>下面再说一下详细流程：</p>
+<ol>
+<li>接到新的需求&hellip;写代码；首先从master分支检出一个新分支</li>
+<li>idea切到这个分支上，开始敲敲敲~</li>
+<li>完成需求，本地测试，没有问题，上传到develop上，让产品或者负责人测试一下，没有问题，欧克</li>
+<li>将这个分支合并到master上，在看看有没有问题，没有ok。</li>
+<li>将master代码合并到pulic上准备上线，再确认一下线上有无问题</li>
+<li>需求没有任何问题，删除该分支</li>
+</ol>
+<p>补充：</p>
+<ul>
+<li>有特别紧急的bug需要修改，直接从pubic上检出一个分支，修改完成后必须合并到master和public上</li>
+</ul>
+<h4 id="5-git其他">5. git其他</h4>
+<h5 id="51-git文件">5.1 .git文件</h5>
+<p>.git目录结构</p>
+<pre tabindex="0"><code>hooks: 钩子，类似与切面吧
+info: 记录不需要git管理的文件
+log: 日志信息
+objects: 存储所有数据内容
+COMMIT_EDITMSG：最新提交的一次Commit Message，git系统不会用到，给用户一个参考
+refs: 存储指向数据（分支）的提交对象的指针,当前分支指向最近一次提交的hash值
+config: 配置信息
+description: 用来显示对仓库的描述信息
+FETCH_HEAD：是一个版本链接，指向着目前已经从远程仓库取下来的分支的末端版本
+HEAD: 能够找到下一次commit的前一次哈希值 
+index: 这个就是上面有提到过的暂存区。
+packed-refs：当更新一个引用时，git不会packed-refs，而是会在refs/heads下写入一个新文件。当查找一个引用时，git首先在refs目录下查找，如果未找到则到packed-refs文件中去查找。
+</code></pre><h5 id="52-钩子">5.2 钩子</h5>
+<p>这是一个贼有意思的功能。</br>
+Git 能在特定的重要动作发生时触发自定义脚本。</br>
+有两组这样的钩子：客户端的和服务器端的。</br>
+客户端的是提交合并这样的触发，服务端是接受被推送等操作。</p>
+<p>在客户端，也就是我们本地的.git/hooks里有下面这些常用的钩子：</p>
+<ul>
+<li>pre-commit 预提交钩子</li>
+<li>prepare-commit-msg 准备提交信息钩子</li>
+<li>commit-msg 这个钩子在用户输入提交信息 之后 调用。这个钩子适宜用于警告开发者他们的提交信息不符合我们团队的标准。</li>
+<li>post-commit 提交后钩子,可以改变 git commit 命令的输出，因此主要被用作通知提醒。</li>
+<li>pre-rebase 为git rebase命令做一些操作，结果为1会终止git rebase操作。</li>
+</ul>
+<p>在服务端，也就是远程仓库，看下三个常用钩子：</p>
+<ul>
+<li>pre-receive</li>
+<li>update</li>
+<li>post-receive</li>
+</ul>
+<p><strong>pre-receive：</strong> 预接收钩子，当用户在本地仓库执行<code>git-push</code>命令时，服务器上远程仓库就会调用 pre-receive钩子。这个钩子因为是每次更新前都会执行，所以可以做一些强制动作，比如定制一些不符合提交格式的就拒绝推送的脚本。</p>
+<p><strong>update：</strong> update 脚本和 pre-receive 脚本十分相似，在 pre-receive 之后被调用，不一样之处在于它会为每个准备更新的分支各运行一次。假如推送者同时向多个分支推送内容，pre-receive 只运行一次，相比之下 update 则会为每个被推送的分支各运行一次。</p>
+<p><strong>post-receive：</strong>  钩子在成功推送之后调用，一般可以添加一些消息推送提醒相关人员。</p>
+<h5 id="tag">tag</h5>
+<p>打包</p>
+<pre tabindex="0"><code>//本地创建版本
+$ git tag -a v0.0.1 -m 'description version'
+//查看版本
+$ git tag
+//查看详细信息
+$ git show v0.0.1
+//本地标签同步到远程仓库
+$ git push origin --tag
+//拉取指定远程版本
+$ git fetch github tag v0.0.1
+//此时发现刚刚打的标签有重大bug，先删除本地标签
+$ git tag -d v0.0.1
+//本地的已经删除，远程的还在
+$ git push github :refs/tags/v0.0.1
+</code></pre><h4 id="idea中git">idea中git</h4>
+<p>update project 的两个选项</p>
+<pre tabindex="0"><code>git merge
+git merge b # 将b分支合并到当前分支
+</code></pre><p>图解（主分支master git rebase test）</p>
+<pre tabindex="0"><code>      D---E test
+     /
+A---B---C---F master
+</code></pre><p>使用merge合并：</p>
+<pre tabindex="0"><code>      D--------E
+     /          \
+A---B---C---F----G   
+</code></pre><p>rebase:翻译成中文是重新设定</p>
+<p>git rebase 你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。</p>
+<p>rebase会把你当前分支的 commit 放到最后面,将rebase后的目标分支的commit当作基点放在前面，通俗的说就是将目标分支的提交作为你当前分支的基点，所以叫变基</p>
+<p>图解（主分支master git rebase test）</p>
+<pre tabindex="0"><code>      D---E test
+     /
+A---B---C---F master
+</code></pre><p>git rebase test合并：</p>
+<pre tabindex="0"><code>A---B---D---E---C'---F'   test, master
+</code></pre><p>如图主分支的基点变成了test的几个commit，可能会覆盖别人代码，所以不要在公共分支使用rebase</p>
+<p>工作流</p>
+<pre tabindex="0"><code>git rebase 
+while(存在冲突) {
+    git status
+    找到当前冲突文件，编辑解决冲突
+    git add -u
+    git rebase --continue
+    if( git rebase --abort )
+        break; 
+}
+</code></pre><p><strong>区别</strong></p>
+<p>两个使用场景是不一样的，merge只是合并目标分支的内容，rebase也合并另外一个分支的内容，但是会把本分支的commits顶到最顶端
+<code>git merge</code> 会生成一个新的合并节点，而rebase不会
+使用场景
+都在同一个分支开发，为了提交记录更好的可读性，用
+<code>git pull --rebase origin master</code></p>
+<p>开发分支拉取主分支时。为了让你最新开发的提交记录在最前面，也建议用rebase</p>
+<p>假设我们现在有3个分支:</p>
+<ol>
+<li>master分支：线上环境使用的分支</li>
+<li>testing分支：测试环境使用的分支</li>
+<li>my_feature分支：开发新功能的分支，也就是当前分支</li>
+</ol>
+<p>A. 假设我在my_feature上开发了一段时间，之后另外的同事开发的功能正式上线到master分支了，那么我可以在当前的分支下rebase一下master分支，这样我这个分支的几个commits相对于master还是处于最顶端的，也就是说rebase主要用来跟上游公共分支同步，同时把自己的修改顶到最上面</p>
+<p>B. 我在my_feature上开发了一段时间了，想要放到testing分支上，那就切到testing，然后merge my_feature进来，因为是个测试分支，commits的顺序无所谓，也就没必要用rebase (当然你也可以用rebase)</p>
+<p><strong>注意</strong></p>
+<p>不要在公共分支使用rebase拉取其他分支，rebase会打乱时间线，使远程仓库和本地仓库对不上，导致其他人无法推送代码</p>
+<p>使用git pull时默认是merge， 加 &ndash;rebase参数使其使用rebase方式 ： <code>git pull --rebase</code></p>
+<p>参考：</p>
+<ul>
+<li>
+<p><a href="https://nvie.com/posts/a-successful-git-branching-model/">git工作结构</a></p>
+</li>
+<li>
+<p><a href="https://malcolmyu.github.io/malnote/2015/10/16/Git-Hooks/">git钩子</a></p>
+</li>
+</ul>
+
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body>
+<script
+  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.2/dist/mermaid.min.js"
+  integrity="sha256-KqisLh8jVMBRjpNkOhH5W9VWs+F6x6vQksLqxs7+x9A="
+  crossorigin="anonymous"
+></script>
+<script>
+  
+  Array.from(document.getElementsByClassName("language-mermaid")).forEach(
+    (el) => {
+      el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`;
+    }
+  );
+</script>
+<style>
+   
+  .mermaid svg {
+    display: block;
+    margin: auto;
+  }
+</style>
+</html>

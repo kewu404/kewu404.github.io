@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spring on Naituyuw</title>
+    <link>https://kewu404.github.io/tags/spring/</link>
+    <description>Recent content in spring on Naituyuw</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 19 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>springioc</title>
+      <link>https://kewu404.github.io/posts/post_spring_ioc/</link>
+      <pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_spring_ioc/</guid>
+      <description>springioc实现原理 ​	spring ioc指的是控制反转，IOC容器负责实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。交由Spring容器统一进行管理，从而实现松耦合
+ Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。
+ ​	理解好Ioc的关键是要明确 “谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”
+  谁控制谁，控制什么：传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。
+  为何是反转，哪些方面反转了：有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。
+  IOC实现原理 使用反射机制 + xml技术
+graph TD;tomcat容器--&amp;gt;容器启动;容器启动--&amp;gt;初始化spring容器;初始化spring容器--&amp;gt;获取扫描包下所有类;获取扫描包下所有类--&amp;gt;解析类中的注解信息;解析类中的注解信息--&amp;gt;封装类反射后实例化对象;封装类反射后实例化对象--&amp;gt;以beanId,bean实例化类对象形式保存集合;以beanId,bean实例化类对象形式保存集合--&amp;gt;getbean;getbean--&amp;gt;Bean的实例化对象;Bean的实例化对象--&amp;gt;Bean的具体方法及执行结果;本地调用某个bean中的方法--&amp;gt;以beanId,bean实例化类对象形式保存集合;​	当web容器启动的时候,spring的全局bean的管理器回去xml配置文件中扫描的包下面获取到所有的类,并根据使用的注解,进行对应的封装,封装到全局的bean容器中进行管理,
+​	一旦容器初始化完毕，beanID以及bean实例化的类对象信息就全部存在了，现在我们需要在某个service里面调用另一个bean的某个方法的时候，我们只需要依赖注入进来另一个bean的Id即可，调用的时候，spring会去初始化完成的bean容器中获取即可，如果存在就把依赖的bean的类的实例化对象返回给你，你就可以调用依赖的bean的相关方法或属性等；
+代码模拟ioc流程 测试项目结构:
+pom.xml依赖
+&amp;lt;properties&amp;gt; &amp;lt;spring.version&amp;gt;5.1.2.RELEASE&amp;lt;/spring.version&amp;gt; &amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt; &amp;lt;project.reporting.outputEncoding&amp;gt;UTF-8&amp;lt;/project.reporting.outputEncoding&amp;gt; &amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt; &amp;lt;/properties&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-aop&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-orm&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.</description>
+    </item>
+    
+  </channel>
+</rss>

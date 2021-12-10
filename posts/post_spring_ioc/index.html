@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>springioc</title>
+    <meta name="description" content="springioc实现原理">
+    <meta name="keywords" content='blog, gokarna, hugo, spring'>
+
+    <meta property="og:url" content="https://kewu404.github.io/posts/post_spring_ioc/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="springioc">
+    <meta property="og:description" content="springioc实现原理">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="springioc">
+    <meta name="twitter:description" content="springioc实现原理">
+    <meta property="twitter:domain" content="https://kewu404.github.io/posts/post_spring_ioc/">
+    <meta property="twitter:url" content="https://kewu404.github.io/posts/post_spring_ioc/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/posts/post_spring_ioc/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    
+    
+    <div class="post-header-section">
+        <h1>springioc</h1>
+        
+        <p class="post-date">
+            February 19, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="/tags/spring">spring</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h4 id="springioc实现原理">springioc实现原理</h4>
+<p>​	<strong>spring ioc指的是控制反转，IOC容器负责实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。交由Spring容器统一进行管理，从而实现松耦合</strong></p>
+<blockquote>
+<p><strong>Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。</strong></p>
+</blockquote>
+<p>​	理解好Ioc的关键是要明确 “谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”</p>
+<ul>
+<li>
+<p><strong>谁控制谁，控制什么</strong>：传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。</p>
+</li>
+<li>
+<p><strong>为何是反转，哪些方面反转了</strong>：有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？<strong>因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。</strong></p>
+</li>
+</ul>
+<h4 id="ioc实现原理">IOC实现原理</h4>
+<p><strong>使用反射机制 + xml技术</strong></p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD;
+tomcat容器--&gt;容器启动;
+容器启动--&gt;初始化spring容器;
+初始化spring容器--&gt;获取扫描包下所有类;
+获取扫描包下所有类--&gt;解析类中的注解信息;
+解析类中的注解信息--&gt;封装类反射后实例化对象;
+封装类反射后实例化对象--&gt;以beanId,bean实例化类对象形式保存集合;
+以beanId,bean实例化类对象形式保存集合--&gt;getbean;
+getbean--&gt;Bean的实例化对象;
+Bean的实例化对象--&gt;Bean的具体方法及执行结果;
+
+本地调用某个bean中的方法--&gt;以beanId,bean实例化类对象形式保存集合;
+</code></pre><p>​	当web容器启动的时候,spring的全局bean的管理器回去xml配置文件中扫描的包下面获取到所有的类,并根据使用的注解,进行对应的封装,封装到全局的bean容器中进行管理,</p>
+<p>​	一旦容器初始化完毕，beanID以及bean实例化的类对象信息就全部存在了，现在我们需要在某个service里面调用另一个bean的某个方法的时候，我们只需要依赖注入进来另一个bean的Id即可，调用的时候，spring会去初始化完成的bean容器中获取即可，如果存在就把依赖的bean的类的实例化对象返回给你，你就可以调用依赖的bean的相关方法或属性等；</p>
+<h4 id="代码模拟ioc流程">代码模拟ioc流程</h4>
+<p>测试项目结构:</p>
+<p><img src="http://guojiuguo.gitee.io/image/img/post/ioc_test.png" alt=""></p>
+<p>pom.xml依赖</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#f92672">&lt;properties&gt;</span>
+        <span style="color:#f92672">&lt;spring.version&gt;</span>5.1.2.RELEASE<span style="color:#f92672">&lt;/spring.version&gt;</span>
+        <span style="color:#f92672">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span style="color:#f92672">&lt;/project.build.sourceEncoding&gt;</span>
+        <span style="color:#f92672">&lt;project.reporting.outputEncoding&gt;</span>UTF-8<span style="color:#f92672">&lt;/project.reporting.outputEncoding&gt;</span>
+        <span style="color:#f92672">&lt;java.version&gt;</span>1.8<span style="color:#f92672">&lt;/java.version&gt;</span>
+    <span style="color:#f92672">&lt;/properties&gt;</span>
+
+    <span style="color:#f92672">&lt;dependencies&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-core<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>${spring.version}<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-context<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>${spring.version}<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-aop<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>${spring.version}<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-orm<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>${spring.version}<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.aspectj<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>aspectjrt<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>1.6.1<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.aspectj<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>aspectjweaver<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>1.9.2<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+
+        <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/cglib/cglib --&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>cglib<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>cglib<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>3.2.10<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/com.mchange/c3p0 --&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>com.mchange<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>c3p0<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>0.9.5.2<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>mysql<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>mysql-connector-java<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>5.1.40<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/dom4j/dom4j --&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>dom4j<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>dom4j<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>1.6.1<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+    <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</code></pre></div><p>在自定义两个注解用来代替@Service,@Autiwired</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//自定义注解 service注入bean容器
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@Target</span><span style="color:#f92672">(</span>ElementType<span style="color:#f92672">.</span><span style="color:#a6e22e">TYPE</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@Retention</span><span style="color:#f92672">(</span>RetentionPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">RUNTIME</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">@interface</span> SelfService <span style="color:#f92672">{</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">//模拟@Autowired注解
+</span><span style="color:#75715e">//作用范围
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@Target</span><span style="color:#f92672">({</span>ElementType<span style="color:#f92672">.</span><span style="color:#a6e22e">TYPE</span><span style="color:#f92672">,</span>ElementType<span style="color:#f92672">.</span><span style="color:#a6e22e">FIELD</span><span style="color:#f92672">,</span>ElementType<span style="color:#f92672">.</span><span style="color:#a6e22e">METHOD</span><span style="color:#f92672">})</span>
+<span style="color:#75715e">//执行时机
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@Retention</span><span style="color:#f92672">(</span>RetentionPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">RUNTIME</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">@interface</span> SelfAutowired <span style="color:#f92672">{</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>​	spring 项目一般测试接口的时候会用到这样的代码,这段代码的作用其实就是模拟在spring启动加载的时候，通过这个类去初始化一个bean 的容器管理类，所有的bean的信息解析和保存都会在这个类里面进行:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java">ClassPathXmlApplicationContext ctx <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClassPathXmlApplicationContext<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;beans.xml&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><p>自定义spring的bean容器类</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SelfPathXmlApplicationContext</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String packageName<span style="color:#f92672">;</span>
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 封装所有的bean
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> ConcurrentHashMap<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span>Object<span style="color:#f92672">&gt;</span> beans <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+	
+    <span style="color:#75715e">//构造这个类的时候会扫描包路径下所有带有@SelfService注解的类,并将这些类放入beans中
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//遍历上述初始化好的所有bean，然后再去每个bean的实例对象中解析并封装属性相关的对应信息
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SelfPathXmlApplicationContext</span><span style="color:#f92672">(</span>String packageName<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception<span style="color:#f92672">{</span>
+        beans <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConcurrentHashMap<span style="color:#f92672">&lt;&gt;();</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">packageName</span> <span style="color:#f92672">=</span> packageName<span style="color:#f92672">;</span>
+        <span style="color:#75715e">//初始化包路径下所有类并放入到bean容器中统一管理
+</span><span style="color:#75715e"></span>        initBeans<span style="color:#f92672">();</span>
+        <span style="color:#75715e">//依赖注入
+</span><span style="color:#75715e"></span>        initEntityField<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initEntityField</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Map<span style="color:#f92672">.</span><span style="color:#a6e22e">Entry</span><span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> entry <span style="color:#f92672">:</span> beans<span style="color:#f92672">.</span><span style="color:#a6e22e">entrySet</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//判断属性上面是否有加注解
+</span><span style="color:#75715e"></span>            Object bean <span style="color:#f92672">=</span> entry<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">();</span>
+            attriAssign<span style="color:#f92672">(</span>bean<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">getBean</span><span style="color:#f92672">(</span>String beanId<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>StringUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">(</span>beanId<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;beanId参数不能为空&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 1.从spring容器获取bean
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> beans<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>beanId<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 将带有注解的类初始化
+</span><span style="color:#75715e">     * @throws Exception
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initBeans</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 1.使用java的反射机制扫包,[获取当前包下所有的类]
+</span><span style="color:#75715e"></span>        Set<span style="color:#f92672">&lt;</span>Class<span style="color:#f92672">&lt;?&gt;&gt;</span> classes <span style="color:#f92672">=</span> ClassParseUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">getClasses</span><span style="color:#f92672">(</span>packageName<span style="color:#f92672">);</span>
+        <span style="color:#75715e">// 2、判断类上面是否存在注入的bean的注解
+</span><span style="color:#75715e"></span>        ConcurrentHashMap<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> classExisAnnotation <span style="color:#f92672">=</span> findClassExitAnnotation<span style="color:#f92672">(</span>classes<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>classExisAnnotation <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> classExisAnnotation<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;该包下没有任何类加上注解&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 判断是否带有@SelfService注解的类,并放入beans中
+</span><span style="color:#75715e">     * @param classes
+</span><span style="color:#75715e">     * @return
+</span><span style="color:#75715e">     * @throws Exception
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> ConcurrentHashMap<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">findClassExitAnnotation</span><span style="color:#f92672">(</span>Set<span style="color:#f92672">&lt;</span>Class<span style="color:#f92672">&lt;?&gt;&gt;</span> classes<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;?&gt;</span> classInfo <span style="color:#f92672">:</span> classes<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// 判断类上是否有注解 [获取自定义的service注解]
+</span><span style="color:#75715e"></span>            SelfService annotation <span style="color:#f92672">=</span> classInfo<span style="color:#f92672">.</span><span style="color:#a6e22e">getAnnotation</span><span style="color:#f92672">(</span>SelfService<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>annotation <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">// 获取当前类的类名
+</span><span style="color:#75715e"></span>                String className <span style="color:#f92672">=</span> classInfo<span style="color:#f92672">.</span><span style="color:#a6e22e">getSimpleName</span><span style="color:#f92672">();</span>
+                String beanId <span style="color:#f92672">=</span> toLowerCaseFirstOne<span style="color:#f92672">(</span>className<span style="color:#f92672">);</span>
+                <span style="color:#75715e">//初始化类
+</span><span style="color:#75715e"></span>                Object newInstance <span style="color:#f92672">=</span> newInstance<span style="color:#f92672">(</span>classInfo<span style="color:#f92672">);</span>
+                beans<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>beanId<span style="color:#f92672">,</span> newInstance<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> beans<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 首字母转小写
+</span><span style="color:#75715e">     * @param s
+</span><span style="color:#75715e">     * @return
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">toLowerCaseFirstOne</span><span style="color:#f92672">(</span>String s<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> Character<span style="color:#f92672">.</span><span style="color:#a6e22e">isLowerCase</span><span style="color:#f92672">(</span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>0<span style="color:#f92672">))</span> <span style="color:#f92672">?</span> s
+                <span style="color:#f92672">:</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> StringBuilder<span style="color:#f92672">()).</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>Character<span style="color:#f92672">.</span><span style="color:#a6e22e">toLowerCase</span><span style="color:#f92672">(</span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>0<span style="color:#f92672">))).</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span>1<span style="color:#f92672">)).</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 获取实例
+</span><span style="color:#75715e">     * @param classInfo
+</span><span style="color:#75715e">     * @return
+</span><span style="color:#75715e">     * @throws ClassNotFoundException
+</span><span style="color:#75715e">     * @throws InstantiationException
+</span><span style="color:#75715e">     * @throws IllegalAccessException
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">newInstance</span><span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;?&gt;</span> classInfo<span style="color:#f92672">)</span>
+            <span style="color:#66d9ef">throws</span> ClassNotFoundException<span style="color:#f92672">,</span> InstantiationException<span style="color:#f92672">,</span> IllegalAccessException <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> classInfo<span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 依赖注入注解原理
+</span><span style="color:#75715e">	 * 初始化bean的实例化对象的所有属性
+</span><span style="color:#75715e">	 **/</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">attriAssign</span><span style="color:#f92672">(</span>Object object<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 1.使用反射机制,获取当前类的所有属性
+</span><span style="color:#75715e"></span>        Class<span style="color:#f92672">&lt;?&gt;</span> classInfo <span style="color:#f92672">=</span> object<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">();</span>
+        Field<span style="color:#f92672">[]</span> declaredFields <span style="color:#f92672">=</span> classInfo<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredFields</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">// 2.判断当前类属性是否存在注解
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Field field <span style="color:#f92672">:</span> declaredFields<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            SelfAutowired extResource <span style="color:#f92672">=</span> field<span style="color:#f92672">.</span><span style="color:#a6e22e">getAnnotation</span><span style="color:#f92672">(</span>SelfAutowired<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>extResource <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">// 获取属性名称
+</span><span style="color:#75715e"></span>                String beanId <span style="color:#f92672">=</span> field<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">();</span>
+                Object bean <span style="color:#f92672">=</span> getBean<span style="color:#f92672">(</span>beanId<span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>bean <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">// 3.默认使用属性名称，查找bean容器对象 1参数 当前对象 2参数给属性赋值
+</span><span style="color:#75715e"></span>                    field<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span> <span style="color:#75715e">// 允许访问私有属性
+</span><span style="color:#75715e"></span>                    field<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>object<span style="color:#f92672">,</span> bean<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>测试</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@SelfService</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderServiceImpl</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;orderService .. &#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#a6e22e">@SelfService</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserServiceImpl</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@SelfAutowired</span>
+    <span style="color:#66d9ef">private</span> OrderServiceImpl orderServiceImpl<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;userService ..&#34;</span><span style="color:#f92672">);</span>
+        orderServiceImpl<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">//测试
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception<span style="color:#f92672">{</span>
+    String packageName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;com.example.service.impl&#34;</span><span style="color:#f92672">;</span>
+    SelfPathXmlApplicationContext applicationContext <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SelfPathXmlApplicationContext<span style="color:#f92672">(</span>packageName<span style="color:#f92672">);</span>
+    UserServiceImpl userService <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>UserServiceImpl<span style="color:#f92672">)</span> applicationContext<span style="color:#f92672">.</span><span style="color:#a6e22e">getBean</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;userServiceImpl&#34;</span><span style="color:#f92672">);</span>
+    userService<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+<span style="color:#75715e">//结果:
+</span><span style="color:#75715e"></span>userService <span style="color:#f92672">..</span>
+orderService <span style="color:#f92672">..</span> 
+</code></pre></div><p>可以看到我们自定义的bean容器已经生效了</p>
+
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body>
+<script
+  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.2/dist/mermaid.min.js"
+  integrity="sha256-KqisLh8jVMBRjpNkOhH5W9VWs+F6x6vQksLqxs7+x9A="
+  crossorigin="anonymous"
+></script>
+<script>
+  
+  Array.from(document.getElementsByClassName("language-mermaid")).forEach(
+    (el) => {
+      el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`;
+    }
+  );
+</script>
+<style>
+   
+  .mermaid svg {
+    display: block;
+    margin: auto;
+  }
+</style>
+</html>

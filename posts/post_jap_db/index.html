@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>springboot jap数据库篇</title>
+    <meta name="description" content="发呆">
+    <meta name="keywords" content='blog, gokarna, hugo, springboot-jap'>
+
+    <meta property="og:url" content="https://kewu404.github.io/posts/post_jap_db/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="springboot jap数据库篇">
+    <meta property="og:description" content="发呆">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="springboot jap数据库篇">
+    <meta name="twitter:description" content="发呆">
+    <meta property="twitter:domain" content="https://kewu404.github.io/posts/post_jap_db/">
+    <meta property="twitter:url" content="https://kewu404.github.io/posts/post_jap_db/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/posts/post_jap_db/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    
+    
+        <img class="banner-img" src='http://guojiuguo.gitee.io/image/img/post/jpa.jpg'>
+    
+    <div class="post-header-section">
+        <h1>springboot jap数据库篇</h1>
+        
+        <p class="post-date">
+            January 22, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="/tags/springboot-jap">springboot-jap</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h4 id="复杂查询">复杂查询</h4>
+<p>例如:<code>select * from demo where ex_1 = ?1 and ex_2 = ?2 group by group_1 order by create_time desc</code>这种样式的查询分页结果</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> Page<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getList</span><span style="color:#f92672">(</span>ConditionVo vo<span style="color:#f92672">){</span>
+    <span style="color:#66d9ef">return</span> DemoRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">findAll</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Specification<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;(){</span>
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> Predicate <span style="color:#a6e22e">toPredicate</span><span style="color:#f92672">(</span>Root<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;</span> root<span style="color:#f92672">,</span>CriteriaQuery<span style="color:#f92672">&lt;?&gt;</span> query<span style="color:#f92672">,</span>CriteriaBuilder builder<span style="color:#f92672">){</span>
+            List<span style="color:#f92672">&lt;</span>Predicate<span style="color:#f92672">&gt;</span> predicates <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+            <span style="color:#75715e">//动态查询条件
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>StringUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">isNotEmpty</span><span style="color:#f92672">(</span>vp<span style="color:#f92672">.</span><span style="color:#a6e22e">getMobile</span><span style="color:#f92672">())){</span>
+                predicates<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>builder<span style="color:#f92672">.</span><span style="color:#a6e22e">equal</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mobile&#34;</span><span style="color:#f92672">),</span>vo<span style="color:#f92672">.</span><span style="color:#a6e22e">getMobile</span><span style="color:#f92672">));</span>
+            <span style="color:#f92672">}</span>
+            predicates<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>builder<span style="color:#f92672">.</span><span style="color:#a6e22e">equal</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;falg&#34;</span><span style="color:#f92672">),</span>0<span style="color:#f92672">))</span>
+           	<span style="color:#75715e">//分组
+</span><span style="color:#75715e"></span>            query<span style="color:#f92672">.</span><span style="color:#a6e22e">groupBy</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;group_1&#34;</span><span style="color:#f92672">));</span>
+            <span style="color:#75715e">//组合sql
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> builder<span style="color:#f92672">.</span><span style="color:#a6e22e">and</span><span style="color:#f92672">(</span>predicates<span style="color:#f92672">.</span><span style="color:#a6e22e">toArrays</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> predicate<span style="color:#f92672">[</span>predicates<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()]))</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">},</span>PageRequest<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>vo<span style="color:#f92672">.</span><span style="color:#a6e22e">currPage</span><span style="color:#f92672">(),</span>vo<span style="color:#f92672">.</span><span style="color:#a6e22e">getPageSize</span><span style="color:#f92672">(),</span>Sort<span style="color:#f92672">.</span><span style="color:#a6e22e">Direction</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DESC</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;createTime&#34;</span><span style="color:#f92672">));</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>例二:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#a6e22e">@PersistenceContext</span> EntityManager em<span style="color:#f92672">;</span>
+<span style="color:#66d9ef">public</span> Page<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getList</span><span style="color:#f92672">(</span>ConditionVo vo<span style="color:#f92672">){</span>
+    CriteriaBuilder cb <span style="color:#f92672">=</span> em<span style="color:#f92672">.</span><span style="color:#a6e22e">getCriteriaBuilder</span><span style="color:#f92672">();</span>
+    CriteriaQuery<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;</span> cq <span style="color:#f92672">=</span> cb<span style="color:#f92672">.</span><span style="color:#a6e22e">createQuery</span><span style="color:#f92672">(</span>Demo<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+    Root<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;</span> root <span style="color:#f92672">=</span> cq<span style="color:#f92672">.</span><span style="color:#a6e22e">from</span><span style="color:#f92672">(</span>Demo<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+    <span style="color:#75715e">//查询指定结果
+</span><span style="color:#75715e"></span>    cq<span style="color:#f92672">.</span><span style="color:#a6e22e">multiselect</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">),</span>cb<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;source&#34;</span><span style="color:#f92672">)),</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;createTime&#34;</span><span style="color:#f92672">))</span>
+    <span style="color:#75715e">//动态查询条件
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>StringUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">isNotEmpty</span><span style="color:#f92672">(</span>vp<span style="color:#f92672">.</span><span style="color:#a6e22e">getMobile</span><span style="color:#f92672">())){</span>
+    	cq<span style="color:#f92672">.</span><span style="color:#a6e22e">where</span><span style="color:#f92672">(</span>builder<span style="color:#f92672">.</span><span style="color:#a6e22e">equal</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mobile&#34;</span><span style="color:#f92672">),</span>vo<span style="color:#f92672">.</span><span style="color:#a6e22e">getMobile</span><span style="color:#f92672">()));</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">//分组
+</span><span style="color:#75715e"></span>    cq<span style="color:#f92672">.</span><span style="color:#a6e22e">groupBy</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;group_1&#34;</span><span style="color:#f92672">));</span>
+    <span style="color:#75715e">//排序
+</span><span style="color:#75715e"></span>    cq<span style="color:#f92672">.</span><span style="color:#a6e22e">orderBy</span><span style="color:#f92672">(</span>cb<span style="color:#f92672">.</span><span style="color:#a6e22e">desc</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;createTime&#34;</span><span style="color:#f92672">)));</span>
+    TypedQuery<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;</span> query <span style="color:#f92672">=</span> entityManager<span style="color:#f92672">.</span><span style="color:#a6e22e">createQuery</span><span style="color:#f92672">(</span>cq<span style="color:#f92672">);</span>
+    <span style="color:#75715e">//分页
+</span><span style="color:#75715e"></span>    query<span style="color:#f92672">.</span><span style="color:#a6e22e">setFirstResult</span><span style="color:#f92672">(</span>vo<span style="color:#f92672">.</span><span style="color:#a6e22e">getCurrPage</span><span style="color:#f92672">()</span> <span style="color:#f92672">*</span> vo<span style="color:#f92672">.</span><span style="color:#a6e22e">getPageSize</span><span style="color:#f92672">());</span>
+    query<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxResults</span><span style="color:#f92672">(</span>vo<span style="color:#f92672">.</span><span style="color:#a6e22e">getPageSize</span><span style="color:#f92672">());</span>
+    <span style="color:#75715e">//组合sql
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> PageImpl<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;(</span>query<span style="color:#f92672">.</span><span style="color:#a6e22e">getResultList</span><span style="color:#f92672">(),</span> PageRequest<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>currPage<span style="color:#f92672">,</span>pageSize<span style="color:#f92672">),</span>query<span style="color:#f92672">.</span><span style="color:#a6e22e">getResultList</span><span style="color:#f92672">().</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="连表查询">连表查询</h4>
+<p>待办。。。</p>
+<h5 id="构建criteriaquery-实例api说明">构建CriteriaQuery 实例API说明</h5>
+<ol>
+<li>
+<p><strong>CriteriaBuilder 安全查询创建工厂,创建CriteriaQuery,创建查询具体具体条件Predicate 等.</strong></p>
+<p><code>CriteriaBuilder</code>是一个工厂对象,安全查询的开始.用于构建JPA安全查询.可以从<code>EntityManager</code> 或 <code>EntityManagerFactory</code>类中获得<code>CriteriaBuilder</code>.
+比如: <code>CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();</code></p>
+</li>
+<li>
+<p><strong>CriteriaQuery 安全查询主语句</strong></p>
+<p><code>CriteriaQuery</code>对象必须在实体类型或嵌入式类型上的<code>Criteria </code>查询上起作用。
+它通过调用 <code>CriteriaBuilder.CreateQuery</code> 或<code>CriteriaBuilder.createTupleQuery</code> 获得。
+<code>CriteriaBuilder</code>就像<code>CriteriaQuery </code>的工厂一样。
+<code>CriteriaBuilder</code>工厂类是调用<code>EntityManager.getCriteriaBuilder</code> 或 <code>EntityManagerFactory.getCriteriaBuilder</code>而得。
+<code>Demo</code>实体的 <code>CriteriaQuery</code> 对象以下面的方式创建：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">CriteriaBuilder criteriaBuilder <span style="color:#f92672">=</span> em<span style="color:#f92672">.</span><span style="color:#a6e22e">getCriteriaBuilder</span><span style="color:#f92672">();</span>
+CriteriaQuery<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;</span> criteriaQuery <span style="color:#f92672">=</span> criteriaBuilder<span style="color:#f92672">.</span><span style="color:#a6e22e">createQuery</span><span style="color:#f92672">(</span>Demo<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</code></pre></div></li>
+<li>
+<p><strong>Root 定义查询的From子句中能出现的类型</strong></p>
+<p>AbstractQuery是CriteriaQuery 接口的父类。它提供得到查询根的方法。
+Criteria查询的查询根定义了实体类型，能为将来导航获得想要的结果，它与SQL查询中的FROM子句类似。
+Root实例也是类型化的，且定义了查询的FROM子句中能够出现的类型。
+查询根实例能通过传入一个实体类型给 AbstractQuery.from方法获得。
+Criteria查询，可以有多个查询根。
+Demo实体的查询根对象可以用以下的语法获得 ：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Root<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;</span> root <span style="color:#f92672">=</span> criteriaQuery<span style="color:#f92672">.</span><span style="color:#a6e22e">from</span><span style="color:#f92672">(</span>Demo<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</code></pre></div></li>
+<li>
+<p><strong>Predicate 过滤条件</strong></p>
+<p>过滤条件应用到SQL语句的FROM子句中。
+在criteria 查询中，查询条件通过Predicate 或Expression 实例应用到CriteriaQuery 对象上。
+这些条件使用 CriteriaQuery .where 方法应用到CriteriaQuery 对象上。
+<strong>CriteriaBuilder 也是作为Predicate 实例的工厂，Predicate 对象通过调用CriteriaBuilder 的条件方法（ equal，notEqual， gt， ge，lt， le，between，like等）创建。</strong>
+Predicate 实例也可以用<code>Expression</code> 实例的 <code>isNull</code>，<code>isNotNull</code>和 <code>in</code>方法获得，复合的<code>Predicate</code> 语句可以使用<code>CriteriaBuilder</code>的<code>and</code>, <code>or</code> ,<code>andnot</code> 方法构建。
+下面的代码片段展示了<code>Predicate </code>实例检查年龄大于12的实例:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Predicate condition <span style="color:#f92672">=</span> criteriaBuilder<span style="color:#f92672">.</span><span style="color:#a6e22e">gt</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>Demo<span style="color:#f92672">.</span><span style="color:#a6e22e">age</span><span style="color:#f92672">),</span> 24<span style="color:#f92672">);</span>
+criteriaQuery<span style="color:#f92672">.</span><span style="color:#a6e22e">where</span><span style="color:#f92672">(</span>condition<span style="color:#f92672">);</span>
+</code></pre></div></li>
+</ol>
+<h5 id="排序结果">排序结果</h5>
+<p>​	<code>Criteria</code>查询的结果能调用<code>CriteriaQuery.orderBy</code>方法排序，该方法接收一个<code>Order</code>对象做为参数。通过调用 <code>CriteriaBuilder.asc</code> 或 <code>CriteriaBuilder.Desc</code>，<code>Order</code>对象能被创建。以下代码片段中，<code>Demo</code>实例是基于<code>age</code>的升序排列。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">CriteriaQuery<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;</span> criteriaQuery <span style="color:#f92672">=</span> criteriaBuilder<span style="color:#f92672">.</span><span style="color:#a6e22e">createQuery</span><span style="color:#f92672">(</span>Demo<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+Root<span style="color:#f92672">&lt;</span>Demo<span style="color:#f92672">&gt;</span> root <span style="color:#f92672">=</span> criteriaQuery<span style="color:#f92672">.</span><span style="color:#a6e22e">from</span><span style="color:#f92672">(</span>Demo<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+criteriaQuery<span style="color:#f92672">.</span><span style="color:#a6e22e">orderBy</span><span style="color:#f92672">(</span>criteriaBuilder<span style="color:#f92672">.</span><span style="color:#a6e22e">asc</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>Demo<span style="color:#f92672">.</span><span style="color:#a6e22e">age</span><span style="color:#f92672">)));</span>
+em<span style="color:#f92672">.</span><span style="color:#a6e22e">createQuery</span><span style="color:#f92672">(</span>criteriaQuery<span style="color:#f92672">).</span><span style="color:#a6e22e">getResultList</span><span style="color:#f92672">();</span>
+</code></pre></div><blockquote>
+<p><strong>注意:</strong></p>
+<p>在进行cq.multiselect自定义返回字段时，必须在对应的pojo中给一个对应的返回字段构造函数</p>
+</blockquote>
+<h4 id="常见问题">常见问题</h4>
+<ol>
+<li>
+<p>should be mapped with insert=&ldquo;false&rdquo; update=&ldquo;false&rdquo;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">book</span><span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Id</span>
+    <span style="color:#a6e22e">@GeneratedValue</span><span style="color:#f92672">(</span>strategy <span style="color:#f92672">=</span> GenerationType<span style="color:#f92672">.</span><span style="color:#a6e22e">IDENTITY</span><span style="color:#f92672">)</span>
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> id<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">private</span> String name<span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@Column</span><span style="color:#f92672">(</span>name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tag_id&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> tagId<span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@OneToOne</span>
+    <span style="color:#a6e22e">@JoinColumn</span><span style="color:#f92672">(</span>name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tag_id&#34;</span><span style="color:#f92672">,</span>referencedColumnName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">private</span> Tag tag<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>错误原因:同一个字段注解多次</p>
+<p>解决:</p>
+<ul>
+<li>删除一个注解元素</li>
+<li>在注解<code>@JoinColumn(name=&quot;tag_id&quot;,referencedColumnName = &quot;id&quot;)</code>添加<code>insert=&quot;false&quot; update=&quot;false&quot;</code> 将其中一个具有映射关系的元素设置为只读</li>
+</ul>
+</li>
+<li>
+<p>插入修改操作-数据库默认值无效</p>
+<blockquote>
+<p><strong>@DynamicInsert</strong>属性:设置为true,设置为true,表示insert对象的时候,生成动态的insert语句,如果这个字段的值是null就不会加入到insert语句当中.默认false。</p>
+<p>比如希望数据库插入日期或时间戳字段时，在对象字段为空的情况下，表字段能自动填写当前的sysdate。</p>
+<p><strong>@DynamicUpdate</strong>属性:设置为true,设置为true,表示update对象的时候,生成动态的update语句,如果这个字段的值是null就不会被加入到update语句中,默认false。</p>
+<p>比如只想更新某个属性，但是却把整个对象的属性都更新了，这并不是我们希望的结果，**我们希望的结果是：**我更改了哪些字段，只要更新我修改的字段就够了。</p>
+</blockquote>
+</li>
+</ol>
+
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body></html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>springboot-jap on Naituyuw</title>
+    <link>https://kewu404.github.io/tags/springboot-jap/</link>
+    <description>Recent content in springboot-jap on Naituyuw</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 19 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/tags/springboot-jap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>java诊断工具Arthas</title>
+      <link>https://kewu404.github.io/posts/post_arthas/</link>
+      <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_arthas/</guid>
+      <description>楔子 在工作中难免会遇到这种情况：因为某些限制，写好的代码没办法在本地测试，只能到服务器上，这个时候调试代码是一个非常抓狂的事情，因为，代码在服务器上运行，执行到哪里有问题了？报错的详细信息是什么？传参是什么样的？等等。。。咱都不清楚。不嫌麻烦的话在每行都打上log日志，这样，更让我抓狂了。。。
+在这样的诉求下，我发现了Arthas这个东西，用着针不戳。看看官方的介绍：
+当你遇到以下类似问题而束手无策时，Arthas可以帮助你解决：
+ 这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？ 我改的代码为什么没有执行到？难道是我没 commit？分支搞错了？ 遇到问题无法在线上 debug，难道只能通过加日志再重新发布吗？ 线上遇到某个用户的数据处理有问题，但线上同样无法 debug，线下无法重现！ 是否有一个全局视角来查看系统的运行状况？ 有什么办法可以监控到JVM的实时运行状态？ 怎么快速定位应用的热点，生成火焰图？ 怎样直接从JVM内查找某个类的实例？  准备 下载jar(ps:默认服务器有联网能力)
+curl -O https://arthas.aliyun.com/arthas-boot.jar java -jar arthas-boot.jar idea插件搜索arthas安装。
+上面是针对服务器有网情况下，如果服务器没有网络，需要进行离线安装：
+ 联网时，启动arthas的jar包，看到会去maven.aliyun.com私服获取依赖jar包，因此，离线情况下，无法下载相关依赖jar，导致项目启动报错。继续看日志，会发现会把jar放到/root/.arthas/lib/3.5.4/arthas里面.
+ 因此，可以在本地下载好arthas-boot.jar，启动好后，找到.arthas文件 一起打包上传到服务器，然后文件放置正确位置（ps:这个位置可以指定），启动arthas就好了。
+使用 启动arthas
+$ java -jar arthas-boot.jar * [1]: 35542 [2]: 71560 java-demo.jar 选择java应用，回车
+在idea中找到要查看的方法，右键找到Arthas Command，选择需要的命令点击。
+回到命令界面右键粘贴命令，回车即可。
+常用命令  jad 反编译  // jad path [method] [arthas@12284]$ jad com.tool.service.impl.TranslateServiceImpl baiDuTranslate ClassLoader: +-org.springframework.boot.loader.LaunchedURLClassLoader@5197848c +-sun.misc.Launcher$AppClassLoader@55f96302 +-sun.misc.Launcher$ExtClassLoader@799f7e29 Location: file:/C:/Users/Desktop/naituy-0.0.1.jar!/BOOT-INF/classes!/ public BaiDuTranslateRespVO baiDuTranslate(BaiDuTranslateVO vo) { /*24*/ if (StringUtil.</description>
+    </item>
+    
+    <item>
+      <title>springboot jap数据库篇</title>
+      <link>https://kewu404.github.io/posts/post_jap_db/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_jap_db/</guid>
+      <description>复杂查询 例如:select * from demo where ex_1 = ?1 and ex_2 = ?2 group by group_1 order by create_time desc这种样式的查询分页结果
+public Page&amp;lt;Demo&amp;gt; getList(ConditionVo vo){ return DemoRepository.findAll(new Specification&amp;lt;Demo&amp;gt;(){ @Override public Predicate toPredicate(Root&amp;lt;Demo&amp;gt; root,CriteriaQuery&amp;lt;?&amp;gt; query,CriteriaBuilder builder){ List&amp;lt;Predicate&amp;gt; predicates = new ArrayList&amp;lt;&amp;gt;(); //动态查询条件  if(StringUtil.isNotEmpty(vp.getMobile())){ predicates.add(builder.equal(root.get(&amp;#34;mobile&amp;#34;),vo.getMobile)); } predicates.add(builder.equal(root.get(&amp;#34;falg&amp;#34;),0)) //分组  query.groupBy(root.get(&amp;#34;group_1&amp;#34;)); //组合sql  return builder.and(predicates.toArrays(new predicate[predicates.size()])) } },PageRequest.of(vo.currPage(),vo.getPageSize(),Sort.Direction.DESC,&amp;#34;createTime&amp;#34;)); } 例二:
+@PersistenceContext EntityManager em; public Page&amp;lt;Demo&amp;gt; getList(ConditionVo vo){ CriteriaBuilder cb = em.getCriteriaBuilder(); CriteriaQuery&amp;lt;Demo&amp;gt; cq = cb.</description>
+    </item>
+    
+  </channel>
+</rss>

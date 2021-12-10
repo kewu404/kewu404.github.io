@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Markdown 语法指南</title>
+    <meta name="description" content="markdown 基本语法">
+    <meta name="keywords" content='blog, gokarna, hugo, markdown'>
+
+    <meta property="og:url" content="https://kewu404.github.io/posts/markdown-syntax/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Markdown 语法指南">
+    <meta property="og:description" content="markdown 基本语法">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Markdown 语法指南">
+    <meta name="twitter:description" content="markdown 基本语法">
+    <meta property="twitter:domain" content="https://kewu404.github.io/posts/markdown-syntax/">
+    <meta property="twitter:url" content="https://kewu404.github.io/posts/markdown-syntax/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/posts/markdown-syntax/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    
+    
+    <div class="post-header-section">
+        <h1>Markdown 语法指南</h1>
+        
+        <p class="post-date">
+            June 19, 2020
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="/tags/markdown">markdown</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>主要是markdown的基本语法，同时也标注了某些语法<code>hugo</code>是不能解析的</p>
+<h2 id="标题">标题</h2>
+<p>下面是HTML<code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code>元素表示六个级别的标题，<code>&lt;h1&gt;</code>到<code>&lt;h6&gt;</code>标题级别依次降低</p>
+<h1 id="h1">H1</h1>
+<h2 id="h2">H2</h2>
+<h3 id="h3">H3</h3>
+<h4 id="h4">H4</h4>
+<h5 id="h5">H5</h5>
+<h6 id="h6">H6</h6>
+<pre tabindex="0"><code># H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+</code></pre><h2 id="blockquotes">Blockquotes</h2>
+<p>从其他地方引用的内容, 可以选择使用注释和缩写等内嵌表示。</p>
+<h4 id="引用块">引用块</h4>
+<p>使用 <strong>&gt;</strong> 来标注某几行是引用外部文献</p>
+<blockquote>
+<p>Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+<strong>Note</strong> that you can use <em>Markdown syntax</em> within a blockquote.</p>
+</blockquote>
+<h4 id="角注">角注</h4>
+<blockquote>
+<p>不要通过分享记忆来交流，通过交流来分享记忆。<br>
+— <cite>Rob Pike<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite></p>
+</blockquote>
+<h2 id="表格">表格</h2>
+<pre tabindex="0"><code>   名字 | 年龄
+--------|------
+    小红 | 27
+  小白 | 23
+</code></pre><table>
+<thead>
+<tr>
+<th>名字</th>
+<th>年龄</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>小红</td>
+<td>27</td>
+</tr>
+<tr>
+<td>小白</td>
+<td>23</td>
+</tr>
+</tbody>
+</table>
+<h4 id="在表格中使用标记">在表格中使用标记</h4>
+<table>
+<thead>
+<tr>
+<th>斜体</th>
+<th>加粗</th>
+<th>标记</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>italics</em></td>
+<td><strong>bold</strong></td>
+<td><code>code</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="代码块">代码块</h2>
+<h4 id="方式一">方式一</h4>
+<p>使用 <code>```</code> 方式</p>
+<pre tabindex="0"><code>    ```
+      &lt;!doctype html&gt;
+      &lt;html lang=&quot;en&quot;&gt;
+      &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;Example HTML5 Document&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Test&lt;/p&gt;
+      &lt;/body&gt;
+      &lt;/html&gt;
+    ``` 
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Example HTML5 Document&lt;/<span style="color:#f92672">title</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;Test&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><h4 id="用四个空格缩进的代码块">用四个空格缩进的代码块</h4>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Example HTML5 Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Test&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="hugo内部提供语法显示的代码块---highlight-html--">Hugo内部提供语法显示的代码块 <strong>{ {&lt; highlight html &gt;} }</strong></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Example HTML5 Document&lt;/<span style="color:#f92672">title</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;Test&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;</code></pre></div>
+<h2 id="列表">列表</h2>
+<h4 id="有序列表">有序列表</h4>
+<ol>
+<li>啦啦啦啦</li>
+<li>哒哒哒哒</li>
+<li>当当当当</li>
+</ol>
+<h4 id="无序列表">无序列表</h4>
+<ul>
+<li>啦啦啦啦</li>
+<li>哒哒哒哒</li>
+<li>当当当当</li>
+</ul>
+<h4 id="嵌套列表">嵌套列表</h4>
+<ul>
+<li>首先
+<ul>
+<li>首先1</li>
+<li>首先2</li>
+<li>首先3</li>
+</ul>
+</li>
+<li>其次
+<ul>
+<li>其次1</li>
+<li>其次2</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他元素--abbr-sub-sup-kbd-mark">其他元素 — abbr, sub, sup, kbd, mark</h2>
+<pre tabindex="0"><code>&lt;abbr title=&quot;Graphics Interchange Format&quot;&gt;GIF&lt;/abbr&gt; is a bitmap image format.
+</code></pre><p><abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.</p>
+<pre tabindex="0"><code>H&lt;sub&gt;2&lt;/sub&gt;O
+</code></pre><p>H<sub>2</sub>O</p>
+<pre tabindex="0"><code>X&lt;sup&gt;n&lt;/sup&gt; + Y&lt;sup&gt;n&lt;/sup&gt; = Z&lt;sup&gt;n&lt;/sup&gt;
+</code></pre><p>X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup></p>
+<pre tabindex="0"><code>Press &lt;kbd&gt;&lt;kbd&gt;CTRL&lt;/kbd&gt;+&lt;kbd&gt;ALT&lt;/kbd&gt;+&lt;kbd&gt;Delete&lt;/kbd&gt;&lt;/kbd&gt; to end the session.
+</code></pre><p>Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.</p>
+<pre tabindex="0"><code>Most &lt;mark&gt;salamanders&lt;/mark&gt; are nocturnal, and hunt for insects, worms, and other small creatures.
+</code></pre><p>Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>以上摘抄自 <a href="https://www.youtube.com/watch?v=PAAkCSZUG1c">talk</a> , November 18, 2015.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body></html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>hugo中模板语法记录</title>
+    <meta name="description" content=".">
+    <meta name="keywords" content='blog, gokarna, hugo'>
+
+    <meta property="og:url" content="https://kewu404.github.io/posts/post_hugo_used/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="hugo中模板语法记录">
+    <meta property="og:description" content=".">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="hugo中模板语法记录">
+    <meta name="twitter:description" content=".">
+    <meta property="twitter:domain" content="https://kewu404.github.io/posts/post_hugo_used/">
+    <meta property="twitter:url" content="https://kewu404.github.io/posts/post_hugo_used/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/posts/post_hugo_used/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    
+    
+    <div class="post-header-section">
+        <h1>hugo中模板语法记录</h1>
+        
+        <p class="post-date">
+            January 8, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="/tags/hugo">hugo</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>hugo使用的是go语言自带的模板引擎, 模板的标签为<code>{{}}</code>, <code>{{}}</code>中包含的内容叫’动作’(action).</p>
+<h4 id="动作action">动作(action)</h4>
+<p>动作分为两种:</p>
+<ul>
+<li>数据求值</li>
+<li>控制结构</li>
+</ul>
+<p>求值的结果会直接输出到模板中 ; 控制结构主要包含 条件,循环,函数调用等.</p>
+<h5 id="点-">点 .</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{.}}
+</code></pre></div><p>点 &ldquo;.&rdquo; 代表传递给模板的数据 , 表示当前模板的上下文 , 它可以是go语言中的任何类型,如:字符串,数组,结构体等.</p>
+<h5 id="注释">注释</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{/* comment */}}
+</code></pre></div><h5 id="空格处理">空格处理</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// 清除 pipeline 前后的空格
+{{- pipeline -}}
+
+// 清除 pipeline 前面的空格
+{{- pipeline }}
+
+// 清除 pipeline 后面的空格
+{{ pipeline -}}
+</code></pre></div><h5 id="变量">变量</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{$变量名 := &#34;值&#34;}}
+</code></pre></div><p>​	给局部变量赋值使用 <code>:=</code>, 这是golang的语法</p>
+<h5 id="条件判断">条件判断</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{if pipeline}} T1 {{end}} 
+如果pipeline为空则不会输出任何结果, 否则输出T1.
+下面这些情况pipeline的值为空, false, 0, 值为nil的指针或接口, 长度为0的数组, 切片, map和字符串
+
+{{if pipeline}} T1 {{else}} T0 {{end}}
+如果不为空则输出T1, 否则输出T0
+
+{{if pipeline}} T1 {{else if pipeline}} T0 {{end}}
+</code></pre></div><h5 id="循环语句">循环语句</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{range pipeline}} T1 {{end}}
+pipeline的值必须是数组, 切片, map, channel. 
+如果pipeline的长度为0则不会输出任何结果. 否则设置点`.`为数组, 切片, map的遍历值, 输出T1.
+</code></pre></div><h5 id="with-重设点的值">with 重设点<code>.</code>的值</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{with pipeline}} T1 {{end}}
+如果pipeline的值为空, 点`.`的值不受影响,不输出任何结果
+否则点`.`的值设置成pipeline的值, 输出T1
+
+{{with pipeline}} T1 {{else}} T0 {{end}}
+如果pipeline的值为空, 点`.`的值不受影响,输出T1
+否则点`.`的值设置成pipeline的值, 输出T0
+</code></pre></div><p>​	这就相当于重新创建了新的上下文环境. 在<code>{{with}}</code>内的点(.)的值为新的值, 也就是<code>{{with pipeline}}</code>传进来的值.</p>
+<h4 id="模板的嵌套">模板的嵌套</h4>
+<p>​	在编写模板的时候, 常常将公用的部分单独做成一个模板, 如每一个页面都有导航栏, 页首, 页脚等, 然后在需要的地方导入这些模板,一般会先编写一个基础模板, 然后在基础模板中引入子模板, hugo默认的基础模板页是_default/baseof.html.</p>
+<p><strong>define</strong></p>
+<pre tabindex="0"><code>{{define &quot;name&quot;}} T1 {{end}}
+定义一个特定名称的模板
+</code></pre><p><strong>template</strong></p>
+<pre tabindex="0"><code>{{template &quot;name&quot;}}
+引入指定名称的模板, 不传入任何数据.
+
+{{template &quot;name&quot; pipeline}}
+引入指定名称的模板, 设置模板上下文点`.`的值为pipeline的值
+</code></pre><p><strong>block</strong></p>
+<pre tabindex="0"><code>{{block &quot;name&quot; pipeline}} T1 {{end}}
+定义特定名称的模板, 并在当前位置引入该名称的模板, 模板的上下文点`.`的值为pipline的值, 
+如果该名称的模板未实现(不存在), 则输出T1
+就相当于在基础模板页中定义了一个子模板占位符.
+</code></pre><h5 id="hugo中模板嵌套规则">hugo中模板嵌套规则</h5>
+<p>​	hugo中引入模板改用<code>partial</code>, <code>template</code>只用来引入内部模板. <code>partial</code>通过路径的方式引入模板, 被引入的子模板不在需要定义模板名.</p>
+<p>​	如果模板页面通过<code>define</code>定义了模板名称, 则该子模板会输出到基础模板页<code>baseof.html</code>中<code>block</code>定义的对应名称的位置.</p>
+<p><strong>partial</strong></p>
+<p><code>partial</code>引入模板时的查找路径只会在下面两个地方</p>
+<pre tabindex="0"><code>{{ partial &quot;/.html&quot; . }}   // 语法 
+layouts/partials/*.html 
+themes/&lt;THEME&gt;/layouts/partials/*.html
+</code></pre><p><strong>baseof.html</strong></p>
+<p><code>baseof.html</code>为hugo的默认基础模板页, 主要用于<code>block</code>语法.  <code>baseof.html</code>存放在以下两个位置</p>
+<pre tabindex="0"><code>layouts/_default/baseof.html 
+themes/&lt;THEME&gt;/layouts/_default/baseof.html
+</code></pre><p>hugo先找到需要解析的模板, 如果模板中有<code>{{define &quot;name&quot;}} T1 {{end}}</code>, 则再去加载<code>baseof.html</code>基础模板, 并对比<code>baseof.html</code>中的<code>{{block &quot;name&quot; pipeline}} T1 {{end}}</code>, 如果找到相同的名称则在<code>block</code>处输出<code>define</code>中的T1, 如果没有找到相同的名称, 则在<code>block</code>处输出block中的T1</p>
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body></html>

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Spring Security登录认证</title>
+    <meta name="description" content="发呆">
+    <meta name="keywords" content='blog, gokarna, hugo, Spring Security'>
+
+    <meta property="og:url" content="https://kewu404.github.io/projects/java/springsecurity/spring-security-1/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Spring Security登录认证">
+    <meta property="og:description" content="发呆">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Spring Security登录认证">
+    <meta name="twitter:description" content="发呆">
+    <meta property="twitter:domain" content="https://kewu404.github.io/projects/java/springsecurity/spring-security-1/">
+    <meta property="twitter:url" content="https://kewu404.github.io/projects/java/springsecurity/spring-security-1/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/projects/java/springsecurity/spring-security-1/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    
+
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>Spring Security登录认证</h1>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p><img src="http://guojiuguo.gitee.io/image/myimg/SpringSecurity.jpeg" alt="springsecurity基本原理"></p>
+<h4 id="spring-security">Spring Security</h4>
+<p>在做后台管理系统时，首先要做的就是搭建一个认证鉴权的架子，关于认证鉴权，有的公司是自己定制的，有的则是使用框架，例如shiro,springSecurity&hellip;</p>
+<p>之前有使用过shiro，这次再来学习一下SpringSecurity,特此记录。</p>
+<p>Spring Security的实现是通过一层层的过滤器实现的。其中的过程见上图</p>
+<p>其中绿色部分是主要负责认证的过滤器，蓝色部分负责异常处理，橙色部分负责授权。这章主要梳理一下认证流程。</p>
+<h4 id="重要概念">重要概念</h4>
+<p>了解到Spring Security的原理后，还需要知道一些重要的概念：</p>
+<ul>
+<li>*Filter拦截请求，调用*Manager进行认证</li>
+<li>*Manager管理多个*Provider，并根据*Token选择合适的*Provider进行认证</li>
+<li>*Provider负责认证，检查登录信息是否正确</li>
+<li>*Token是认证信息，包含账号密码，具体可以自己定义需要的登录参数</li>
+</ul>
+<ol>
+<li>Authentication</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * &lt;p&gt;
+</span><span style="color:#75715e"> * Principal：此接口表示主体的抽象概念，可用于表示任何实体，如个人、公司和登录id。一般情况下会存入登录名 
+</span><span style="color:#75715e"> * &lt;/p&gt;
+</span><span style="color:#75715e"> * 
+</span><span style="color:#75715e"> * 认证接口,定义认证信息所需内容
+</span><span style="color:#75715e"> **/</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Authentication</span> <span style="color:#66d9ef">extends</span> Principal<span style="color:#f92672">,</span> Serializable <span style="color:#f92672">{</span>
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 获取用户的权限信息
+</span><span style="color:#75715e">     * 一般情况下是将用户的角色信息存入
+</span><span style="color:#75715e">     * 由`AuthenticationManager`存入
+</span><span style="color:#75715e">	 */</span>
+	Collection<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> GrantedAuthority<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getAuthorities</span><span style="color:#f92672">();</span>
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 获取用户凭证信息，一般情况下里面的数据是密码
+</span><span style="color:#75715e">	 */</span>
+	Object <span style="color:#a6e22e">getCredentials</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 获取额外的其他信息，比如user表中的信息
+</span><span style="color:#75715e">	 */</span>
+	Object <span style="color:#a6e22e">getDetails</span><span style="color:#f92672">();</span>
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 获取用户的认证信息
+</span><span style="color:#75715e">     * &lt;li&gt;在未认证的情况下，里面是用户名&lt;/li&gt;
+</span><span style="color:#75715e">     * &lt;li&gt;在已认证的情况下，里面存放的是UserDetails信息&lt;/li&gt;
+</span><span style="color:#75715e">	 */</span>
+	Object <span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">();</span>
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 是否认证
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isAuthenticated</span><span style="color:#f92672">();</span>
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 设置是否认证（true or false）
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAuthenticated</span><span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span> isAuthenticated<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IllegalArgumentException<span style="color:#f92672">;</span>
+</code></pre></div><p><code>Authentication</code>是认证信息，包含账号密码，实际业务中根据登录所需参数进行自定义</p>
+<ol start="2">
+<li>AuthenticationManager</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AuthenticationManager</span> <span style="color:#f92672">{</span>
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 认证方法
+</span><span style="color:#75715e">	 */</span>
+	Authentication <span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>Authentication authentication<span style="color:#f92672">)</span>
+			<span style="color:#66d9ef">throws</span> AuthenticationException<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这个方法需要传入一个未认证的<code>Authentication</code>,经过认证后返回一个已认证的<code>Authentication</code>,默认的实现类是<code>ProviderManager</code>.</p>
+<ol start="3">
+<li>SecurityContext</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">SecurityContext</span> <span style="color:#66d9ef">extends</span> Serializable <span style="color:#f92672">{</span>
+	Authentication <span style="color:#a6e22e">getAuthentication</span><span style="color:#f92672">();</span>
+	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAuthentication</span><span style="color:#f92672">(</span>Authentication authentication<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这个接口里面就两个方法，设置Authentication以及获取Authentication。</p>
+<ol start="4">
+<li>SecurityContextHolder</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SecurityContextHolder</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 清除认证信息
+</span><span style="color:#75715e">     **/</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clearContext</span><span style="color:#f92672">(){...}</span>
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 获取认证信息
+</span><span style="color:#75715e">     **/</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> SecurityContext <span style="color:#a6e22e">getContext</span><span style="color:#f92672">()</span> <span style="color:#f92672">{...}</span>
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 添加认证信息
+</span><span style="color:#75715e">     **/</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setContext</span><span style="color:#f92672">(</span>SecurityContext context<span style="color:#f92672">)</span> <span style="color:#f92672">{...}</span>
+
+    <span style="color:#75715e">//other
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>SecurityContextHolder</code>可以说是<code>SecurityContext</code>的工具类，用于获取，保存以及清除<code>SecurityContext</code>，也为<code>SecurityContext</code>提供了存储策略；对操作<code>SecurityContext</code>有三种策略</p>
+<ul>
+<li>MODE_THREADLOCAL：默认策略，将上下文信息存入到<code>ThreadLocal</code>中，表示上下文只能由当前线程访问</li>
+<li>MODE_INHERITABLETHREADLOCAL： 表示上下文可以由当前线程及其子线程访问.</li>
+<li>MODE_GLOBAL：表示上下文信息全局都可以访问。</li>
+</ul>
+<p><img src="http://guojiuguo.gitee.io/image/myimg/spring_security_auth.png" alt="spring_security_auth.png"></p>
+<h4 id="配置">配置</h4>
+<p>SpringSecurity配置类</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">http<span style="color:#f92672">.</span><span style="color:#a6e22e">exceptionHandling</span><span style="color:#f92672">().</span><span style="color:#a6e22e">authenticationEntryPoint</span><span style="color:#f92672">(</span>authenticationEntryPoint<span style="color:#f92672">);</span>
+http<span style="color:#f92672">.</span><span style="color:#a6e22e">exceptionHandling</span><span style="color:#f92672">().</span><span style="color:#a6e22e">accessDeniedHandler</span><span style="color:#f92672">(</span>restfulAccessDeniedHandler<span style="color:#f92672">());</span>
+http<span style="color:#f92672">.</span><span style="color:#a6e22e">logout</span><span style="color:#f92672">().</span><span style="color:#a6e22e">logoutUrl</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/logout&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">logoutSuccessHandler</span><span style="color:#f92672">(</span>logoutSuccessHandler<span style="color:#f92672">);</span>
+http<span style="color:#f92672">.</span><span style="color:#a6e22e">formLogin</span><span style="color:#f92672">()</span>
+	<span style="color:#f92672">.</span><span style="color:#a6e22e">and</span><span style="color:#f92672">()</span>
+	<span style="color:#f92672">.</span><span style="color:#a6e22e">httpBasic</span><span style="color:#f92672">()</span>
+	<span style="color:#f92672">.</span><span style="color:#a6e22e">addFilterBefore</span><span style="color:#f92672">(</span>jwtAuthenticationTokenFilter<span style="color:#f92672">,</span> UsernamePasswordAuthenticationFilter<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</code></pre></div><p>authenticationEntryPoint: 认证失败处理</br>
+accessDeniedHandler: 权限不足，异常处理</br>
+logoutSuccessHandler：登出处理</br>
+formLogin(): 对应着表单认证方式-UsernamePasswordAuthenticationFilter</br>
+httpBasic(): 对应着Basic认证方式-BasicAuthenticationFilter</br>
+注意：只有在配置中配置这些认证方式，他们对应的过滤器才会加入到过滤器链中</br>
+addFilterBefore：添加一个自定义的Filter放到另一个*Filter之前</br></p>
+<h4 id="流程">流程</h4>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TB;
+登录请求 --&gt; UsernamePasswordAuthenticationFilter;
+UsernamePasswordAuthenticationFilter --Authentication/未认证--&gt; AuthenticationManager;
+AuthenticationManager --authenticate--&gt; AuthenticationManagerDelegator;
+AuthenticationManagerDelegator --&gt; ProviderManager;
+ProviderManager--&gt;AuthenticationProvider;
+AuthenticationProvider--&gt;AbstractUserDetailsAuthenticationProvider --&gt;
+DaoAuthenticationProvider;
+</code></pre><p>接下来通过打断点发送登录请求，一步一步看看里面的实现。</p>
+<p>首先会进入<code>UsernamePasswordAuthenticationFilter</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UsernamePasswordAuthenticationFilter</span> <span style="color:#66d9ef">extends</span> AbstractAuthenticationProcessingFilter <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String SPRING_SECURITY_FORM_USERNAME_KEY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String SPRING_SECURITY_FORM_PASSWORD_KEY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> AntPathRequestMatcher DEFAULT_ANT_PATH_REQUEST_MATCHER <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AntPathRequestMatcher<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/login&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;POST&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">private</span> String usernameParameter <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String passwordParameter <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> postOnly <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> Authentication <span style="color:#a6e22e">attemptAuthentication</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> AuthenticationException <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">postOnly</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethod</span><span style="color:#f92672">().</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;POST&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> AuthenticationServiceException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Authentication method not supported: &#34;</span> <span style="color:#f92672">+</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethod</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//将登录名，密码封装到UsernamePasswordAuthenticationToken里面
+</span><span style="color:#75715e"></span>            String username <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">obtainUsername</span><span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
+            username <span style="color:#f92672">=</span> username <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> username <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
+            username <span style="color:#f92672">=</span> username<span style="color:#f92672">.</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">();</span>
+            String password <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">obtainPassword</span><span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
+            password <span style="color:#f92672">=</span> password <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> password <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
+            UsernamePasswordAuthenticationToken authRequest <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UsernamePasswordAuthenticationToken<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setDetails</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> authRequest<span style="color:#f92672">);</span>
+            <span style="color:#75715e">//认证
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getAuthenticationManager</span><span style="color:#f92672">().</span><span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>authRequest<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 下面的两个方法是从request里面获取username和password
+</span><span style="color:#75715e">     * 这些在正式环境都用不到，实际开发定制的参数及传参类型不可能会被这样限制死的
+</span><span style="color:#75715e">     **/</span>
+    <span style="color:#a6e22e">@Nullable</span>
+    <span style="color:#66d9ef">protected</span> String <span style="color:#a6e22e">obtainPassword</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">passwordParameter</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Nullable</span>
+    <span style="color:#66d9ef">protected</span> String <span style="color:#a6e22e">obtainUsername</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">usernameParameter</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setDetails</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> UsernamePasswordAuthenticationToken authRequest<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        authRequest<span style="color:#f92672">.</span><span style="color:#a6e22e">setDetails</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">authenticationDetailsSource</span><span style="color:#f92672">.</span><span style="color:#a6e22e">buildDetails</span><span style="color:#f92672">(</span>request<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>UsernamePasswordAuthenticationToken</code>是上面提到的<code>Authentication</code>的默认实现。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UsernamePasswordAuthenticationToken</span> <span style="color:#66d9ef">extends</span> AbstractAuthenticationToken <span style="color:#f92672">{</span>
+    <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//上面就是将用户名，密码封装到一个未认证UsernamePasswordAuthenticationToken对象中
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UsernamePasswordAuthenticationToken</span><span style="color:#f92672">(</span>Object principal<span style="color:#f92672">,</span> Object credentials<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">((</span>Collection<span style="color:#f92672">)</span><span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">principal</span> <span style="color:#f92672">=</span> principal<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> credentials<span style="color:#f92672">;</span>
+        <span style="color:#75715e">//未认证
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setAuthenticated</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">//这里就是已经认证成功后
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UsernamePasswordAuthenticationToken</span><span style="color:#f92672">(</span>Object principal<span style="color:#f92672">,</span> Object credentials<span style="color:#f92672">,</span> Collection<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> GrantedAuthority<span style="color:#f92672">&gt;</span> authorities<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>authorities<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">principal</span> <span style="color:#f92672">=</span> principal<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> credentials<span style="color:#f92672">;</span>
+        <span style="color:#75715e">//已认证
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setAuthenticated</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</code></pre></div><p>接下来就是<code>AuthenticationManager</code>对<code>UsernamePasswordAuthenticationToken</code>进行认证，找到<code>AuthenticationManager</code>的实现类<code>ProviderManager</code>,发现并没有做认证处理，而是交给了<code>AuthenticationProvider</code>的实现类<code>AbstractUserDetailsAuthenticationProvider</code>来做。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProviderManager</span> <span style="color:#66d9ef">implements</span> AuthenticationManager<span style="color:#f92672">,</span> MessageSourceAware<span style="color:#f92672">,</span> InitializingBean <span style="color:#f92672">{</span>
+    <span style="color:#75715e">//校验Authentication
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> Authentication <span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>Authentication authentication<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> AuthenticationException <span style="color:#f92672">{</span>
+        Class<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> Authentication<span style="color:#f92672">&gt;</span> toTest <span style="color:#f92672">=</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">();</span>
+        AuthenticationException lastException <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        AuthenticationException parentException <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        Authentication parentResult <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">int</span> currentPosition <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        Authentication result <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">providers</span><span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">//循环AuthenticationProvider列表，直到表明能验证所传递对象Authentication
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>AuthenticationProvider provider <span style="color:#f92672">:</span> getProviders<span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            AuthenticationProvider provider <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>AuthenticationProvider<span style="color:#f92672">)</span>var9<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+            <span style="color:#75715e">//判断能否支持校验Authentication类型的参数
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>provider<span style="color:#f92672">.</span><span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>toTest<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//这个是最后干实事的方法。调用AbstractUserDetailsAuthenticationProvider的方法
+</span><span style="color:#75715e"></span>                result <span style="color:#f92672">=</span> provider<span style="color:#f92672">.</span><span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>authentication<span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>result <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">copyDetails</span><span style="color:#f92672">(</span>authentication<span style="color:#f92672">,</span> result<span style="color:#f92672">);</span>
+                    <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 如果 AuthenticationProvider 列表中的Provider都认证失败，且之前有构造一个AuthenticationManager实现类，那么利用AuthenticationManager 实现类 继续认证
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>result <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">parent</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// Allow the parent to try.
+</span><span style="color:#75715e"></span>			<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+				parentResult <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">parent</span><span style="color:#f92672">.</span><span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>authentication<span style="color:#f92672">);</span>
+				result <span style="color:#f92672">=</span> parentResult<span style="color:#f92672">;</span>
+			<span style="color:#f92672">}</span>
+			<span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ProviderNotFoundException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>			<span style="color:#f92672">}</span>
+		<span style="color:#f92672">}</span>
+         <span style="color:#75715e">//认证成功
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>result <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>eraseCredentialsAfterAuthentication
+					<span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">(</span>result <span style="color:#66d9ef">instanceof</span> CredentialsContainer<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+				<span style="color:#75715e">//成功认证后删除凭证等私密信息
+</span><span style="color:#75715e"></span>				<span style="color:#f92672">((</span>CredentialsContainer<span style="color:#f92672">)</span> result<span style="color:#f92672">).</span><span style="color:#a6e22e">eraseCredentials</span><span style="color:#f92672">();</span>
+			<span style="color:#f92672">}</span>
+            <span style="color:#75715e">//发布登录成功事件
+</span><span style="color:#75715e"></span>			eventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">publishAuthenticationSuccess</span><span style="color:#f92672">(</span>result<span style="color:#f92672">);</span>
+			<span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#75715e">// 没有认证成功，抛出异常
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>lastException <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			lastException <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ProviderNotFoundException<span style="color:#f92672">(</span>messages<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span>
+					<span style="color:#e6db74">&#34;ProviderManager.providerNotFound&#34;</span><span style="color:#f92672">,</span>
+					<span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[]</span> <span style="color:#f92672">{</span> toTest<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">},</span>
+					<span style="color:#e6db74">&#34;No AuthenticationProvider found for {0}&#34;</span><span style="color:#f92672">));</span>
+		<span style="color:#f92672">}</span>
+		prepareException<span style="color:#f92672">(</span>lastException<span style="color:#f92672">,</span> authentication<span style="color:#f92672">);</span>
+		<span style="color:#66d9ef">throw</span> lastException<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>在看一下<code>AuthenticationProvider</code>这个方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AuthenticationProvider</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 认证方法
+</span><span style="color:#75715e">     * 包含凭据的完全经过身份验证的对象。
+</span><span style="color:#75715e">     * 如果AuthenticationProvider无法支持对传递的身份验证对象的身份验证，则可能返回null。
+</span><span style="color:#75715e">     * 在这种情况下，将尝试下一个支持提供的身份验证类的
+</span><span style="color:#75715e">     **/</span>
+    Authentication <span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>Authentication var1<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> AuthenticationException<span style="color:#f92672">;</span>
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 如果此AuthenticationProvider支持指定的身份验证对象，则返回true。
+</span><span style="color:#75715e">	 * 当一个具体的 `AuthenticationProvier`传进入 `ProviderManager`的内部时，就会从`AuthenticationProvider`列表中挑选其对应支持的provider对相应的 Authentication对象进行验证
+</span><span style="color:#75715e">     **/</span>
+    <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;?&gt;</span> var1<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这个地方可以做一下延伸，后期如果要添加短信登录、第三方登录等等方式。我们需要重写或实现<code>AbstractAuthenticationProcessingFilter``AuthenticationManager``AuthenticationProvider</code>这些类，因为不同的登录方式可能需要不同的校验逻辑。</p>
+<p>SpringSecurity默认的登录方式是用户名密码登录，如果我们想要加一个验证码登录怎么搞呢？
+首先编写好发送验证码短信等方法，然后集成SpringSecurity框架，模仿<code>UsernamePasswordAuthenticationToken</code>写一<code>CaptchaAuthenticationToken</code>,嗯，我们还需要在定制一个<code>AuthenticationManager</code>处理验证码的认证类，<code>AuthenticationManager</code>的实现类是<code>ProviderManager</code>,<code>ProviderManager</code>里面又依赖<code>AuthenticationProvider</code>,所以，我们只需要在编写一个实现<code>ProviderManager</code>的类，emmm..就叫<code>CaptchaAuthenticationProvider</code>吧，在这个类里编写校验验证码的逻辑并返回一个认证过的<code>Authentication</code>,嗯，就跟下面这个差不多。 最后在写一个认证过滤器，对比着<code>UsernamePasswordAuthenticationFilter</code>修改一下就行了。具体实现看下这个文章:<a href="/projects/java/springsecurity/spring-security-login/">Spring Security自定义登录方式实现</a></p>
+<p>回归正题，再看一下<code>AbstractUserDetailsAuthenticationProvider</code>这个类，这个就是支持校验<code>UsernamePasswordAuthenticationToken</code>的处理类</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AbstractUserDetailsAuthenticationProvider</span>
+		<span style="color:#66d9ef">implements</span> AuthenticationProvider<span style="color:#f92672">,</span> InitializingBean<span style="color:#f92672">,</span> MessageSourceAware <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>
+
+    <span style="color:#a6e22e">@Override</span>
+	<span style="color:#66d9ef">public</span> Authentication <span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>Authentication authentication<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> AuthenticationException <span style="color:#f92672">{</span>
+		Assert<span style="color:#f92672">.</span><span style="color:#a6e22e">isInstanceOf</span><span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> authentication<span style="color:#f92672">,</span>
+				<span style="color:#f92672">()</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">messages</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;AbstractUserDetailsAuthenticationProvider.onlySupports&#34;</span><span style="color:#f92672">,</span>
+						<span style="color:#e6db74">&#34;Only UsernamePasswordAuthenticationToken is supported&#34;</span><span style="color:#f92672">));</span>
+        <span style="color:#75715e">//判断用户名是否为空
+</span><span style="color:#75715e"></span>		String username <span style="color:#f92672">=</span> determineUsername<span style="color:#f92672">(</span>authentication<span style="color:#f92672">);</span>
+		<span style="color:#66d9ef">boolean</span> cacheWasUsed <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+		UserDetails user <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userCache</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getUserFromCache</span><span style="color:#f92672">(</span>username<span style="color:#f92672">);</span>
+        
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>user <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			cacheWasUsed <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+			<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//如果缓存中没有用户信息
+</span><span style="color:#75715e"></span>                <span style="color:#75715e">//这里就会调用我们之前实现UserDetailsService的loadUserByUsername方法
+</span><span style="color:#75715e"></span>				user <span style="color:#f92672">=</span> retrieveUser<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> <span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">)</span> authentication<span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>UsernameNotFoundException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">logger</span><span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Failed to find user &#39;&#34;</span> <span style="color:#f92672">+</span> username <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span><span style="color:#f92672">);</span>
+				<span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">hideUserNotFoundExceptions</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+					<span style="color:#66d9ef">throw</span> ex<span style="color:#f92672">;</span>
+				<span style="color:#f92672">}</span>
+				<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> BadCredentialsException<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">messages</span>
+						<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;AbstractUserDetailsAuthenticationProvider.badCredentials&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Bad credentials&#34;</span><span style="color:#f92672">));</span>
+			<span style="color:#f92672">}</span>
+			Assert<span style="color:#f92672">.</span><span style="color:#a6e22e">notNull</span><span style="color:#f92672">(</span>user<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;retrieveUser returned null - a violation of the interface contract&#34;</span><span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//这里会判断UserDetails中isAccountNonLocked，isEnabled，isAccountNonExpired
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//校验用户是否被禁
+</span><span style="color:#75715e"></span>			<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">preAuthenticationChecks</span><span style="color:#f92672">.</span><span style="color:#a6e22e">check</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+            <span style="color:#75715e">//验证密码是否正确
+</span><span style="color:#75715e"></span>			additionalAuthenticationChecks<span style="color:#f92672">(</span>user<span style="color:#f92672">,</span> <span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">)</span> authentication<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>AuthenticationException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>cacheWasUsed<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#66d9ef">throw</span> ex<span style="color:#f92672">;</span>
+			<span style="color:#f92672">}</span>
+			<span style="color:#75715e">// There was a problem, so try again after checking
+</span><span style="color:#75715e"></span>			<span style="color:#75715e">// we&#39;re using latest data (i.e. not from the cache)
+</span><span style="color:#75715e"></span>			cacheWasUsed <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+			user <span style="color:#f92672">=</span> retrieveUser<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> <span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">)</span> authentication<span style="color:#f92672">);</span>
+			<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">preAuthenticationChecks</span><span style="color:#f92672">.</span><span style="color:#a6e22e">check</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+			additionalAuthenticationChecks<span style="color:#f92672">(</span>user<span style="color:#f92672">,</span> <span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">)</span> authentication<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">postAuthenticationChecks</span><span style="color:#f92672">.</span><span style="color:#a6e22e">check</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>cacheWasUsed<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userCache</span><span style="color:#f92672">.</span><span style="color:#a6e22e">putUserInCache</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+		Object principalToReturn <span style="color:#f92672">=</span> user<span style="color:#f92672">;</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">forcePrincipalAsString</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			principalToReturn <span style="color:#f92672">=</span> user<span style="color:#f92672">.</span><span style="color:#a6e22e">getUsername</span><span style="color:#f92672">();</span>
+		<span style="color:#f92672">}</span>
+        <span style="color:#75715e">//创建一个成功的Authentication对象。
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> createSuccessAuthentication<span style="color:#f92672">(</span>principalToReturn<span style="color:#f92672">,</span> authentication<span style="color:#f92672">,</span> user<span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> String <span style="color:#a6e22e">determineUsername</span><span style="color:#f92672">(</span>Authentication authentication<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;NONE_PROVIDED&#34;</span> <span style="color:#f92672">:</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">();</span>
+	<span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">     * 创建一个成功的Authentication对象。
+</span><span style="color:#75715e">     **/</span>
+    <span style="color:#66d9ef">protected</span> Authentication <span style="color:#a6e22e">createSuccessAuthentication</span><span style="color:#f92672">(</span>Object principal<span style="color:#f92672">,</span> Authentication authentication<span style="color:#f92672">,</span> UserDetails user<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//这里把用户的权限信息也添加进去
+</span><span style="color:#75715e"></span>        UsernamePasswordAuthenticationToken result <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UsernamePasswordAuthenticationToken<span style="color:#f92672">(</span>principal<span style="color:#f92672">,</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getCredentials</span><span style="color:#f92672">(),</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">authoritiesMapper</span><span style="color:#f92672">.</span><span style="color:#a6e22e">mapAuthorities</span><span style="color:#f92672">(</span>user<span style="color:#f92672">.</span><span style="color:#a6e22e">getAuthorities</span><span style="color:#f92672">()));</span>
+        result<span style="color:#f92672">.</span><span style="color:#a6e22e">setDetails</span><span style="color:#f92672">(</span>authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getDetails</span><span style="color:#f92672">());</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">logger</span><span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Authenticated user&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><p>最后再看一下真正干实事的方法，位于<code>DaoAuthenticationProvider</code>中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DaoAuthenticationProvider</span> <span style="color:#66d9ef">extends</span> AbstractUserDetailsAuthenticationProvider <span style="color:#f92672">{</span>
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 密码校验
+</span><span style="color:#75715e">     **/</span>
+    <span style="color:#a6e22e">@Override</span>
+	<span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;deprecation&#34;</span><span style="color:#f92672">)</span>
+	<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">additionalAuthenticationChecks</span><span style="color:#f92672">(</span>UserDetails userDetails<span style="color:#f92672">,</span>
+			UsernamePasswordAuthenticationToken authentication<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> AuthenticationException <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getCredentials</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">logger</span><span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Failed to authenticate since no credentials provided&#34;</span><span style="color:#f92672">);</span>
+			<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> BadCredentialsException<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">messages</span>
+					<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;AbstractUserDetailsAuthenticationProvider.badCredentials&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Bad credentials&#34;</span><span style="color:#f92672">));</span>
+		<span style="color:#f92672">}</span>
+		String presentedPassword <span style="color:#f92672">=</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getCredentials</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">();</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">passwordEncoder</span><span style="color:#f92672">.</span><span style="color:#a6e22e">matches</span><span style="color:#f92672">(</span>presentedPassword<span style="color:#f92672">,</span> userDetails<span style="color:#f92672">.</span><span style="color:#a6e22e">getPassword</span><span style="color:#f92672">()))</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">logger</span><span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Failed to authenticate since password does not match stored value&#34;</span><span style="color:#f92672">);</span>
+			<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> BadCredentialsException<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">messages</span>
+					<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;AbstractUserDetailsAuthenticationProvider.badCredentials&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Bad credentials&#34;</span><span style="color:#f92672">));</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 这里是从UserDetailsService中获取用户信息
+</span><span style="color:#75715e">     **/</span>
+    <span style="color:#a6e22e">@Override</span>
+	<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">final</span> UserDetails <span style="color:#a6e22e">retrieveUser</span><span style="color:#f92672">(</span>String username<span style="color:#f92672">,</span> UsernamePasswordAuthenticationToken authentication<span style="color:#f92672">)</span>
+			<span style="color:#66d9ef">throws</span> AuthenticationException <span style="color:#f92672">{</span>
+		prepareTimingAttackProtection<span style="color:#f92672">();</span>
+		<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//这里我们一般会实现这个接口，然后查询数据库获取用户信息存放到UserDetails中
+</span><span style="color:#75715e"></span>			UserDetails loadedUser <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getUserDetailsService</span><span style="color:#f92672">().</span><span style="color:#a6e22e">loadUserByUsername</span><span style="color:#f92672">(</span>username<span style="color:#f92672">);</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>loadedUser <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> InternalAuthenticationServiceException<span style="color:#f92672">(</span>
+						<span style="color:#e6db74">&#34;UserDetailsService returned null, which is an interface contract violation&#34;</span><span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+			<span style="color:#66d9ef">return</span> loadedUser<span style="color:#f92672">;</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>UsernameNotFoundException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			mitigateAgainstTimingAttack<span style="color:#f92672">(</span>authentication<span style="color:#f92672">);</span>
+			<span style="color:#66d9ef">throw</span> ex<span style="color:#f92672">;</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InternalAuthenticationServiceException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">throw</span> ex<span style="color:#f92672">;</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> InternalAuthenticationServiceException<span style="color:#f92672">(</span>ex<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(),</span> ex<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 对密码做加密操作
+</span><span style="color:#75715e">     **/</span>
+	<span style="color:#a6e22e">@Override</span>
+	<span style="color:#66d9ef">protected</span> Authentication <span style="color:#a6e22e">createSuccessAuthentication</span><span style="color:#f92672">(</span>Object principal<span style="color:#f92672">,</span> Authentication authentication<span style="color:#f92672">,</span>
+			UserDetails user<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">boolean</span> upgradeEncoding <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userDetailsPasswordService</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>
+				<span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">passwordEncoder</span><span style="color:#f92672">.</span><span style="color:#a6e22e">upgradeEncoding</span><span style="color:#f92672">(</span>user<span style="color:#f92672">.</span><span style="color:#a6e22e">getPassword</span><span style="color:#f92672">());</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>upgradeEncoding<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			String presentedPassword <span style="color:#f92672">=</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getCredentials</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">();</span>
+			String newPassword <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">passwordEncoder</span><span style="color:#f92672">.</span><span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span>presentedPassword<span style="color:#f92672">);</span>
+			user <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userDetailsPasswordService</span><span style="color:#f92672">.</span><span style="color:#a6e22e">updatePassword</span><span style="color:#f92672">(</span>user<span style="color:#f92672">,</span> newPassword<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">createSuccessAuthentication</span><span style="color:#f92672">(</span>principal<span style="color:#f92672">,</span> authentication<span style="color:#f92672">,</span> user<span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>UserDetailsService</code>我们这边需要实现这个接口，<code>UserDetails</code>这两个接口，我们这边</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">UserDetailsService</span> <span style="color:#f92672">{</span>
+	<span style="color:#75715e">//根据用户名获取用户信息
+</span><span style="color:#75715e"></span>	UserDetails <span style="color:#a6e22e">loadUserByUsername</span><span style="color:#f92672">(</span>String username<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> UsernameNotFoundException<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * SpringSecurity定义的用户核心信息接口。这个会被 封装到Authentication对象中。
+</span><span style="color:#75715e"> * 实际业务中，我们可以实现这个接口，并定义一些其他用户信息
+</span><span style="color:#75715e"> **/</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">UserDetails</span> <span style="color:#66d9ef">extends</span> Serializable <span style="color:#f92672">{</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Returns the authorities granted to the user. Cannot return &lt;code&gt;null&lt;/code&gt;.
+</span><span style="color:#75715e">	 * @return the authorities, sorted by natural key (never &lt;code&gt;null&lt;/code&gt;)
+</span><span style="color:#75715e">	 */</span>
+	Collection<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> GrantedAuthority<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getAuthorities</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Returns the password used to authenticate the user.
+</span><span style="color:#75715e">	 * @return the password
+</span><span style="color:#75715e">	 */</span>
+	String <span style="color:#a6e22e">getPassword</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Returns the username used to authenticate the user. Cannot return
+</span><span style="color:#75715e">	 * &lt;code&gt;null&lt;/code&gt;.
+</span><span style="color:#75715e">	 * @return the username (never &lt;code&gt;null&lt;/code&gt;)
+</span><span style="color:#75715e">	 */</span>
+	String <span style="color:#a6e22e">getUsername</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Indicates whether the user&#39;s account has expired. An expired account cannot be
+</span><span style="color:#75715e">	 * authenticated.
+</span><span style="color:#75715e">	 * @return &lt;code&gt;true&lt;/code&gt; if the user&#39;s account is valid (ie non-expired),
+</span><span style="color:#75715e">	 * &lt;code&gt;false&lt;/code&gt; if no longer valid (ie expired)
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isAccountNonExpired</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Indicates whether the user is locked or unlocked. A locked user cannot be
+</span><span style="color:#75715e">	 * authenticated.
+</span><span style="color:#75715e">	 * @return &lt;code&gt;true&lt;/code&gt; if the user is not locked, &lt;code&gt;false&lt;/code&gt; otherwise
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isAccountNonLocked</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Indicates whether the user&#39;s credentials (password) has expired. Expired
+</span><span style="color:#75715e">	 * credentials prevent authentication.
+</span><span style="color:#75715e">	 * @return &lt;code&gt;true&lt;/code&gt; if the user&#39;s credentials are valid (ie non-expired),
+</span><span style="color:#75715e">	 * &lt;code&gt;false&lt;/code&gt; if no longer valid (ie expired)
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isCredentialsNonExpired</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Indicates whether the user is enabled or disabled. A disabled user cannot be
+</span><span style="color:#75715e">	 * authenticated.
+</span><span style="color:#75715e">	 * @return &lt;code&gt;true&lt;/code&gt; if the user is enabled, &lt;code&gt;false&lt;/code&gt; otherwise
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEnabled</span><span style="color:#f92672">();</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="总结">总结</h4>
+<p>就一句话，实践，这种东西必须要自己亲自走几遍，才能知道。</p>
+<p><a href="https://gitee.com/guojiuguo/naituy/tree/v0.0.1">gitee</a></p>
+<p>白酒 13 1
+半导体 7 0 
+医疗 6 0
+东方新能源 5 1
+农银新能源 7 0
+光伏 1.4 1
+有色 0.9 0</p>
+<p><a href="/projects/java/springsecurity/spring-security-2/">下一篇：SpringSecurity2</a></p>
+
+        </p>
+    </div>
+</div>
+
+
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+            
+            <div class="nav-link">
+                <a href="/about/"> 关于我 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/link"> 友链 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/contact"> 联系 </a>
+            </div>
+            
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body>
+<script
+  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.2/dist/mermaid.min.js"
+  integrity="sha256-KqisLh8jVMBRjpNkOhH5W9VWs+F6x6vQksLqxs7+x9A="
+  crossorigin="anonymous"
+></script>
+<script>
+  
+  Array.from(document.getElementsByClassName("language-mermaid")).forEach(
+    (el) => {
+      el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`;
+    }
+  );
+</script>
+<style>
+   
+  .mermaid svg {
+    display: block;
+    margin: auto;
+  }
+</style>
+</html>

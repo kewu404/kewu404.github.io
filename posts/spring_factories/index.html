@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>springboot：spring.factories</title>
+    <meta name="description" content="发呆">
+    <meta name="keywords" content='blog, gokarna, hugo, springboot'>
+
+    <meta property="og:url" content="https://kewu404.github.io/posts/spring_factories/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="springboot：spring.factories">
+    <meta property="og:description" content="发呆">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="springboot：spring.factories">
+    <meta name="twitter:description" content="发呆">
+    <meta property="twitter:domain" content="https://kewu404.github.io/posts/spring_factories/">
+    <meta property="twitter:url" content="https://kewu404.github.io/posts/spring_factories/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/posts/spring_factories/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    
+    
+    <div class="post-header-section">
+        <h1>springboot：spring.factories</h1>
+        
+        <p class="post-date">
+            April 21, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="/tags/springboot">springboot</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h4 id="spi">SPI</h4>
+<p>要了解<code>spring.factories</code>，首先需要知道什么是<code>SPI</code>.</p>
+<p><strong>SPI</strong>全称<code>Service Provider Interface</code>，是Java提供的一套用来被第三方实现或者扩展的接口，它可以用来启用框架<strong>扩展和替换组件</strong>，SPI的作用就是为这些被扩展的接口寻找服务实现。</p>
+<p><strong>使用场景：</strong> API 大多数情况下，调用方仅仅依赖接口调用，且无权选择不同实现。 从使用人员上来说，API 直接被应用开发人员使用。 SPI调用方来制定接口规范，提供给外部来实现，调用方在调用时则选择自己需要的外部实现。  从使用人员上来说，SPI 被框架扩展人员使用。
+<img src="https://pic1.zhimg.com/80/v2-5210ed7234f7046273104bed9bfd7764_1440w.png"/></p>
+<p>比较常见的例子：</p>
+<ul>
+<li>数据库驱动加载接口实现类的加载
+JDBC加载不同类型数据库的驱动</li>
+<li>日志门面接口实现类加载
+SLF4J加载不同提供商的日志实现类</li>
+<li>Dubbo中也大量使用SPI的方式实现框架的扩展, 不过它对Java提供的原生SPI做了封装，允许用户扩展实现Filter接口</li>
+</ul>
+<h4 id="springboot中的spi机制">Springboot中的SPI机制</h4>
+<p>在Spring中也有一种类似与Java SPI的加载机制。它在META-INF/spring.factories文件中配置接口的实现类名称，然后在程序中读取这些配置文件并实例化。
+这种自定义的SPI机制是Spring Boot Starter实现的基础。</p>
+<p>Spring Factories实现原理
+spring-core包里定义了SpringFactoriesLoader类，这个类实现了检索META-INF/spring.factories文件，并获取指定接口的配置的功能。在这个类中定义了两个对外的方法：</p>
+<p>loadFactories 根据接口类获取其实现类的实例，这个方法返回的是对象列表。
+loadFactoryNames 根据接口获取其接口类的名称，这个方法返回的是类名的列表。
+上面的两个方法的关键都是从指定的ClassLoader中获取spring.factories文件，并解析得到类名列表，具体代码如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;&gt;</span> <span style="color:#a6e22e">loadSpringFactories</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@Nullable</span> ClassLoader classLoader<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    MultiValueMap<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> result <span style="color:#f92672">=</span> cache<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>classLoader<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>result <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+        Enumeration<span style="color:#f92672">&lt;</span>URL<span style="color:#f92672">&gt;</span> urls <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>classLoader <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span>
+                classLoader<span style="color:#f92672">.</span><span style="color:#a6e22e">getResources</span><span style="color:#f92672">(</span>FACTORIES_RESOURCE_LOCATION<span style="color:#f92672">)</span> <span style="color:#f92672">:</span>
+                ClassLoader<span style="color:#f92672">.</span><span style="color:#a6e22e">getSystemResources</span><span style="color:#f92672">(</span>FACTORIES_RESOURCE_LOCATION<span style="color:#f92672">));</span>
+        result <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedMultiValueMap<span style="color:#f92672">&lt;&gt;();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>urls<span style="color:#f92672">.</span><span style="color:#a6e22e">hasMoreElements</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            URL url <span style="color:#f92672">=</span> urls<span style="color:#f92672">.</span><span style="color:#a6e22e">nextElement</span><span style="color:#f92672">();</span>
+            UrlResource resource <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UrlResource<span style="color:#f92672">(</span>url<span style="color:#f92672">);</span>
+            Properties properties <span style="color:#f92672">=</span> PropertiesLoaderUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">loadProperties</span><span style="color:#f92672">(</span>resource<span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Map<span style="color:#f92672">.</span><span style="color:#a6e22e">Entry</span><span style="color:#f92672">&lt;?,</span> <span style="color:#f92672">?&gt;</span> entry <span style="color:#f92672">:</span> properties<span style="color:#f92672">.</span><span style="color:#a6e22e">entrySet</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+                String factoryClassName <span style="color:#f92672">=</span> <span style="color:#f92672">((</span>String<span style="color:#f92672">)</span> entry<span style="color:#f92672">.</span><span style="color:#a6e22e">getKey</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">();</span>
+                <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>String factoryName <span style="color:#f92672">:</span> StringUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">commaDelimitedListToStringArray</span><span style="color:#f92672">((</span>String<span style="color:#f92672">)</span> entry<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">()))</span> <span style="color:#f92672">{</span>
+                    result<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>factoryClassName<span style="color:#f92672">,</span> factoryName<span style="color:#f92672">.</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">());</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+        cache<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>classLoader<span style="color:#f92672">,</span> result<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Unable to load factories from location [&#34;</span> <span style="color:#f92672">+</span>
+                FACTORIES_RESOURCE_LOCATION <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;]&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>从代码中我们可以知道，在这个方法中会遍历整个ClassLoader中所有jar包下的spring.factories文件。也就是说我们可以在自己的jar中配置spring.factories文件，不会影响到其它地方的配置，也不会被别人的配置覆盖。</p>
+<p>spring.factories的是通过Properties解析得到的，所以我们在写文件中的内容都是安装下面这种方式配置的：</p>
+<pre tabindex="0"><code>com.xxx.interface=com.xxx.impl
+</code></pre><p>多个实现用‘,’分割</p>
+<h4 id="springboot中的springfactories">Springboot中的spring.factories</h4>
+<p>springboot的很多jar包都有<code>spring.factories</code></p>
+<pre tabindex="0"><code># Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration,\
+    org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\
+    org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration,\
+    org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration,\
+    org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration,\
+    org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration,\
+    org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration,\
+    org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration,\
+    org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration,\
+    org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration,\
+    org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration
+</code></pre><h4 id="使用">使用</h4>
+<p>我在搭建微服务时，将全局异常处理放到公共模块中，启动其中一个服务，发现异常处理失效。原因是：这个类与服务的启动类不在同一级目录下，所以Spring boot自动扫包时，扫描不到这个异常处理类。</p>
+<p>处理的方式有很多：</p>
+<ul>
+<li>在SpringBoot的启动类里添加<code>@Import()</code>注解</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#a6e22e">@Import</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> GlobalException<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoApplication</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>DemoApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span>args<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>在启动类的<code>@SpringBootApplication(scanBasePackages = &quot;com.example&quot;)</code>添加扫描包路径</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@SpringBootApplicationx</span><span style="color:#f92672">(</span>scanBasePackages <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;com.example&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoApplication</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>DemoApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span>args<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>创建<code>spring.factories</code>文件
+采用<code>spring.factories</code>方式去加载配置类，在resource目录中创建MATE-INF目录，然后新建一个spring.factories文件，内容为：</li>
+</ul>
+<pre tabindex="0"><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.applet.common.exception.GlobalException
+</code></pre><p>这样就解决了spring扫描不到类的问题，这个类可以是自己写的，也可以是第三方的。</p>
+
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body></html>

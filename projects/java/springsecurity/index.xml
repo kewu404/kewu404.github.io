@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring Security on Naituyuw</title>
+    <link>https://kewu404.github.io/projects/java/springsecurity/</link>
+    <description>Recent content in Spring Security on Naituyuw</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 01 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/projects/java/springsecurity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spring Security补充</title>
+      <link>https://kewu404.github.io/projects/java/springsecurity/spring-security-3/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/java/springsecurity/spring-security-3/</guid>
+      <description>上一篇：Spring Security鉴权分析</description>
+    </item>
+    
+    <item>
+      <title>Spring Security鉴权分析</title>
+      <link>https://kewu404.github.io/projects/java/springsecurity/spring-security-2/</link>
+      <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/java/springsecurity/spring-security-2/</guid>
+      <description>上一篇：Spring Security登录认证
+1. 楔子 SpringSecurity的认证在上一篇已经讲过了，这篇讲一下鉴权。 回忆上一章中开头那张图，用户请求先经过认证，然后才是鉴权，而FilterSecurityInterceptor则是鉴权的开始
+2. 代码分析 发起一个请求，跟着这个请求，看一下SpringSecurity在鉴权过程中都做了哪些。
+FilterSecurityInterceptor 首先是FilterSecurityInterceptor,继承AbstractSecurityInterceptor
+public class FilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter { ... public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException { FilterInvocation fi = new FilterInvocation(request, response, chain); invoke(fi); } public void invoke(FilterInvocation fi) throws IOException, ServletException { // 过滤器已应用于此请求，用户希望我们观察每个请求处理一次，因此不要重新进行安全检查 	if ((fi.getRequest() != null) &amp;amp;&amp;amp; (fi.getRequest().getAttribute(FILTER_APPLIED) != null) &amp;amp;&amp;amp; observeOncePerRequest) { fi.getChain().doFilter(fi.getRequest(), fi.getResponse()); } else { // 第一次调用此请求时，请执行安全检查 	if (fi.</description>
+    </item>
+    
+    <item>
+      <title>Spring Security自定义登录实现</title>
+      <link>https://kewu404.github.io/projects/java/springsecurity/spring-security-login/</link>
+      <pubDate>Fri, 22 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/java/springsecurity/spring-security-login/</guid>
+      <description>趁着腾讯云100条免费短信还没有耗完，写一下SpringSecurity短信登录。在实践前需要看下springsecurity认证这一篇。
+ 需要创建的类：
+ SmsCodeAuthenticationFilter: 拦截请求，并调用Manager进行认证 SmsCodeAuthenticationToken: 在上面filter中构造实体类，用于下面provider认证 SmsCodeAuthenticationProvider: Manager会根据上面的token，选择该类进行认证  上面的三个类都是对着SpringSecurity默认认证进行仿写的。
+首先仿写Filter，模仿UsernamePasswordAuthenticationFilter来搞
+public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessingFilter { private static final String MOBILE = &amp;#34;mobile&amp;#34;; private static final String CODE = &amp;#34;code&amp;#34;; private boolean postOnly = true; @Resource private RedisUtil redisUtil; @Resource private JwtTokenUtil jwtTokenUtil; public SmsCodeAuthenticationFilter() { super(new AntPathRequestMatcher(Constant.SMS_LOGIN, Constant.HTTP_POST)); } @Override public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException { if (postOnly &amp;amp;&amp;amp; !request.getMethod().equals(&amp;#34;POST&amp;#34;)) { throw new AuthenticationServiceException( &amp;#34;Authentication method not supported: &amp;#34; + request.</description>
+    </item>
+    
+    <item>
+      <title>Spring Security登录认证</title>
+      <link>https://kewu404.github.io/projects/java/springsecurity/spring-security-1/</link>
+      <pubDate>Tue, 19 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/java/springsecurity/spring-security-1/</guid>
+      <description>Spring Security 在做后台管理系统时，首先要做的就是搭建一个认证鉴权的架子，关于认证鉴权，有的公司是自己定制的，有的则是使用框架，例如shiro,springSecurity&amp;hellip;
+之前有使用过shiro，这次再来学习一下SpringSecurity,特此记录。
+Spring Security的实现是通过一层层的过滤器实现的。其中的过程见上图
+其中绿色部分是主要负责认证的过滤器，蓝色部分负责异常处理，橙色部分负责授权。这章主要梳理一下认证流程。
+重要概念 了解到Spring Security的原理后，还需要知道一些重要的概念：
+ *Filter拦截请求，调用*Manager进行认证 *Manager管理多个*Provider，并根据*Token选择合适的*Provider进行认证 *Provider负责认证，检查登录信息是否正确 *Token是认证信息，包含账号密码，具体可以自己定义需要的登录参数   Authentication  /** * &amp;lt;p&amp;gt; * Principal：此接口表示主体的抽象概念，可用于表示任何实体，如个人、公司和登录id。一般情况下会存入登录名 * &amp;lt;/p&amp;gt; * * 认证接口,定义认证信息所需内容 **/ public interface Authentication extends Principal, Serializable { /** * 获取用户的权限信息 * 一般情况下是将用户的角色信息存入 * 由`AuthenticationManager`存入 */ Collection&amp;lt;? extends GrantedAuthority&amp;gt; getAuthorities(); /** * 获取用户凭证信息，一般情况下里面的数据是密码 */ Object getCredentials(); /** * 获取额外的其他信息，比如user表中的信息 */ Object getDetails(); /** * 获取用户的认证信息 * &amp;lt;li&amp;gt;在未认证的情况下，里面是用户名&amp;lt;/li&amp;gt; * &amp;lt;li&amp;gt;在已认证的情况下，里面存放的是UserDetails信息&amp;lt;/li&amp;gt; */ Object getPrincipal(); /** * 是否认证 */ boolean isAuthenticated(); /** * 设置是否认证（true or false） */ void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException; Authentication是认证信息，包含账号密码，实际业务中根据登录所需参数进行自定义</description>
+    </item>
+    
+  </channel>
+</rss>

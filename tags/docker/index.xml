@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on Naituyuw</title>
+    <link>https://kewu404.github.io/tags/docker/</link>
+    <description>Recent content in docker on Naituyuw</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 12 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker安装使用</title>
+      <link>https://kewu404.github.io/posts/post_docker_install/</link>
+      <pubDate>Fri, 12 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_docker_install/</guid>
+      <description>安装 菜鸟教程（linux） | 官方安装教程
+安装完成后：
+//验证：docker verison//启动：systemctl start docker//开机启动：systemctl enable docker安装 docker-compose docker-compose是用来管理容器的，类似用户容器管家，我们有N多台容器或者应用需要启动的时候，如果手动去操作，是非常耗费时间的，如果有了 Docker-Compose 只需要一个配置文件就可以帮我们搞定，但是 Docker-Compose 只能管理当前主机上的 Docker，不能去管理其他服务器上的服务。意思就是单机环境。
+docker-compose是基于docker的编排工具，使容器的操作能够批量的，可视的执行，是一个管理多个容器的工具，比如可以解决容器之间的依赖关系，当在宿主机启动较多的容器时候，如果都是手动操作会觉得比较麻烦而且容器出错，这个时候推荐使用 dockerd的单机编排工具 docker-compose。
+安装命令
+curl -L &amp;quot;https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)&amp;quot; -o /usr/local/bin/docker-compose//给docker-compose执行权限chmod +x /usr/local/bin/docker-compose//检查docker-compose --version使用 常用命令 使用docker可以查看docker所有命令
+$ dockerUsage: docker [OPTIONS] COMMANDA self-sufficient runtime for containersOptions:--config string Location of client config files (default &amp;quot;/root/.docker&amp;quot;)-c, --context string Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with &amp;quot;dockercontext use&amp;quot;)-D, --debug Enable debug mode-H, --host list Daemon socket(s) to connect to-l, --log-level string Set the logging level (&amp;quot;debug&amp;quot;|&amp;quot;info&amp;quot;|&amp;quot;warn&amp;quot;|&amp;quot;error&amp;quot;|&amp;quot;fatal&amp;quot;) (default &amp;quot;info&amp;quot;)--tls Use TLS; implied by --tlsverify--tlscacert string Trust certs signed only by this CA (default &amp;quot;/root/.</description>
+    </item>
+    
+  </channel>
+</rss>

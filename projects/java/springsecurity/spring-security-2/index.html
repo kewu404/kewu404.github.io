@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Spring Security鉴权分析</title>
+    <meta name="description" content="发呆">
+    <meta name="keywords" content='blog, gokarna, hugo, Spring Security'>
+
+    <meta property="og:url" content="https://kewu404.github.io/projects/java/springsecurity/spring-security-2/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Spring Security鉴权分析">
+    <meta property="og:description" content="发呆">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Spring Security鉴权分析">
+    <meta name="twitter:description" content="发呆">
+    <meta property="twitter:domain" content="https://kewu404.github.io/projects/java/springsecurity/spring-security-2/">
+    <meta property="twitter:url" content="https://kewu404.github.io/projects/java/springsecurity/spring-security-2/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/projects/java/springsecurity/spring-security-2/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    
+
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>Spring Security鉴权分析</h1>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p><a href="/projects/java/springsecurity/spring-security-1/">上一篇：Spring Security登录认证</a></p>
+<h4 id="1-楔子">1. 楔子</h4>
+<p>SpringSecurity的认证在上一篇已经讲过了，这篇讲一下鉴权。
+回忆上一章中开头那张图，用户请求先经过认证，然后才是鉴权，而<code>FilterSecurityInterceptor</code>则是鉴权的开始</p>
+<h4 id="2-代码分析">2. 代码分析</h4>
+<p>发起一个请求，跟着这个请求，看一下SpringSecurity在鉴权过程中都做了哪些。</p>
+<h5 id="filtersecurityinterceptor">FilterSecurityInterceptor</h5>
+<p>首先是<code>FilterSecurityInterceptor</code>,继承<code>AbstractSecurityInterceptor</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilterSecurityInterceptor</span> <span style="color:#66d9ef">extends</span> AbstractSecurityInterceptor <span style="color:#66d9ef">implements</span> Filter <span style="color:#f92672">{</span>
+
+    <span style="color:#f92672">...</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doFilter</span><span style="color:#f92672">(</span>ServletRequest request<span style="color:#f92672">,</span> ServletResponse response<span style="color:#f92672">,</span>
+        FilterChain chain<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">,</span> ServletException <span style="color:#f92672">{</span>
+        FilterInvocation fi <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FilterInvocation<span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> response<span style="color:#f92672">,</span> chain<span style="color:#f92672">);</span>
+        invoke<span style="color:#f92672">(</span>fi<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">invoke</span><span style="color:#f92672">(</span>FilterInvocation fi<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">,</span> ServletException <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 过滤器已应用于此请求，用户希望我们观察每个请求处理一次，因此不要重新进行安全检查
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">((</span>fi<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequest</span><span style="color:#f92672">()</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+				<span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">(</span>fi<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequest</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAttribute</span><span style="color:#f92672">(</span>FILTER_APPLIED<span style="color:#f92672">)</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+				<span style="color:#f92672">&amp;&amp;</span> observeOncePerRequest<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			fi<span style="color:#f92672">.</span><span style="color:#a6e22e">getChain</span><span style="color:#f92672">().</span><span style="color:#a6e22e">doFilter</span><span style="color:#f92672">(</span>fi<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequest</span><span style="color:#f92672">(),</span> fi<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">());</span>
+		<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+			<span style="color:#75715e">// 第一次调用此请求时，请执行安全检查
+</span><span style="color:#75715e"></span>			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>fi<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequest</span><span style="color:#f92672">()</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> observeOncePerRequest<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				fi<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequest</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setAttribute</span><span style="color:#f92672">(</span>FILTER_APPLIED<span style="color:#f92672">,</span> Boolean<span style="color:#f92672">.</span><span style="color:#a6e22e">TRUE</span><span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+            <span style="color:#75715e">//调用父类中 beforeInvocation(filterInvocation) 方法；方法作用：鉴权
+</span><span style="color:#75715e"></span>			InterceptorStatusToken token <span style="color:#f92672">=</span> <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">beforeInvocation</span><span style="color:#f92672">(</span>fi<span style="color:#f92672">);</span>
+
+			<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//执行过滤器
+</span><span style="color:#75715e"></span>				fi<span style="color:#f92672">.</span><span style="color:#a6e22e">getChain</span><span style="color:#f92672">().</span><span style="color:#a6e22e">doFilter</span><span style="color:#f92672">(</span>fi<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequest</span><span style="color:#f92672">(),</span> fi<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">());</span>
+			<span style="color:#f92672">}</span>
+			<span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//调用父类中 finallyInvocation(InterceptorStatusToken) 方法；
+</span><span style="color:#75715e"></span>				<span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">finallyInvocation</span><span style="color:#f92672">(</span>token<span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+
+            <span style="color:#75715e">//调用父类中 afterInvocation(InterceptorStatusToken, Object) 方法；
+</span><span style="color:#75715e"></span>			<span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">afterInvocation</span><span style="color:#f92672">(</span>token<span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>每一个请求经过<code>Filter</code>过滤 都会添加<code>FILTER_APPLIED</code>属性，没有被添加<code>FILTER_APPLIED</code>属性的，都会执行父类中的<code>beforeInvocation</code>方法，这个方法先通过 <code>this.obtainSecurityMetadataSource().getAttributes(Object object)</code> 拿受保护对象（就是当前请求的 URI）所有的映射角色（<code>ConfigAttribute</code> 直接理解为角色的进一步抽象） 。然后执行this.accessDecisionManager.decide方法，进行投票决策来确定是否放行。</p>
+<h4 id="abstractsecurityinterceptor">AbstractSecurityInterceptor</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AbstractSecurityInterceptor</span> <span style="color:#66d9ef">implements</span> InitializingBean<span style="color:#f92672">,</span>
+		ApplicationEventPublisherAware<span style="color:#f92672">,</span> MessageSourceAware <span style="color:#f92672">{</span>
+	<span style="color:#66d9ef">protected</span> InterceptorStatusToken <span style="color:#a6e22e">beforeInvocation</span><span style="color:#f92672">(</span>Object object<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		Assert<span style="color:#f92672">.</span><span style="color:#a6e22e">notNull</span><span style="color:#f92672">(</span>object<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Object was null&#34;</span><span style="color:#f92672">);</span>
+		<span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> debug <span style="color:#f92672">=</span> logger<span style="color:#f92672">.</span><span style="color:#a6e22e">isDebugEnabled</span><span style="color:#f92672">();</span>
+
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>getSecureObjectClass<span style="color:#f92672">().</span><span style="color:#a6e22e">isAssignableFrom</span><span style="color:#f92672">(</span>object<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">()))</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException<span style="color:#f92672">(</span>
+					<span style="color:#e6db74">&#34;Security invocation attempted for object &#34;</span>
+							<span style="color:#f92672">+</span> object<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()</span>
+							<span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; but AbstractSecurityInterceptor only configured to support secure objects of type: &#34;</span>
+							<span style="color:#f92672">+</span> getSecureObjectClass<span style="color:#f92672">());</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#75715e">//获取访问当前资源所需要的权限
+</span><span style="color:#75715e"></span>		Collection<span style="color:#f92672">&lt;</span>ConfigAttribute<span style="color:#f92672">&gt;</span> attributes <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">obtainSecurityMetadataSource</span><span style="color:#f92672">()</span>
+				<span style="color:#f92672">.</span><span style="color:#a6e22e">getAttributes</span><span style="color:#f92672">(</span>object<span style="color:#f92672">);</span>
+
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>attributes <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> attributes<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>rejectPublicInvocations<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException<span style="color:#f92672">(</span>
+						<span style="color:#e6db74">&#34;Secure object invocation &#34;</span>
+								<span style="color:#f92672">+</span> object
+								<span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; was denied as public invocations are not allowed via this interceptor. &#34;</span>
+								<span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;This indicates a configuration error because the &#34;</span>
+								<span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;rejectPublicInvocations property is set to &#39;true&#39;&#34;</span><span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>debug<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				logger<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Public object - authentication not attempted&#34;</span><span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+			publishEvent<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> PublicInvocationEvent<span style="color:#f92672">(</span>object<span style="color:#f92672">));</span>
+			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span> <span style="color:#75715e">// no further work post-invocation
+</span><span style="color:#75715e"></span>		<span style="color:#f92672">}</span>
+
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>debug<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			logger<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Secure object: &#34;</span> <span style="color:#f92672">+</span> object <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;; Attributes: &#34;</span> <span style="color:#f92672">+</span> attributes<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>SecurityContextHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">getContext</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getAuthentication</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			credentialsNotFound<span style="color:#f92672">(</span>messages<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span>
+					<span style="color:#e6db74">&#34;AbstractSecurityInterceptor.authenticationNotFound&#34;</span><span style="color:#f92672">,</span>
+					<span style="color:#e6db74">&#34;An Authentication object was not found in the SecurityContext&#34;</span><span style="color:#f92672">),</span>
+					object<span style="color:#f92672">,</span> attributes<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#75715e">//
+</span><span style="color:#75715e"></span>		Authentication authenticated <span style="color:#f92672">=</span> authenticateIfRequired<span style="color:#f92672">();</span>
+
+		<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+			<span style="color:#75715e">//鉴权方法
+</span><span style="color:#75715e"></span>			<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">accessDecisionManager</span><span style="color:#f92672">.</span><span style="color:#a6e22e">decide</span><span style="color:#f92672">(</span>authenticated<span style="color:#f92672">,</span> object<span style="color:#f92672">,</span> attributes<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>AccessDeniedException accessDeniedException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			publishEvent<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> AuthorizationFailureEvent<span style="color:#f92672">(</span>object<span style="color:#f92672">,</span> attributes<span style="color:#f92672">,</span> authenticated<span style="color:#f92672">,</span>
+					accessDeniedException<span style="color:#f92672">));</span>
+
+			<span style="color:#66d9ef">throw</span> accessDeniedException<span style="color:#f92672">;</span>
+		<span style="color:#f92672">}</span>
+
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>debug<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			logger<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Authorization successful&#34;</span><span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>publishAuthorizationSuccess<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			publishEvent<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> AuthorizedEvent<span style="color:#f92672">(</span>object<span style="color:#f92672">,</span> attributes<span style="color:#f92672">,</span> authenticated<span style="color:#f92672">));</span>
+		<span style="color:#f92672">}</span>
+
+		<span style="color:#75715e">// Attempt to run as a different user
+</span><span style="color:#75715e"></span>		Authentication runAs <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runAsManager</span><span style="color:#f92672">.</span><span style="color:#a6e22e">buildRunAs</span><span style="color:#f92672">(</span>authenticated<span style="color:#f92672">,</span> object<span style="color:#f92672">,</span>
+				attributes<span style="color:#f92672">);</span>
+
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>runAs <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>debug<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				logger<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;RunAsManager did not change Authentication object&#34;</span><span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+
+			<span style="color:#75715e">// no further work post-invocation
+</span><span style="color:#75715e"></span>			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> InterceptorStatusToken<span style="color:#f92672">(</span>SecurityContextHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">getContext</span><span style="color:#f92672">(),</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">,</span>
+					attributes<span style="color:#f92672">,</span> object<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>debug<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				logger<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Switching to RunAs Authentication: &#34;</span> <span style="color:#f92672">+</span> runAs<span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+			SecurityContext origCtx <span style="color:#f92672">=</span> SecurityContextHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">getContext</span><span style="color:#f92672">();</span>
+			SecurityContextHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">setContext</span><span style="color:#f92672">(</span>SecurityContextHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">createEmptyContext</span><span style="color:#f92672">());</span>
+			SecurityContextHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">getContext</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setAuthentication</span><span style="color:#f92672">(</span>runAs<span style="color:#f92672">);</span>
+			<span style="color:#75715e">// need to revert to token.Authenticated post-invocation
+</span><span style="color:#75715e"></span>			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> InterceptorStatusToken<span style="color:#f92672">(</span>origCtx<span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span> attributes<span style="color:#f92672">,</span> object<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h5 id="accessdecisionmanager">AccessDecisionManager</h5>
+<p>这里才是鉴权的核心类，<code>AccessDecisionManager</code>一个决策管理器，用来规定使用某种方式进行鉴权，目前有三种决策方式：</p>
+<ul>
+<li>AffirmativeBased 一票通过，只要有一个投票通过，就允许访问``</li>
+<li>ConsensusBased 有一半以上的投票器通过，就允许访问</li>
+<li>UnanimousBased 一票反对 只要有一个投票器不通过，就不允许访问</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AccessDecisionManager</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">//根据传递的参数，以及选定的投票器进行投票
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">decide</span><span style="color:#f92672">(</span>Authentication authentication<span style="color:#f92672">,</span> Object object<span style="color:#f92672">,</span>
+			Collection<span style="color:#f92672">&lt;</span>ConfigAttribute<span style="color:#f92672">&gt;</span> configAttributes<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> AccessDeniedException<span style="color:#f92672">,</span>
+			InsufficientAuthenticationException<span style="color:#f92672">;</span>
+    <span style="color:#75715e">//下面这两个方法主要起辅助作用的。大都执行检查操作
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>ConfigAttribute attribute<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;?&gt;</span> clazz<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这个接口</p>
+<h5 id="accessdecisionvoter">AccessDecisionVoter</h5>
+<p>投票器接口<code>AccessDecisionVoter</code>，可以根据实际业务进行自定义的投票器。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AccessDecisionVoter</span><span style="color:#f92672">&lt;</span>S<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+	<span style="color:#75715e">// ~ Static fields/initializers
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// =====================================================================================
+</span><span style="color:#75715e"></span>
+	<span style="color:#66d9ef">int</span> ACCESS_GRANTED <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">int</span> ACCESS_ABSTAIN <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">int</span> ACCESS_DENIED <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+    <span style="color:#75715e">//投票方法
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">vote</span><span style="color:#f92672">(</span>Authentication authentication<span style="color:#f92672">,</span> S object<span style="color:#f92672">,</span>
+			Collection<span style="color:#f92672">&lt;</span>ConfigAttribute<span style="color:#f92672">&gt;</span> attributes<span style="color:#f92672">);</span>
+
+    <span style="color:#75715e">//决策管理器中的两个supports就是调用投票器中的这两个方法，主要是检查上面方法参数有效性
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>ConfigAttribute attribute<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;?&gt;</span> clazz<span style="color:#f92672">);</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><p>投票器vote方法返回一个int值；-1代表反对，0代表弃权，1代表赞成；投票管理器收集投票结果，如果最终结果大于等于0则放行该请求。</p>
+<p>上面就是鉴权涉及到的相关代码，如果使用SpringSecurity鉴权无法满足业务需求，可以进行自定义。
+首先可以继承<code>AbstractAccessDecisionManager</code>来自定义决策管理器，这里可以使用投票器，也可以直接做鉴权相关逻辑；还可以去自定义投票器。
+<a href="/projects/java/springsecurity/spring-security-3/">下一篇：SpringSecurity3</a></p>
+
+        </p>
+    </div>
+</div>
+
+
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+            
+            <div class="nav-link">
+                <a href="/about/"> 关于我 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/link"> 友链 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/contact"> 联系 </a>
+            </div>
+            
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body></html>

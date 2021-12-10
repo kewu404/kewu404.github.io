@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Spring Security自定义登录实现</title>
+    <meta name="description" content="Spring Security自定义登录实现">
+    <meta name="keywords" content='blog, gokarna, hugo, Spring Security'>
+
+    <meta property="og:url" content="https://kewu404.github.io/projects/java/springsecurity/spring-security-login/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Spring Security自定义登录实现">
+    <meta property="og:description" content="Spring Security自定义登录实现">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Spring Security自定义登录实现">
+    <meta name="twitter:description" content="Spring Security自定义登录实现">
+    <meta property="twitter:domain" content="https://kewu404.github.io/projects/java/springsecurity/spring-security-login/">
+    <meta property="twitter:url" content="https://kewu404.github.io/projects/java/springsecurity/spring-security-login/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/projects/java/springsecurity/spring-security-login/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    
+
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>Spring Security自定义登录实现</h1>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h3 id="heading"></h3>
+<p>趁着腾讯云100条免费短信还没有耗完，写一下SpringSecurity短信登录。在实践前需要看下<a href="/projects/java/springsecurity/spring-security-1/">springsecurity认证</a>这一篇。</p>
+<h3 id="heading-1"></h3>
+<p>需要创建的类：</p>
+<ul>
+<li><code>SmsCodeAuthenticationFilter</code>: 拦截请求，并调用Manager进行认证</li>
+<li><code>SmsCodeAuthenticationToken</code>: 在上面filter中构造实体类，用于下面provider认证</li>
+<li><code>SmsCodeAuthenticationProvider</code>: Manager会根据上面的token，选择该类进行认证</li>
+</ul>
+<p>上面的三个类都是对着SpringSecurity默认认证进行仿写的。</p>
+<p>首先仿写Filter，模仿<code>UsernamePasswordAuthenticationFilter</code>来搞</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SmsCodeAuthenticationFilter</span> <span style="color:#66d9ef">extends</span> AbstractAuthenticationProcessingFilter <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String MOBILE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mobile&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String CODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;code&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> postOnly <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@Resource</span>
+    <span style="color:#66d9ef">private</span> RedisUtil redisUtil<span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@Resource</span>
+    <span style="color:#66d9ef">private</span> JwtTokenUtil jwtTokenUtil<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SmsCodeAuthenticationFilter</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> AntPathRequestMatcher<span style="color:#f92672">(</span>Constant<span style="color:#f92672">.</span><span style="color:#a6e22e">SMS_LOGIN</span><span style="color:#f92672">,</span> Constant<span style="color:#f92672">.</span><span style="color:#a6e22e">HTTP_POST</span><span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> Authentication <span style="color:#a6e22e">attemptAuthentication</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> AuthenticationException<span style="color:#f92672">,</span> IOException<span style="color:#f92672">,</span> ServletException <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>postOnly <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethod</span><span style="color:#f92672">().</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;POST&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> AuthenticationServiceException<span style="color:#f92672">(</span>
+                    <span style="color:#e6db74">&#34;Authentication method not supported: &#34;</span> <span style="color:#f92672">+</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethod</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+        String mobile <span style="color:#f92672">=</span> obtainMobile<span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
+        String code <span style="color:#f92672">=</span> obtainCode<span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
+        <span style="color:#75715e">//校验验证码
+</span><span style="color:#75715e"></span>        String codeCache <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getRedisUtil</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>UserCacheKeyDefine<span style="color:#f92672">.</span><span style="color:#a6e22e">SMS_CODE</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>StringUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">isBlank</span><span style="color:#f92672">(</span>code<span style="color:#f92672">)){</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> CustomException<span style="color:#f92672">(</span>ResultCode<span style="color:#f92672">.</span><span style="color:#a6e22e">USER_LOGIN_NOT_CAPTCHA</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>Objects<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>code<span style="color:#f92672">,</span>codeCache<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> CustomException<span style="color:#f92672">(</span>ResultCode<span style="color:#f92672">.</span><span style="color:#a6e22e">USER_LOGIN_ERROR_CAPTCHA</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        SmsCodeAuthenticationToken token <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SmsCodeAuthenticationToken<span style="color:#f92672">(</span>mobile<span style="color:#f92672">);</span>
+
+        setDetails<span style="color:#f92672">(</span>request<span style="color:#f92672">,</span>token<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getAuthenticationManager</span><span style="color:#f92672">().</span><span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>token<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 认证成功返回
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">successfulAuthentication</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">,</span> FilterChain chain<span style="color:#f92672">,</span> Authentication authResult<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">,</span> ServletException <span style="color:#f92672">{</span>
+        SysUserDO userDO <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SysUserDO<span style="color:#f92672">)</span> authResult<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">();</span>
+
+        String token <span style="color:#f92672">=</span> jwtTokenUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">generateToken</span><span style="color:#f92672">(</span>userDO<span style="color:#f92672">);</span>
+        userDO<span style="color:#f92672">.</span><span style="color:#a6e22e">setPassword</span><span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+        userDO<span style="color:#f92672">.</span><span style="color:#a6e22e">setMobile</span><span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+        userDO<span style="color:#f92672">.</span><span style="color:#a6e22e">setRoles</span><span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+        userDO<span style="color:#f92672">.</span><span style="color:#a6e22e">setToken</span><span style="color:#f92672">(</span>token<span style="color:#f92672">);</span>
+        ServletUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">renderJsonStr</span><span style="color:#f92672">(</span>response<span style="color:#f92672">,</span> Result<span style="color:#f92672">.</span><span style="color:#a6e22e">success</span><span style="color:#f92672">(</span>userDO<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 认证失败返回
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">unsuccessfulAuthentication</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">,</span> AuthenticationException failed<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">,</span> ServletException <span style="color:#f92672">{</span>
+        ServletUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">renderJsonStr</span><span style="color:#f92672">(</span>response<span style="color:#f92672">,</span> Result<span style="color:#f92672">.</span><span style="color:#a6e22e">failed</span><span style="color:#f92672">(</span>ResultCode<span style="color:#f92672">.</span><span style="color:#a6e22e">CLIENT_AUTHENTICATION_FAILED</span><span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setPostOnly</span><span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span> postOnly<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">postOnly</span> <span style="color:#f92672">=</span> postOnly<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">obtainMobile</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">){</span>
+        String parameter <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span>MOBILE<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> parameter <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> parameter<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">?</span>
+                <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">:</span> SecureUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">aes</span><span style="color:#f92672">(</span>Base64<span style="color:#f92672">.</span><span style="color:#a6e22e">decode</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;22位密钥&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">decryptStr</span><span style="color:#f92672">(</span>parameter<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">obtainCode</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">){</span>
+        String parameter <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span>CODE<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> parameter <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> parameter<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">?</span>
+                <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">:</span> SecureUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">aes</span><span style="color:#f92672">(</span>Base64<span style="color:#f92672">.</span><span style="color:#a6e22e">decode</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;22位密钥&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">decryptStr</span><span style="color:#f92672">(</span>parameter<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setDetails</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span>
+                              SmsCodeAuthenticationToken authRequest<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        authRequest<span style="color:#f92672">.</span><span style="color:#a6e22e">setDetails</span><span style="color:#f92672">(</span>authenticationDetailsSource<span style="color:#f92672">.</span><span style="color:#a6e22e">buildDetails</span><span style="color:#f92672">(</span>request<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> RedisUtil <span style="color:#a6e22e">getRedisUtil</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> redisUtil<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setRedisUtil</span><span style="color:#f92672">(</span>RedisUtil redisUtil<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">redisUtil</span> <span style="color:#f92672">=</span> redisUtil<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>接着再实现<code>SmsCodeAuthenticationToken</code>，模仿<code>UsernamePasswordAuthenticationToken</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SmsCodeAuthenticationToken</span> <span style="color:#66d9ef">extends</span> AbstractAuthenticationToken <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Object principal<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SmsCodeAuthenticationToken</span><span style="color:#f92672">(</span>Object principal<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">principal</span> <span style="color:#f92672">=</span> principal<span style="color:#f92672">;</span>
+        setAuthenticated<span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SmsCodeAuthenticationToken</span><span style="color:#f92672">(</span>Collection<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> GrantedAuthority<span style="color:#f92672">&gt;</span> authorities<span style="color:#f92672">,</span> Object principal<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>authorities<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">principal</span> <span style="color:#f92672">=</span> principal<span style="color:#f92672">;</span>
+        setAuthenticated<span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">getCredentials</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">principal</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAuthenticated</span><span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span> isAuthenticated<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IllegalArgumentException <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isAuthenticated<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException<span style="color:#f92672">(</span>
+                    <span style="color:#e6db74">&#34;Cannot set this token to trusted - use constructor which takes a GrantedAuthority list instead&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setAuthenticated</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><p>再看下Provider，<code>AuthenticationProvider</code>有很多实现类，直接看这个抽象类<code>AbstractUserDetailsAuthenticationProvider</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> Authentication <span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>Authentication authentication<span style="color:#f92672">)</span>
+			<span style="color:#66d9ef">throws</span> AuthenticationException <span style="color:#f92672">{</span>
+		Assert<span style="color:#f92672">.</span><span style="color:#a6e22e">isInstanceOf</span><span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> authentication<span style="color:#f92672">,</span>
+				<span style="color:#f92672">()</span> <span style="color:#f92672">-&gt;</span> messages<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span>
+						<span style="color:#e6db74">&#34;AbstractUserDetailsAuthenticationProvider.onlySupports&#34;</span><span style="color:#f92672">,</span>
+						<span style="color:#e6db74">&#34;Only UsernamePasswordAuthenticationToken is supported&#34;</span><span style="color:#f92672">));</span>
+
+		<span style="color:#75715e">// Determine username
+</span><span style="color:#75715e"></span>		String username <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;NONE_PROVIDED&#34;</span>
+				<span style="color:#f92672">:</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">();</span>
+
+		<span style="color:#66d9ef">boolean</span> cacheWasUsed <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">//先查询缓存，没有再去调用retrieveUser去查询数据库
+</span><span style="color:#75715e"></span>		UserDetails user <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userCache</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getUserFromCache</span><span style="color:#f92672">(</span>username<span style="color:#f92672">);</span>
+
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>user <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			cacheWasUsed <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+
+			<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//缓存中没有，去数据库中查询
+</span><span style="color:#75715e"></span>				user <span style="color:#f92672">=</span> retrieveUser<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span>
+						<span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">)</span> authentication<span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span><span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>UsernameNotFoundException notFound<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>hideUserNotFoundExceptions<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+					<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> BadCredentialsException<span style="color:#f92672">(</span>messages<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span>
+							<span style="color:#e6db74">&#34;AbstractUserDetailsAuthenticationProvider.badCredentials&#34;</span><span style="color:#f92672">,</span>
+							<span style="color:#e6db74">&#34;Bad credentials&#34;</span><span style="color:#f92672">));</span>
+				<span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+					<span style="color:#66d9ef">throw</span> notFound<span style="color:#f92672">;</span>
+				<span style="color:#f92672">}</span>
+			<span style="color:#f92672">}</span>
+		<span style="color:#f92672">}</span>
+
+		<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//过期，禁用检查，密码检查
+</span><span style="color:#75715e"></span>			preAuthenticationChecks<span style="color:#f92672">.</span><span style="color:#a6e22e">check</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+			additionalAuthenticationChecks<span style="color:#f92672">(</span>user<span style="color:#f92672">,</span>
+					<span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">)</span> authentication<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span><span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>AuthenticationException exception<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>cacheWasUsed<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#75715e">// 没有通过检查，再去数据库里查询数据
+</span><span style="color:#75715e"></span>				cacheWasUsed <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+				user <span style="color:#f92672">=</span> retrieveUser<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span>
+						<span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">)</span> authentication<span style="color:#f92672">);</span>
+				preAuthenticationChecks<span style="color:#f92672">.</span><span style="color:#a6e22e">check</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+				additionalAuthenticationChecks<span style="color:#f92672">(</span>user<span style="color:#f92672">,</span>
+						<span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">)</span> authentication<span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+				<span style="color:#66d9ef">throw</span> exception<span style="color:#f92672">;</span>
+			<span style="color:#f92672">}</span>
+		<span style="color:#f92672">}</span>
+
+		postAuthenticationChecks<span style="color:#f92672">.</span><span style="color:#a6e22e">check</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+        <span style="color:#75715e">//把结果存到缓存中
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>cacheWasUsed<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userCache</span><span style="color:#f92672">.</span><span style="color:#a6e22e">putUserInCache</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+
+		Object principalToReturn <span style="color:#f92672">=</span> user<span style="color:#f92672">;</span>
+
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>forcePrincipalAsString<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			principalToReturn <span style="color:#f92672">=</span> user<span style="color:#f92672">.</span><span style="color:#a6e22e">getUsername</span><span style="color:#f92672">();</span>
+		<span style="color:#f92672">}</span>
+        <span style="color:#75715e">//创建一个已认证的token返回
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> createSuccessAuthentication<span style="color:#f92672">(</span>principalToReturn<span style="color:#f92672">,</span> authentication<span style="color:#f92672">,</span> user<span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+
+</code></pre></div><p>关于<code>AbstractUserDetailsAuthenticationProvider</code>实现类<code>DaoAuthenticationProvider</code>，主要的作用是：调用UserDetailService从数据库中查询用户信息，密码校验。</br>
+将上面的简化下,只需要实现：</br>
+<code>boolean supports(Class&lt;?&gt; authentication)</code>方法，只要传过来的类是我们上面创建的短信校验token，就使用我们自定义的Provider进行验证。</br>
+<code>Authentication authenticate(Authentication authentication)</code>查询数据库，返回UserDetail。</br>
+创建一个已认证的token</br>
+具体实现：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SmsCodeAuthenticationProvider</span> <span style="color:#66d9ef">implements</span> AuthenticationProvider <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> UserDetailsService userDetailsService<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> Authentication <span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>Authentication authentication<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> AuthenticationException <span style="color:#f92672">{</span>
+        SmsCodeAuthenticationToken authenticationToken <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SmsCodeAuthenticationToken<span style="color:#f92672">)</span> authentication<span style="color:#f92672">;</span>
+
+        String mobile <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>String<span style="color:#f92672">)</span> authenticationToken<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">();</span>
+        UserDetails userDetails <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getUserDetailsService</span><span style="color:#f92672">().</span><span style="color:#a6e22e">loadUserByUsername</span><span style="color:#f92672">(</span>mobile<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>userDetails <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            log<span style="color:#f92672">.</span><span style="color:#a6e22e">warn</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;根据手机号查询不到用户：{}&#34;</span><span style="color:#f92672">,</span>mobile<span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> CustomException<span style="color:#f92672">(</span>ResultCode<span style="color:#f92672">.</span><span style="color:#a6e22e">USER_NOT_EXIST</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;根据手机号查询不到该用户&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        SmsCodeAuthenticationToken token <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SmsCodeAuthenticationToken<span style="color:#f92672">(</span>userDetails<span style="color:#f92672">.</span><span style="color:#a6e22e">getAuthorities</span><span style="color:#f92672">(),</span>userDetails<span style="color:#f92672">);</span>
+        token<span style="color:#f92672">.</span><span style="color:#a6e22e">setDetails</span><span style="color:#f92672">(</span>authenticationToken<span style="color:#f92672">.</span><span style="color:#a6e22e">getDetails</span><span style="color:#f92672">());</span>
+        <span style="color:#66d9ef">return</span> token<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;?&gt;</span> authentication<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> SmsCodeAuthenticationToken<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">isAssignableFrom</span><span style="color:#f92672">(</span>authentication<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setUserDetailsService</span><span style="color:#f92672">(</span>UserDetailsService userDetailsService<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userDetailsService</span> <span style="color:#f92672">=</span> userDetailsService<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">protected</span> UserDetailsService <span style="color:#a6e22e">getUserDetailsService</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> userDetailsService<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><p>最后配置生效：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span><span style="color:#f92672">(</span>HttpSecurity http<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#f92672">...</span>
+        http<span style="color:#f92672">.</span><span style="color:#a6e22e">addFilterBefore</span><span style="color:#f92672">(</span>smsCodeAuthenticationFilter<span style="color:#f92672">,</span> UsernamePasswordAuthenticationFilter<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        http<span style="color:#f92672">.</span><span style="color:#a6e22e">authenticationProvider</span><span style="color:#f92672">(</span>smsCodeAuthenticationProvider<span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Bean</span>
+    <span style="color:#66d9ef">public</span> SmsCodeAuthenticationProvider <span style="color:#a6e22e">smsCodeAuthenticationProvider</span><span style="color:#f92672">(){</span>
+        SmsCodeAuthenticationProvider provider <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SmsCodeAuthenticationProvider<span style="color:#f92672">();</span>
+        provider<span style="color:#f92672">.</span><span style="color:#a6e22e">setUserDetailsService</span><span style="color:#f92672">(</span>sysSecurityService<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> provider<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>接下来再看业务代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> SysUserDO <span style="color:#a6e22e">login</span><span style="color:#f92672">(</span>SysLoginReqVO vo<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    SmsCodeAuthenticationToken token <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SmsCodeAuthenticationToken<span style="color:#f92672">(</span>vo<span style="color:#f92672">.</span><span style="color:#a6e22e">getLoginName</span><span style="color:#f92672">());</span>
+    Authentication authentication <span style="color:#f92672">=</span> authenticationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>token<span style="color:#f92672">);</span>
+    <span style="color:#75715e">//保存认证信息
+</span><span style="color:#75715e"></span>    SecurityContextHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">getContext</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setAuthentication</span><span style="color:#f92672">(</span>authentication<span style="color:#f92672">);</span>
+    <span style="color:#75715e">//放入缓存
+</span><span style="color:#75715e"></span>    String name <span style="color:#f92672">=</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">();</span>
+    SysUserDO user <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SysUserDO<span style="color:#f92672">)</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrincipal</span><span style="color:#f92672">();</span>
+    redisUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>String<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>UserCacheKeyDefine<span style="color:#f92672">.</span><span style="color:#a6e22e">USER_MOBILE</span><span style="color:#f92672">,</span>name<span style="color:#f92672">),</span>user<span style="color:#f92672">,</span> TimeCacheDefine<span style="color:#f92672">.</span><span style="color:#a6e22e">HOUR24</span><span style="color:#f92672">);</span>
+    <span style="color:#75715e">//更新最后登录时间
+</span><span style="color:#75715e"></span>    sysUserService<span style="color:#f92672">.</span><span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>SysUserDO<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">loginTime</span><span style="color:#f92672">(</span>LocalDateTime<span style="color:#f92672">.</span><span style="color:#a6e22e">now</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">(),</span>
+            <span style="color:#66d9ef">new</span> UpdateWrapper<span style="color:#f92672">&lt;</span>SysUserDO<span style="color:#f92672">&gt;().</span><span style="color:#a6e22e">lambda</span><span style="color:#f92672">().</span><span style="color:#a6e22e">eq</span><span style="color:#f92672">(</span>SysUserDO<span style="color:#f92672">::</span>getUsername<span style="color:#f92672">,</span> name<span style="color:#f92672">));</span>
+    <span style="color:#66d9ef">return</span> userDetails<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
+        </p>
+    </div>
+</div>
+
+
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+            
+            <div class="nav-link">
+                <a href="/about/"> 关于我 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/link"> 友链 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/contact"> 联系 </a>
+            </div>
+            
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body></html>

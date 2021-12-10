@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>soul on Naituyuw</title>
+    <link>https://kewu404.github.io/tags/soul/</link>
+    <description>Recent content in soul on Naituyuw</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/tags/soul/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>soul网关</title>
+      <link>https://kewu404.github.io/posts/post_gateway_soul_01/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_gateway_soul_01/</guid>
+      <description>&lt;h4 id=&#34;资料&#34;&gt;资料&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;文档 :&lt;/strong&gt;  &lt;a href=&#34;https://dromara.org/projects/soul/overview/&#34;&gt;https://dromara.org/projects/soul/overview/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码 :&lt;/strong&gt; &lt;a href=&#34;https://gitee.com/shuaiqiyu/soul&#34;&gt;https://gitee.com/shuaiqiyu/soul&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;社区 :&lt;/strong&gt; &lt;a href=&#34;https://dromara.org/zh/community/&#34;&gt;https://dromara.org/zh/community/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

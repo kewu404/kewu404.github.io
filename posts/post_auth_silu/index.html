@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>鉴权认证在微服务中的思考</title>
+    <meta name="description" content="关于认证鉴权与API权限控制在微服务架构中的思考与设计">
+    <meta name="keywords" content='blog, gokarna, hugo'>
+
+    <meta property="og:url" content="https://kewu404.github.io/posts/post_auth_silu/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="鉴权认证在微服务中的思考">
+    <meta property="og:description" content="关于认证鉴权与API权限控制在微服务架构中的思考与设计">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="鉴权认证在微服务中的思考">
+    <meta name="twitter:description" content="关于认证鉴权与API权限控制在微服务架构中的思考与设计">
+    <meta property="twitter:domain" content="https://kewu404.github.io/posts/post_auth_silu/">
+    <meta property="twitter:url" content="https://kewu404.github.io/posts/post_auth_silu/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/posts/post_auth_silu/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    
+    
+    <div class="post-header-section">
+        <h1>鉴权认证在微服务中的思考</h1>
+        
+        <p class="post-date">
+            September 21, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h4 id="1-起因">1. 起因</h4>
+<p>  在搭建微服务项目的时候，原有的单体应用是基于session的安全权限方式，不能满足现有的微服务架构的认证与鉴权需求。微服务架构下，一个应用会被拆分成若干个微应用，每个微应用都需要对访问进行鉴权，每个微应用都需要明确当前访问用户以及其权限。尤其当访问来源不只是浏览器，还包括其他服务的调用时，单体应用架构下的鉴权方式就不是特别合适了。在微服务架构下，要考虑外部应用接入的场景、用户–服务的鉴权、服务–服务的鉴权等多种鉴权场景。
+比如用户A访问User Service，A如果未登录，则首先需要登录，请求获取授权token。获取token之后，A将携带着token去请求访问某个文件，这样就需要对A的身份进行校验，并且A可以访问该文件。
+为了适应架构的变化、需求的变化，auth权限模块被单独出来作为一个基础的微服务系统，为其他业务service提供服务。</p>
+<h4 id="2-方案">2. 方案</h4>
+<h5 id="21-认证与鉴权">2.1 认证与鉴权</h5>
+<p>  读了许多博客，也看了好多方案</p>
+<ol>
+<li>分布式Session方案</li>
+</ol>
+<p>分布式会话方案原理主要是将关于用户认证的信息存储在共享存储中，且通常由用户会话作为 key 来实现的简单分布式哈希映射。当用户访问微服务时，用户数据可以从共享存储中获取。在某些场景下，这种方案很不错，用户登录状态是不透明的。同时也是一个高可用且可扩展的解决方案。这种方案的缺点在于共享存储需要一定保护机制，因此需要通过安全链接来访问，这时解决方案的实现就通常具有相当高的复杂性了。</p>
+<ol start="2">
+<li>基于OAuth2 Token方案</li>
+</ol>
+<p>随着 Restful API、微服务的兴起，基于Token的认证现在已经越来越普遍。Token和Session ID 不同，并非只是一个 key。Token 一般会包含用户的相关信息，通过验证 Token 就可以完成身份校验。用户输入登录信息，发送到身份认证服务进行认证。AuthorizationServer验证登录信息是否正确，返回用户基础信息、权限范围、有效时间等信息，客户端存储接口。用户将 Token 放在 HTTP 请求头中，发起相关 API 调用。被调用的微服务，验证Token。ResourceServer返回相关资源和数据。</p>
+<p>这边选用了第二种方案，基于OAuth2 Token认证的好处如下：</p>
+<p>服务端无状态：Token 机制在服务端不需要存储 session 信息，因为 Token 自身包含了所有用户的相关信息。
+性能较好，因为在验证 Token 时不用再去访问数据库或者远程服务进行权限校验，自然可以提升不少性能。
+现在很多应用都是同时面向移动端和web端，OAuth2 Token机制可以支持移动设备。
+OAuth2与Spring Security结合使用，有提供很多开箱即用的功能，大多特性都可以通过配置灵活的变更。
+最后一点，也很重要，Spring Security OAuth2的文档写得较为详细。
+oauth2根据使用场景不同，分成了4种模式：</p>
+<p>授权码模式（authorization code）</br>
+简化模式（implicit）</br>
+密码模式（resource owner password credentials）</br>
+客户端模式（client credentials）</p>
+<p>对于上述oauth2四种模式不熟的同学，可以自行百度oauth2，阮一峰的文章有解释。常使用的是password模式和client模式。</p>
+<h5 id="22-操作权限控制">2.2 操作权限控制</h5>
+<p>对于第二个需求，笔者主要看了Spring Security和Shiro。</p>
+<p>Shiro
+Shiro是一个强大而灵活的开源安全框架，能够非常清晰的处理认证、授权、管理会话以及密码加密。Shiro很容易入手，上手快控制粒度可糙可细。自由度高，Shiro既能配合Spring使用也可以单独使用。</p>
+<p>Spring Security
+Spring社区生态很强大。除了不能脱离Spring，Spring Security具有Shiro所有的功能。而且Spring Security对Oauth、OpenID也有支持,Shiro则需要自己手动实现。Spring Security的权限细粒度更高。但是Spring Security太过复杂。</p>
+<p>看了下网上的评论，貌似一边倒向Shiro。大部分人提出的Spring Security问题就是比较复杂难懂，文档太长。不管是Shiro还是Spring Security，其实现都是基于过滤器，对于自定义实现过滤器，我想对于很多开发者并不是很难，但是这需要团队花费时间与封装可用的jar包出来，对于后期维护和升级，以及功能的扩展。很多中小型公司并不一定具有这样的时间和人力投入这件事。笔者综合评估了下复杂性与所要实现的权限需求，以及上一个需求调研的结果，既然Spring Security功能足够强大且稳定，最终选择了Spring Security。</p>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<ol>
+<li><a href="https://www.jianshu.com/p/15d0a1c366b3" target="_blank">微服务架构下的安全认证与鉴权</a></li>
+<li><a href="https://blog.csdn.net/OmniStack/article/details/77881185" target="_blank">微服务API级权限的技术架构</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank">认识oauth2.0</a></li>
+<li><a href="http://blueskykong.com/2017/10/19/security1/" target="_blank">认证鉴权与API权限控制在微服务架构中的设计与实现</a></li>
+</ol>
+
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body></html>

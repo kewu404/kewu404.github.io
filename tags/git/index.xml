@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Naituyuw</title>
+    <link>https://kewu404.github.io/tags/git/</link>
+    <description>Recent content in git on Naituyuw</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 12 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git</title>
+      <link>https://kewu404.github.io/posts/post_git/</link>
+      <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_git/</guid>
+      <description>1. 楔子 git是目前世界上最先进的分布式版本控制系统。
+名词解释
+2. 概念   本地仓库： 是在开发人员自己电脑上的Git仓库
+  远程仓库： 是在远程服务器上的Git仓库
+  clone： 克隆，就是将远程仓库复制到本地
+  push： 推送，就是将本地仓库代码上传到远程仓库
+  pull： 拉取，就是将远程仓库最新代码拉取到本地仓库并直接合并
+  fetch： 拉取，将远程仓库最新代码拉取到本地，经过用户确认后在合并到本地分支
+  checkout： 切换分支，可以和branch集成
+  add： 添加到本地仓库
+  commit： 提交代码
+  merga： 合并分支
+  branch： 创建分支
+  status： 查看当前分支状态信息
+  3. git命令 git clone
+//克隆项目$ git clone url//克隆指定分支项目$ git clone -b &amp;lt;branchname&amp;gt; urlgit pull</description>
+    </item>
+    
+  </channel>
+</rss>

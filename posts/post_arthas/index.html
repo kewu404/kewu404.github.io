@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>java诊断工具Arthas</title>
+    <meta name="description" content="java诊断工具Arthas">
+    <meta name="keywords" content='blog, gokarna, hugo, springboot-jap'>
+
+    <meta property="og:url" content="https://kewu404.github.io/posts/post_arthas/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="java诊断工具Arthas">
+    <meta property="og:description" content="java诊断工具Arthas">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="java诊断工具Arthas">
+    <meta name="twitter:description" content="java诊断工具Arthas">
+    <meta property="twitter:domain" content="https://kewu404.github.io/posts/post_arthas/">
+    <meta property="twitter:url" content="https://kewu404.github.io/posts/post_arthas/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/posts/post_arthas/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    
+    
+        <img class="banner-img" src='https://arthas.aliyun.com/doc/_images/arthas.png'>
+    
+    <div class="post-header-section">
+        <h1>java诊断工具Arthas</h1>
+        
+        <p class="post-date">
+            November 19, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="/tags/springboot-jap">springboot-jap</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h3 id="楔子">楔子</h3>
+<p>在工作中难免会遇到这种情况：因为某些限制，写好的代码没办法在本地测试，只能到服务器上，这个时候调试代码是一个非常抓狂的事情，因为，代码在服务器上运行，执行到哪里有问题了？报错的详细信息是什么？传参是什么样的？等等。。。咱都不清楚。不嫌麻烦的话在每行都打上log日志，这样，更让我抓狂了。。。</p>
+<p>在这样的诉求下，我发现了Arthas这个东西，用着针不戳。看看官方的介绍：</p>
+<p>当你遇到以下类似问题而束手无策时，Arthas可以帮助你解决：</p>
+<ul>
+<li>这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？</li>
+<li>我改的代码为什么没有执行到？难道是我没 commit？分支搞错了？</li>
+<li>遇到问题无法在线上 debug，难道只能通过加日志再重新发布吗？</li>
+<li>线上遇到某个用户的数据处理有问题，但线上同样无法 debug，线下无法重现！</li>
+<li>是否有一个全局视角来查看系统的运行状况？</li>
+<li>有什么办法可以监控到JVM的实时运行状态？</li>
+<li>怎么快速定位应用的热点，生成火焰图？</li>
+<li>怎样直接从JVM内查找某个类的实例？</li>
+</ul>
+<h3 id="准备">准备</h3>
+<p>下载jar(ps:默认服务器有联网能力)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-basic" data-lang="basic">curl <span style="color:#f92672">-</span>O https:<span style="color:#f92672">//</span>arthas<span style="color:#f92672">.</span>aliyun<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>arthas<span style="color:#f92672">-</span>boot<span style="color:#f92672">.</span>jar
+java <span style="color:#f92672">-</span>jar arthas<span style="color:#f92672">-</span>boot<span style="color:#f92672">.</span>jar
+</code></pre></div><p>idea插件搜索<code>arthas</code>安装。</p>
+<p>上面是针对服务器有网情况下，如果服务器没有网络，需要进行离线安装：</p>
+<p> 联网时，启动arthas的jar包，看到会去maven.aliyun.com私服获取依赖jar包，因此，离线情况下，无法下载相关依赖jar，导致项目启动报错。继续看日志，会发现会把jar放到/root/.arthas/lib/3.5.4/arthas里面.</p>
+<p> 因此，可以在本地下载好arthas-boot.jar，启动好后，找到.arthas文件 一起打包上传到服务器，然后文件放置正确位置（ps:这个位置可以指定），启动arthas就好了。</p>
+<h3 id="使用">使用</h3>
+<p>启动arthas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-basic" data-lang="basic"><span style="color:#960050;background-color:#1e0010">$</span> java <span style="color:#f92672">-</span>jar arthas<span style="color:#f92672">-</span>boot<span style="color:#f92672">.</span>jar
+<span style="color:#f92672">*</span> [<span style="color:#ae81ff">1</span>]<span style="color:#f92672">:</span> <span style="color:#ae81ff">35542</span>
+  [<span style="color:#ae81ff">2</span>]<span style="color:#f92672">:</span> <span style="color:#ae81ff">71560</span> java<span style="color:#f92672">-</span>demo<span style="color:#f92672">.</span>jar
+</code></pre></div><p>选择java应用，回车</p>
+<p>在idea中找到要查看的方法，右键找到<code>Arthas Command</code>，选择需要的命令点击。</p>
+<p>回到命令界面右键粘贴命令，回车即可。</p>
+<h4 id="常用命令">常用命令</h4>
+<ul>
+<li>jad 反编译</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-basic" data-lang="basic"><span style="color:#f92672">//</span> jad path [method]
+[arthas@<span style="color:#ae81ff">12284</span>]<span style="color:#960050;background-color:#1e0010">$</span> jad com<span style="color:#f92672">.</span>tool<span style="color:#f92672">.</span>service<span style="color:#f92672">.</span>impl<span style="color:#f92672">.</span>TranslateServiceImpl baiDuTranslate
+
+ClassLoader:
+<span style="color:#f92672">+-</span>org<span style="color:#f92672">.</span>springframework<span style="color:#f92672">.</span>boot<span style="color:#f92672">.</span>loader<span style="color:#f92672">.</span>LaunchedURLClassLoader@<span style="color:#ae81ff">5197848</span>c
+  <span style="color:#f92672">+-</span>sun<span style="color:#f92672">.</span>misc<span style="color:#f92672">.</span>Launcher$AppClassLoader@<span style="color:#ae81ff">55</span>f96302
+    <span style="color:#f92672">+-</span>sun<span style="color:#f92672">.</span>misc<span style="color:#f92672">.</span>Launcher$ExtClassLoader@<span style="color:#ae81ff">799</span>f7e29
+
+Location:
+file:<span style="color:#f92672">/</span>C:<span style="color:#f92672">/</span>Users<span style="color:#f92672">/</span>Desktop<span style="color:#f92672">/</span>naituy<span style="color:#ae81ff">-0.0.1</span><span style="color:#f92672">.</span>jar!<span style="color:#f92672">/</span>BOOT<span style="color:#f92672">-</span>INF<span style="color:#f92672">/</span>classes!<span style="color:#f92672">/</span>
+
+       public BaiDuTranslateRespVO baiDuTranslate(BaiDuTranslateVO vo) {
+<span style="color:#f92672">/*</span><span style="color:#ae81ff">24</span><span style="color:#f92672">*/</span>     if (StringUtil<span style="color:#f92672">.</span>isBlank((CharSequence)vo<span style="color:#f92672">.</span>getFrom()) <span style="color:#f92672">||</span> StringUtil<span style="color:#f92672">.</span>isBlank((CharSequence)vo<span style="color:#f92672">.</span>getTo())) {
+               boolean english <span style="color:#f92672">=</span> BaiduTranslateUtil<span style="color:#f92672">.</span>isEnglish((String)vo<span style="color:#f92672">.</span>getQ());
+               vo<span style="color:#f92672">.</span>from(english <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;en&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;zh&#34;</span>)<span style="color:#f92672">.</span>to(english <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;zh&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;en&#34;</span>);
+           }
+<span style="color:#f92672">/*</span><span style="color:#ae81ff">29</span><span style="color:#f92672">*/</span>     String translate <span style="color:#f92672">=</span> BaiduTranslateUtil<span style="color:#f92672">.</span>translate((String)vo<span style="color:#f92672">.</span>getQ(), (String)vo<span style="color:#f92672">.</span>getFrom(), (String)vo<span style="color:#f92672">.</span>getTo());
+<span style="color:#f92672">/*</span><span style="color:#ae81ff">30</span><span style="color:#f92672">*/</span>     return (BaiDuTranslateRespVO)JSONObject<span style="color:#f92672">.</span>parseObject((String)translate, BaiDuTranslateRespVO<span style="color:#f92672">.</span>class);
+       }
+
+Affect(row<span style="color:#f92672">-</span>cnt:<span style="color:#ae81ff">1</span>) cost in <span style="color:#ae81ff">477</span> ms<span style="color:#f92672">.</span>
+</code></pre></div><p>jad &ndash;source-only ： 默认情况下，反编译结果里会带有ClassLoader信息，通过&ndash;source-only选项，可以只打印源代码。方便和mc/retransform命令结合使用。</p>
+<ul>
+<li>watch 查看某个方法接受返回值</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-basic" data-lang="basic"><span style="color:#f92672">//</span> watch path method<span style="color:#f92672">-</span>name <span style="color:#75715e">&#39;{params,returnObj,throwExp}&#39; [-n/x/e...]</span>
+[arthas@<span style="color:#ae81ff">12284</span>]<span style="color:#960050;background-color:#1e0010">$</span> watch com<span style="color:#f92672">.</span>hun<span style="color:#f92672">.</span>naituy<span style="color:#f92672">.</span>tool<span style="color:#f92672">.</span>service<span style="color:#f92672">.</span>impl<span style="color:#f92672">.</span>TranslateServiceImpl baiDuTranslate <span style="color:#75715e">&#39;{params,returnObj,throwExp} &#39;  -n 5  -x 3</span>
+Press Q or Ctrl<span style="color:#f92672">+</span>C to abort<span style="color:#f92672">.</span>
+Affect(class count: <span style="color:#ae81ff">1</span> , method count: <span style="color:#ae81ff">1</span>) cost in <span style="color:#ae81ff">92</span> ms, listenerId: <span style="color:#ae81ff">2</span>
+method<span style="color:#f92672">=</span>com<span style="color:#f92672">.</span>tool<span style="color:#f92672">.</span>service<span style="color:#f92672">.</span>impl<span style="color:#f92672">.</span>TranslateServiceImpl<span style="color:#f92672">.</span>baiDuTranslate location<span style="color:#f92672">=</span>AtExit
+ts<span style="color:#f92672">=</span><span style="color:#ae81ff">2021-11-19</span> <span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">26</span><span style="color:#f92672">:</span><span style="color:#ae81ff">40</span>; [cost<span style="color:#f92672">=</span><span style="color:#ae81ff">438.6887</span>ms] result<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">@</span>ArrayList[
+    <span style="color:#960050;background-color:#1e0010">@</span>Object[][
+        <span style="color:#960050;background-color:#1e0010">@</span>BaiDuTranslateVO[
+            q<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">@</span>String[鍙戣储],
+            from<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">@</span>String[zh],
+            to<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">@</span>String[en],
+            appid<span style="color:#f92672">=</span>null,
+            salt<span style="color:#f92672">=</span>null,
+            sign<span style="color:#f92672">=</span>null,
+        ],
+    ],
+    <span style="color:#960050;background-color:#1e0010">@</span>BaiDuTranslateRespVO[
+        from<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">@</span>String[zh],
+        to<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">@</span>String[en],
+        trans_result<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">@</span>ArrayList[
+            <span style="color:#960050;background-color:#1e0010">@</span>TranslateResultVO[TranslateResultVO(src<span style="color:#f92672">=</span>鍙戣储, dst<span style="color:#f92672">=</span>Get rich)],
+        ],
+    ],
+    null,
+]
+</code></pre></div><ul>
+<li><code>-n</code>:表示执行几次 <code>-n 2</code>表示监控这个方法两次</li>
+<li><code>-x</code>:表示参数遍历深度，默认值是1</li>
+<li><code>-e</code>:只有抛出异常才会执行</li>
+<li><code>#cost&gt;200</code>(单位是ms)表示只有当耗时大于200ms时才会输出，过滤掉执行时间小于200ms的调用</li>
+</ul>
+<h3 id="命令">命令</h3>
+<ol>
+<li>基础命令</li>
+</ol>
+<ul>
+<li>help——查看命令帮助信息</li>
+<li>cat——打印文件内容，和linux里的cat命令类似</li>
+<li>echo–打印参数，和linux里的echo命令类似</li>
+<li>grep——匹配查找，和linux里的grep命令类似</li>
+<li>base64——base64编码转换，和linux里的base64命令类似</li>
+<li>tee——复制标准输入到标准输出和指定的文件，和linux里的tee命令类似</li>
+<li>pwd——返回当前的工作目录，和linux命令类似</li>
+<li>cls——清空当前屏幕区域</li>
+<li>session——查看当前会话的信息</li>
+<li>reset——重置增强类，将被 Arthas 增强过的类全部还原，Arthas 服务端关闭时会重置所有增强过的类</li>
+<li>version——输出当前目标 Java 进程所加载的 Arthas 版本号</li>
+<li>history——打印命令历史</li>
+<li>quit——退出当前 Arthas 客户端，其他 Arthas 客户端不受影响</li>
+<li>stop——关闭 Arthas 服务端，所有 Arthas 客户端全部退出</li>
+<li>keymap——Arthas快捷键列表及自定义快捷键</li>
+</ul>
+<ol start="2">
+<li>jvm相关</li>
+</ol>
+<ul>
+<li>dashboard——当前系统的实时数据面板</li>
+<li>thread——查看当前 JVM 的线程堆栈信息</li>
+<li>jvm——查看当前 JVM 的信息</li>
+<li>sysprop——查看和修改JVM的系统属性</li>
+<li>sysenv——查看JVM的环境变量</li>
+<li>vmoption——查看和修改JVM里诊断相关的option</li>
+<li>perfcounter——查看当前 JVM 的Perf Counter信息</li>
+<li>logger——查看和修改logger</li>
+<li>getstatic——查看类的静态属性</li>
+<li>ognl——执行ognl表达式</li>
+<li>mbean——查看 Mbean 的信息</li>
+<li>heapdump——dump java heap, 类似jmap命令的heap dump功能</li>
+<li>vmtool——从jvm里查询对象，执行forceGc</li>
+</ul>
+<h3 id="退出arthas">退出arthas</h3>
+<p>如果只是退出当前的连接，可以用quit或者exit命令。Attach到目标进程上的arthas还会继续运行，端口会保持开放，下次连接时可以直接连接上。</p>
+<p>如果想完全退出arthas，可以执行stop命令。</p>
+<p><a href="https://arthas.aliyun.com/doc/">arthas官方文档</a></p>
+
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body></html>
