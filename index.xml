@@ -6,7 +6,7 @@
     <description>Recent content on Naituyuw</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 07 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>工作</title>
       <link>https://kewu404.github.io/lives/live-job/</link>
@@ -52,6 +52,26 @@ Smileys &amp;amp; Emotion Face Smiling    icon code icon code     😀 grinning 
 曾批给雨支风券，累上留云借月章。
 诗万首，酒千觞。几曾著眼看侯王。
 玉楼金阙慵归去，且插梅花醉洛阳。</description>
+    </item>
+    
+    <item>
+      <title>docsify使用</title>
+      <link>https://kewu404.github.io/posts/post_docsify/</link>
+      <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_docsify/</guid>
+      <description>简介 一直都在使用hugo,最近发现一个类似的生成文档网站工具 Docsify, docsify 是一个动态生成文档网站的工具。不同于 hugo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。
+官网 | GitHub
+使用 安装前，需要安装：Node.js
+打开命令提示符
+安装docsify-cli工具(全局安装)
+npm i docsify-cli -g 创建一个文件夹，名字自定义，进入文件夹
+初始化docsify
+docsify init 完成后，文件夹里会出现三个文件，目录结构
+book├── .nojekyll //用于阻止 GitHub Pages 会忽略掉下划线开头的文件├── index.html //入口文件└── README.md //会做为主页内容渲染 启动项目
+docsify serve 浏览器输入 http://localhost:3000，可查看初始化页面，内容为README.md；浏览器左边是标题，右边是内容
+目录文件对应的访问目录
+book /├── folder /├── README.md├── .nojekyll├── index.html├── README.md└── XXX.md对应的页面访问：http://localhost:3000/ &amp;lt;=&amp;gt; docs/README.mdhttp://localhost:3000/XXX &amp;lt;=&amp;gt; docs/XXX.mdhttp://localhost:3000/folder &amp;lt;=&amp;gt; docs/folder/README.</description>
     </item>
     
     <item>
@@ -117,6 +137,15 @@ docker-compose是基于docker的编排工具，使容器的操作能够批量的
 安装命令
 curl -L &amp;quot;https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)&amp;quot; -o /usr/local/bin/docker-compose//给docker-compose执行权限chmod +x /usr/local/bin/docker-compose//检查docker-compose --version使用 常用命令 使用docker可以查看docker所有命令
 $ dockerUsage: docker [OPTIONS] COMMANDA self-sufficient runtime for containersOptions:--config string Location of client config files (default &amp;quot;/root/.docker&amp;quot;)-c, --context string Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with &amp;quot;dockercontext use&amp;quot;)-D, --debug Enable debug mode-H, --host list Daemon socket(s) to connect to-l, --log-level string Set the logging level (&amp;quot;debug&amp;quot;|&amp;quot;info&amp;quot;|&amp;quot;warn&amp;quot;|&amp;quot;error&amp;quot;|&amp;quot;fatal&amp;quot;) (default &amp;quot;info&amp;quot;)--tls Use TLS; implied by --tlsverify--tlscacert string Trust certs signed only by this CA (default &amp;quot;/root/.</description>
+    </item>
+    
+    <item>
+      <title>neo4j</title>
+      <link>https://kewu404.github.io/projects/db/neo4j/start_neo4j/</link>
+      <pubDate>Sat, 06 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/projects/db/neo4j/start_neo4j/</guid>
+      <description>neo4j curd 添加节点 create (n:Person{name:&amp;#34;王多鱼&amp;#34;,}) 查询节点 修改节点 删除节点 </description>
     </item>
     
     <item>
@@ -389,15 +418,6 @@ https://www.hojun.cn/2019/07/12/ck6rd5qlu002rh8tu0oqzp4i7/</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kewu404.github.io/posts/post_jap_es/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://kewu404.github.io/projects/db/neo4j/start_neo4j/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kewu404.github.io/projects/db/neo4j/start_neo4j/</guid>
       <description></description>
     </item>
     

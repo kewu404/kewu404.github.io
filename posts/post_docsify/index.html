@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>docsify使用</title>
+    <meta name="description" content="发呆">
+    <meta name="keywords" content='blog, gokarna, hugo'>
+
+    <meta property="og:url" content="https://kewu404.github.io/posts/post_docsify/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="docsify使用">
+    <meta property="og:description" content="发呆">
+    <meta property="og:image" content="/images/avatar.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="docsify使用">
+    <meta name="twitter:description" content="发呆">
+    <meta property="twitter:domain" content="https://kewu404.github.io/posts/post_docsify/">
+    <meta property="twitter:url" content="https://kewu404.github.io/posts/post_docsify/">
+    <meta name="twitter:image" content="/images/avatar.webp">
+
+    
+    <link rel="canonical" href="https://kewu404.github.io/posts/post_docsify/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/main-jq.js"></script>
+    <script src="/js/fish.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+    
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://kewu404.github.io/">
+                <img src="/images/avatar.webp" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://kewu404.github.io/">Naituyuw</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> 技术 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/projects/"> projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/lives/"> 生活 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> 标签 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> 技术 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/projects/"> projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/lives/"> 生活 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> 标签 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/kewu404/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="mailto:guojiuguo@gmail.com"><span data-feather='mail'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    
+    
+    <div class="post-header-section">
+        <h1>docsify使用</h1>
+        
+        <p class="post-date">
+            December 13, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h3 id="简介">简介</h3>
+<p>一直都在使用hugo,最近发现一个类似的生成文档网站工具 Docsify,
+docsify 是一个动态生成文档网站的工具。不同于 hugo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。</p>
+<p><a href="https://docsify.js.org">官网</a>  |  <a href="https://github.com/docsifyjs/docsify/">GitHub</a></p>
+<h3 id="使用">使用</h3>
+<p>安装前，需要安装：Node.js</p>
+<p>打开命令提示符</p>
+<p>安装docsify-cli工具(全局安装)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm i docsify-cli -g
+</code></pre></div><p>创建一个文件夹，名字自定义，进入文件夹<br>
+初始化docsify</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docsify init
+</code></pre></div><p>完成后，文件夹里会出现三个文件，目录结构</p>
+<pre tabindex="0"><code>book
+├── .nojekyll  //用于阻止 GitHub Pages 会忽略掉下划线开头的文件
+├── index.html //入口文件
+└── README.md  //会做为主页内容渲染 
+</code></pre><p>启动项目</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docsify serve
+</code></pre></div><p>浏览器输入 <code>http://localhost:3000</code>，可查看初始化页面，内容为README.md；浏览器左边是标题，右边是内容</p>
+<p>目录文件对应的访问目录</p>
+<pre tabindex="0"><code>book /
+├── folder /
+├── README.md
+├── .nojekyll
+├── index.html
+├── README.md
+└── XXX.md
+
+对应的页面访问：
+
+http://localhost:3000/           &lt;=&gt;  docs/README.md
+http://localhost:3000/XXX        &lt;=&gt;  docs/XXX.md
+http://localhost:3000/folder     &lt;=&gt;  docs/folder/README.md
+http://localhost:3000/folder/XXX &lt;=&gt;  docs/folder/XXX.md
+</code></pre><h5 id="侧边栏">侧边栏</h5>
+<p>侧边栏默认会自动生成，可以创建侧边栏,在<code>index.html</code>文件中，添加 <code>loadSideber: true</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+    window.<span style="color:#a6e22e">$docsify</span> <span style="color:#f92672">=</span> {
+      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+      <span style="color:#a6e22e">repo</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+      <span style="color:#a6e22e">loadSideber</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+    }
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</code></pre></div><p>然后在同级目录下创建文件<code>_sideBar.md</code> 格式的话就是无序列表加上超链接</p>
+<h5 id="标题栏">标题栏</h5>
+<p>index.html中window.$docsify的 locaNavbar 参数，即可开启导航栏的功能. 
+与配置侧边栏一样创建文件 _navbar.md</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+    window.<span style="color:#a6e22e">$docsify</span> <span style="color:#f92672">=</span> {
+      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#75715e">/* 网站标题 */</span>
+      <span style="color:#a6e22e">repo</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#75715e">/* git厂库地址 */</span>
+      <span style="color:#a6e22e">loadSideber</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">/* 侧边栏自定义 */</span>
+      <span style="color:#a6e22e">locaNavbar</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> <span style="color:#75715e">/* 顶部菜单 */</span>
+    }
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</code></pre></div><p>_navbar.md示例：</p>
+<pre tabindex="0"><code>- 一级菜单导航
+    - [二级菜单](/top1.md)
+- 一级菜单导航
+    - [二级菜单](/top2.md)
+</code></pre><p>注意：最好不要添加三级，显示有点问题</p>
+<h4 id="封面">封面</h4>
+<p>index.html中window.$docsify的 coverpage 参数，即可开启渲染封面的功能</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+    window.<span style="color:#a6e22e">$docsify</span> <span style="color:#f92672">=</span> {
+      <span style="color:#a6e22e">coverpage</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+    }
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</code></pre></div><p>同上，创建_coverpage.md文件，文件格式：</p>
+<pre tabindex="0"><code>&lt;!-- _coverpage.md --&gt;
+
+![logo](_media/icon.svg)
+
+# docsify &lt;small&gt;3.5&lt;/small&gt;
+
+&gt; 一个神奇的文档网站生成器。
+
+- 简单、轻便 (压缩后 ~21kB)
+- 无需生成 html 文件
+- 众多主题
+
+[GitHub](https://github.com/docsifyjs/docsify/)
+[Get Started](#docsify)
+</code></pre><p>更多使用去查看<a href="https://docsify.js.org/#/zh-cn/">官方文档</a></p>
+
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+
+        </main>
+<div id="jsi-flying-fish-container" class="container-fish"></div>
+
+<footer class="footer">
+    <div class="nav-links">
+        
+        
+        
+    </div>
+    <p></p>
+    <div style="border:.1px solid rgb(41, 41, 41)"></div>
+    <span>&copy; 2021 Naituyuw</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+
+
+</body></html>

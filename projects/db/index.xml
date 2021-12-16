@@ -8,12 +8,12 @@
     <language>zh-cn</language>
     <lastBuildDate>Tue, 07 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/projects/db/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
+      <title>neo4j</title>
       <link>https://kewu404.github.io/projects/db/neo4j/start_neo4j/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 06 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://kewu404.github.io/projects/db/neo4j/start_neo4j/</guid>
-      <description></description>
+      <description>neo4j curd 添加节点 create (n:Person{name:&amp;#34;王多鱼&amp;#34;,}) 查询节点 修改节点 删除节点 </description>
     </item>
     
   </channel>

@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Naituyuw</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kewu404.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hugo-表情使用</title>
       <link>https://kewu404.github.io/posts/emoji-support/</link>
@@ -43,6 +43,26 @@ Smileys &amp;amp; Emotion Face Smiling    icon code icon code     😀 grinning 
 曾批给雨支风券，累上留云借月章。
 诗万首，酒千觞。几曾著眼看侯王。
 玉楼金阙慵归去，且插梅花醉洛阳。</description>
+    </item>
+    
+    <item>
+      <title>docsify使用</title>
+      <link>https://kewu404.github.io/posts/post_docsify/</link>
+      <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kewu404.github.io/posts/post_docsify/</guid>
+      <description>简介 一直都在使用hugo,最近发现一个类似的生成文档网站工具 Docsify, docsify 是一个动态生成文档网站的工具。不同于 hugo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。
+官网 | GitHub
+使用 安装前，需要安装：Node.js
+打开命令提示符
+安装docsify-cli工具(全局安装)
+npm i docsify-cli -g 创建一个文件夹，名字自定义，进入文件夹
+初始化docsify
+docsify init 完成后，文件夹里会出现三个文件，目录结构
+book├── .nojekyll //用于阻止 GitHub Pages 会忽略掉下划线开头的文件├── index.html //入口文件└── README.md //会做为主页内容渲染 启动项目
+docsify serve 浏览器输入 http://localhost:3000，可查看初始化页面，内容为README.md；浏览器左边是标题，右边是内容
+目录文件对应的访问目录
+book /├── folder /├── README.md├── .nojekyll├── index.html├── README.md└── XXX.md对应的页面访问：http://localhost:3000/ &amp;lt;=&amp;gt; docs/README.mdhttp://localhost:3000/XXX &amp;lt;=&amp;gt; docs/XXX.mdhttp://localhost:3000/folder &amp;lt;=&amp;gt; docs/folder/README.</description>
     </item>
     
     <item>
